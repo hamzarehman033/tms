@@ -13,6 +13,10 @@ import { FiltersComponent } from './shared/components/filters/filters.component'
 import { ButtonComponent } from './shared/components/button/button.component';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 import { DonutGraphComponent } from './shared/components/donut-graph/donut-graph.component';
+import { LoginComponent } from './pages/login/login.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +29,15 @@ import { DonutGraphComponent } from './shared/components/donut-graph/donut-graph
     FiltersComponent,
     ButtonComponent,
     DropdownComponent,
-    DonutGraphComponent
+    DonutGraphComponent,
+    LoginComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSidenavModule,
+    MatButtonModule
   ],
   providers: [
     provideClientHydration(),
