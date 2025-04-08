@@ -37,6 +37,31 @@ const routes: Routes = [
     loadComponent: () =>
       import('./pages/trucks/trucks.component').then(m => m.TrucksComponent),
   },
+  {
+    path: 'farm',
+    loadComponent: () =>
+      import('./pages/farm/farm.component').then(m => m.FarmComponent),
+  },{
+    path: 'supplier',
+    loadComponent: () =>
+      import('./pages/supplier/supplier.component').then(m => m.SupplierComponent),
+  },{
+    path: 'zone',
+    loadComponent: () =>
+      import('./pages/zone/zone.component').then(m => m.ZoneComponent),
+  },{
+    path: 'container',
+    loadComponent: () =>
+      import('./pages/container/container.component').then(m => m.ContainerComponent),
+  },{
+    path: 'restriction',
+    loadComponent: () =>
+      import('./pages/restriction/restriction.component').then(m => m.RestrictionComponent),
+  },{
+    path: 'trucking_requests',
+    loadComponent: () =>
+      import('./pages/trucking-requests/trucking-requests.component').then(m => m.TruckingRequestsComponent),
+  },
 ];
 
 @NgModule({
