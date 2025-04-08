@@ -16,6 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { IconComponent } from './shared/components/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     DropdownComponent,
     DonutGraphComponent,
     LoginComponent,
-    SidebarComponent
+    SidebarComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,6 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     MatSidenavModule,
     MatButtonModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync()
