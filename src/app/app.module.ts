@@ -14,6 +14,7 @@ import { DonutGraphComponent } from './shared/components/donut-graph/donut-graph
 import { LoginComponent } from './pages/login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { IconComponent } from './shared/components/icon/icon.component';
 
@@ -35,7 +36,8 @@ import { IconComponent } from './shared/components/icon/icon.component';
     BrowserModule,
     AppRoutingModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   providers: [
     provideClientHydration(),
