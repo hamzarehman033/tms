@@ -1,18 +1,22 @@
-<<<<<<< Updated upstream
-import { AfterViewInit, Component } from '@angular/core';
-import { Chart, ChartComponent } from 'chart.js/auto';
-=======
-import { Component, Input } from '@angular/core';
 
->>>>>>> Stashed changes
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { Chart, ChartComponent } from 'chart.js/auto';
+
 @Component({
   selector: 'app-line-graph',
   standalone: true,
   templateUrl: './line-graph.component.html',
   styleUrl: './line-graph.component.scss'
 })
-<<<<<<< Updated upstream
 export class LineGraphComponent  implements AfterViewInit {
+  @Input() graph_heading: string = '';
+  @Input() graph_type: string = 'Weekly';
+  @Input() graph_status: string = 'In Progress';
+  @Input() lineColor: string = '';
+  @Input() lineWidth: string = '';
+  @Input() xAxisLabel: string = '';
+  @Input() yAxisLabel: string = '';
+  
   chartOptions: any = { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } };
   ngAfterViewInit() {
     new Chart('barChart', {
@@ -40,14 +44,3 @@ export class LineGraphComponent  implements AfterViewInit {
     });
   }
 }
-=======
-export class LineGraphComponent {
-  @Input() graph_heading: string = '';
-  @Input() graph_type: string = 'Weekly';
-  @Input() graph_status: string = 'In Progress';
-  @Input() lineColor: string = '';
-  @Input() lineWidth: string = '';
-  @Input() xAxisLabel: string = '';
-  @Input() yAxisLabel: string = '';
-}
->>>>>>> Stashed changes
