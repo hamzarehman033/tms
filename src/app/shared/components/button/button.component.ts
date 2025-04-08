@@ -8,6 +8,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() type: string = '';
   @Input() color: string = '';
+  @Input() label: string = 'Click';
+  @Input() size: string = '';
+  @Input() disabled: boolean = false;
+  @Input() customClass: string = '';
+
   
   @Output() click = new EventEmitter<void>();
+  onClick(){
+    if (!this.disabled) {
+      this.click.emit();
+    }
+  }
 }
