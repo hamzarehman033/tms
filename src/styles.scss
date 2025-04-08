@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url(../src/assets/styles/variables.scss);
+@import url(../src/assets/styles/theme.scss);
+@import url(../src/assets/styles/fonts.scss);
 
 html,
 body {
@@ -9,4 +11,13 @@ body {
 
 body {
     margin: 0;
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 }

@@ -1,0 +1,12 @@
+@import '../styles/variables.scss';
+
+
+body {
+    .nav-link {
+        color: $dark;
+
+        &.active {
+            color: $primary;
+        }
+    }
+}

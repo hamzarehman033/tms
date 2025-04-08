@@ -1,3 +1,19 @@
-<button type="button" mat-button (click)="onToggle()">
-    Toggle sidenav
-</button>
+<div class="bg-header">
+    <div>
+        <div class="d-flex gap-2 align-items-center">
+            <i class="bi bi-arrow-bar-left cursor" (click)="onToggle()"></i>
+            <p class="mb-0">Good Morning</p>
+        </div>
+        <p class="text-light mb-0">Hope you have a good day and work better</p>
+    </div>
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Kane Williamson
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
+</div>

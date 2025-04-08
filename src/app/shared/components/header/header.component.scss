@@ -1,0 +1,11 @@
+@import '../../../../assets/styles/variables.scss';
+
+
+.bg-header {
+    background-color: $white;
+    box-shadow: $box-shadow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
