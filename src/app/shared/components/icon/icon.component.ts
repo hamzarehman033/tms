@@ -1,26 +1,32 @@
-import { Component, Input, ElementRef, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { Component, Input, ElementRef, OnChanges, SimpleChanges, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { IconifyIcon } from '@iconify/types';
 import { iconToSVG, replaceIDs } from '@iconify/utils';
 import { loadIcon } from '@iconify/iconify';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-icon',
   template: '<span #container></span>'
 })
-export class IconComponent implements OnChanges, OnInit {
+export class IconComponent implements OnChanges, OnInit, AfterViewInit {
   @Input() icon!: IconifyIcon | string;
   @Input() width?: string | number = 24;
   @Input() height?: string | number = 24;
   @Input() color?: string;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Object) {}
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.updateIcon();
+    }
+  }
 
   ngOnInit() {
-    this.updateIcon();
+    // this.updateIcon();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.updateIcon();
+    // this.updateIcon();
   }
 
   private async updateIcon() {
