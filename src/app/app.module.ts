@@ -13,8 +13,8 @@ import { ButtonComponent } from './shared/components/button/button.component';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 import { DonutGraphComponent } from './shared/components/donut-graph/donut-graph.component';
 import { LoginComponent } from './pages/login/login.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
