@@ -46,6 +46,7 @@
               "src/styles.scss"
             ],
             "scripts": [
+              "node_modules/@iconify/iconify/dist/iconify.min.js",
               "bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
             "server": "src/main.server.ts",
@@ -119,7 +120,9 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@iconify/iconify/dist/iconify.min.js"
+            ]
           }
         }
       }

@@ -13,23 +13,23 @@ export class LineGraphComponent  implements AfterViewInit {
   @Input() graph_type: string = 'Weekly';
   @Input() graph_status: string = 'In Progress';
   @Input() lineColor: string = '';
-  @Input() lineWidth: string = '';
+  @Input() lineWidth: number = 1;
   @Input() xAxisLabel: string = '';
   @Input() yAxisLabel: string = '';
   
   chartOptions: any = { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } };
   ngAfterViewInit() {
     new Chart('barChart', {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr'],
         datasets: [
           {
-            label: 'Sales',
+            label: 'Line Graph',
             data: [12, 19, 3, 5],
-            backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
+            backgroundColor: '#DA291C',
+            borderColor: '#DA291C',
+            borderWidth: 2
           }
         ]
       },

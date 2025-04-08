@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CardsComponent } from './shared/components/cards/cards.component';
-import { PieChartComponent } from './shared/components/pie-chart/pie-chart.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PaginatorComponent } from './shared/components/paginator/paginator.component';
 import { FiltersComponent } from './shared/components/filters/filters.component';
@@ -16,12 +15,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { IconComponent } from './shared/components/icon/icon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardsComponent,
-    PieChartComponent,
     HeaderComponent,
     PaginatorComponent,
     FiltersComponent,
@@ -29,7 +28,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     DropdownComponent,
     DonutGraphComponent,
     LoginComponent,
-    SidebarComponent
+    SidebarComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule,
