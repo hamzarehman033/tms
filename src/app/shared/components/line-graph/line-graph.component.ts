@@ -13,7 +13,7 @@ export class LineGraphComponent  implements AfterViewInit {
   @Input() graph_type: string = 'Weekly';
   @Input() graph_status: string = 'In Progress';
   @Input() lineColor: string = '';
-  @Input() lineWidth: string = '';
+  @Input() lineWidth: number = 1;
   @Input() xAxisLabel: string = '';
   @Input() yAxisLabel: string = '';
   
@@ -25,11 +25,13 @@ export class LineGraphComponent  implements AfterViewInit {
         labels: ['Jan', 'Feb', 'Mar', 'Apr'],
         datasets: [
           {
-            label: 'Sales',
+            label: 'Bar Graph',
             data: [12, 19, 3, 5],
-            backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
+            backgroundColor: '#DA291C',
+            borderColor: '#DA291C',
+            borderWidth: 2,
+            borderRadius: 4,
+            barThickness: 25
           }
         ]
       },
