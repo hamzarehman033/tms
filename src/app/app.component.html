@@ -4,6 +4,7 @@
     <app-sidebar></app-sidebar>
   </mat-drawer>
   <div class="example-sidenav-content">
+    <app-icon [icon]="icon" width="32" height="32" color="blue"></app-icon>
     <app-header (toggleDrawer)="drawer.toggle()"></app-header>
     <router-outlet />
   </div>
