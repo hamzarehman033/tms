@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CardsComponent } from './shared/components/cards/cards.component';
-import { PieChartComponent } from './shared/components/pie-chart/pie-chart.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PaginatorComponent } from './shared/components/paginator/paginator.component';
 import { FiltersComponent } from './shared/components/filters/filters.component';
@@ -21,7 +20,6 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
   declarations: [
     AppComponent,
     CardsComponent,
-    PieChartComponent,
     HeaderComponent,
     PaginatorComponent,
     FiltersComponent,

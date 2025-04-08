@@ -20,18 +20,16 @@ export class LineGraphComponent  implements AfterViewInit {
   chartOptions: any = { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } };
   ngAfterViewInit() {
     new Chart('barChart', {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr'],
         datasets: [
           {
-            label: 'Bar Graph',
+            label: 'Line Graph',
             data: [12, 19, 3, 5],
             backgroundColor: '#DA291C',
             borderColor: '#DA291C',
-            borderWidth: 2,
-            borderRadius: 4,
-            barThickness: 25
+            borderWidth: 2
           }
         ]
       },
