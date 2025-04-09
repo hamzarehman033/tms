@@ -31,6 +31,16 @@ body {
         }
     }
 
+    .dropdown-toggle::after {
+        display: none !important;
+    }
+
+    .dropdown-menu {
+        width: 100% !important;
+        margin-top: 1rem !important;
+        background-color: $white !important;
+    }
+
     .mat-drawer-container {
         height: 100vh;
         background-color: $body-bg;
