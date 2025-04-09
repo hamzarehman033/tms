@@ -1,14 +1,19 @@
 <div class="bg-header">
     <div>
         <div class="d-flex gap-2 align-items-center">
-            <i class="bi bi-arrow-bar-left cursor" (click)="onToggle()"></i>
-            <p class="mb-0">Good Morning</p>
+            <app-icon icon="mdi:menu-open" [width]="36" [height]="36" (click)="onToggle()"
+                class="cursor collapse-icon"></app-icon>
+            <h4 class="mb-0 fw-bold">Good Morning Anima</h4>
         </div>
-        <p class="text-light mb-0">Hope you have a good day and work better</p>
+        <p class="text-light mb-0 fw-semibold">Hope you have a good day and work better</p>
     </div>
     <div class="dropdown">
+        <!-- <div>
+            <img src="../../../../assets/images/user.png" class="logo img-fluid" alt="logo">
+            <p class="mb-0">Kane Williamson</p>
+        </div> -->
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Kane Williamson
+            kane Williamson
         </button>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>

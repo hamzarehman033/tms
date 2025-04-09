@@ -1,13 +1,2 @@
-@import '../assets/styles/variables.scss';
 
-.mat-drawer-container {
-    height: 100vh;
-}
 
-mat-drawer {
-    width: 250px;
-    background-color: $white;
-    box-shadow: $box-shadow;
-    border: 0;
-    border-radius: 0;
-}

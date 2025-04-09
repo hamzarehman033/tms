@@ -1,18 +1,35 @@
 <div class="d-flex justify-content-center mt-3 mb-4">
-  <img src="logo.png" class="logo img-fluid" alt="logo">
+  <img src="../../../../assets/images/logo.svg" class="logo img-fluid" alt="logo">
 </div>
 <div class="nav flex-column">
-  <a class="nav-link active" routerLink="/dashboard">Dashboard</a>
-  <a class="nav-link" routerLink="/assignments">Assignments</a>
-  <a class="nav-link" routerLink="/trucks">Trucks</a>
-  <a class="nav-link" routerLink="/documentation">Documentation</a>
-  <a class="nav-link" routerLink="/drivers">Drivers</a>
-  <a class="nav-link" routerLink="/requests">Requests</a>
-
-  <a class="nav-link" routerLink="/farm">Farm</a>
-  <a class="nav-link" routerLink="/supplier">Supplier</a>
-  <a class="nav-link" routerLink="/zone">Zone</a>
-  <a class="nav-link" routerLink="/container">Container</a>
-  <a class="nav-link" routerLink="/restriction">Restriction</a>
-  <a class="nav-link" routerLink="/trucking_requests">Trucking Requests</a>
+  <!-- System Admin menus start  -->
+  <a class="nav-link active" routerLink="/dashboard">
+    <app-icon icon="lucide:home" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <span class="nav-label">Dashboard</span>
+  </a>
+  <a class="nav-link" routerLink="/farm">
+    <app-icon icon="ph:farm" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <span class="nav-label">Farm</span>
+  </a>
+  <a class="nav-link" routerLink="/supplier">
+    <app-icon icon="solar:delivery-linear" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <span class="nav-label">Supplier</span>
+  </a>
+  <a class="nav-link" routerLink="/zone">
+    <app-icon icon="hugeicons:location-03" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <span class="nav-label">Zone</span>
+  </a>
+  <a class="nav-link" routerLink="/container">
+    <app-icon icon="octicon:container-24" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <span class="nav-label">Container</span>
+  </a>
+  <a class="nav-link" routerLink="/restriction">
+    <app-icon icon="prime:ban" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <span class="nav-label">Restriction</span>
+  </a>
+  <a class="nav-link" routerLink="/drivers">
+    <app-icon icon="healthicons:truck-driver" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <span class="nav-label">Drivers</span>
+  </a>
+  <!-- System Admin menus end  -->
 </div>

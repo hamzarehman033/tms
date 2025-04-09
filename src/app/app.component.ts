@@ -7,6 +7,6 @@ import homeIcon from '@iconify/icons-mdi/home';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  icon: IconifyIcon = homeIcon;
+  // icon: IconifyIcon = homeIcon;
   title = 'tms';
 }
