@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './container.component.scss'
 })
 export class ContainerComponent {
+  columnsToDisplay = ['Container_ID', 'Container_Type', 'Container_Weight', 'Container_Number', 'Action'];
 
 }

@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './assignments.component.scss'
 })
 export class AssignmentsComponent {
-
+  columnsToDisplay = ['ID', 'Form_Name', 'Deput', 'Request_Id', 'Truck_Number', 'Driver', 'Depot_Status','Action'];
 }

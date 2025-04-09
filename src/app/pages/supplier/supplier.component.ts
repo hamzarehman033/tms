@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './supplier.component.scss'
 })
 export class SupplierComponent {
-
+  columnsToDisplay = ['ID', 'Name', 'Documentation_Status', 'Activation', 'Phone_Number', 'Action'];
 }

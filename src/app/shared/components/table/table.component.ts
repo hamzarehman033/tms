@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTableModule } from '@angular/material/table';
 
 const ELEMENT_DATA = [
-  {Division: 1, Farm: 'Hydrogen', Creation: 1.0079, Depot: 'H'},
-  {Division: 2, Farm: 'Helium', Creation: 4.0026, Depot: 'He'},
-  {Division: 3, Farm: 'Lithium', Creation: 6.941, Depot: 'Li'},
-  {Division: 4, Farm: 'Beryllium', Creation: 9.0122, Depot: 'Be'},
-  {Division: 5, Farm: 'Boron', Creation: 10.811, Depot: 'B'},
+  { Division: 1, Farm: 'Hydrogen', Creation_Time: 1.0079, Depot: 'H', Status: 'abc', Action: 'approved' },
+  { Division: 2, Farm: 'Helium', Creation_Time: 4.0026, Depot: 'He', Status: 'N/A', Action: 'N/A' },
+  { Division: 3, Farm: 'Lithium', Creation_Time: 6.941, Depot: 'Li', Status: 'N/A', Action: 'N/A' },
+  { Division: 4, Farm: 'Beryllium', Creation_Time: 9.0122, Depot: 'Be', Status: 'N/A', Action: 'N/A' },
+  { Division: 5, Farm: 'Boron', Creation_Time: 10.811, Depot: 'B', Status: 'N/A', Action: 'N/A' },
 ];
 
 @Component({
@@ -21,6 +21,6 @@ const ELEMENT_DATA = [
 
 
 export class TableComponent {
-  displayedColumns: string[] = ['Division', 'Creation'];
-  dataSource = ELEMENT_DATA;
+  @Input() displayedColumns: string[] = [];
+  @Input() dataSource = ELEMENT_DATA;
 }
