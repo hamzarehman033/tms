@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTableModule } from '@angular/material/table';
 
-const ELEMENT_DATA = [
+const TABLE_DATA = [
   { Division: 1, Farm: 'Hydrogen', Creation_Time: 1.0079, Depot: 'H', Status: 'abc', Action: 'approved' },
   { Division: 2, Farm: 'Helium', Creation_Time: 4.0026, Depot: 'He', Status: 'N/A', Action: 'N/A' },
   { Division: 3, Farm: 'Lithium', Creation_Time: 6.941, Depot: 'Li', Status: 'N/A', Action: 'N/A' },
@@ -16,11 +15,11 @@ const ELEMENT_DATA = [
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
   standalone: true,
-  imports: [CommonModule, MatTableModule,MatHeaderCell, MatCell, MatRow, MatHeaderRow, FormsModule]
+  imports: [CommonModule, MatTableModule,MatHeaderCell, MatCell, MatRow, MatHeaderRow]
 })
 
 
 export class TableComponent {
   @Input() displayedColumns: string[] = [];
-  @Input() dataSource = ELEMENT_DATA;
+  @Input() dataSource = TABLE_DATA;
 }
