@@ -1,6 +1,6 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpEventType, HttpHandlerFn } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { inject } from '@angular/core';
+import { HttpRequest, HttpEvent, HttpHandlerFn } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 
 export function AppInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {

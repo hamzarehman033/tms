@@ -13,7 +13,7 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
 import { DonutGraphComponent } from './shared/components/donut-graph/donut-graph.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawerContainer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { IconComponent } from './shared/components/icon/icon.component';
@@ -39,7 +39,8 @@ import { AppInterceptor } from './core/interceptor/interceptor';
     AppRoutingModule,
     MatSidenavModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatDrawerContainer
   ],
   providers: [
     provideClientHydration(),
