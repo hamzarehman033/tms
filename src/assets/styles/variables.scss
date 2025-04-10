@@ -6,10 +6,27 @@ $success: #43B02A;
 $danger: #DA291C;
 $light: #94999F;
 $dark: #2F3439;
+$white: #fff;
+$black: #000;
 
-// body background color 
+// body
 $body-bg: #F6F7F9;
 $body-color: $dark;
+
+// borders
+$border-color: #F0F0F0;
+$border-radius: 15px;
+
+
+// card
+$card-bg: $white;
+$card-cap-bg: $white;
+$card-border-color: $border-color;
+$card-border-radius: $border-radius;
+$card-inner-border-radius: $border-radius;
+
+// table
+$table-bg: $white;
 
 // box shadows 
 $box-shadow: 0 2px 4px 0 #00000024;

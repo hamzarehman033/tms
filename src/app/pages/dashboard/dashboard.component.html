@@ -1,4 +1,4 @@
-<div class="row w-100">
+<div class="row w-100 mb-3">
     <div class="col-md-6">
         <app-line-graph></app-line-graph>
     </div>
@@ -7,7 +7,76 @@
         <app-pie-chart></app-pie-chart>
     </div>
 </div>
-
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="fw-bold">Recent Requests</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Created at</th>
+                                <th scope="col">Farm Zone</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Suppliers</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#54895</td>
+                                <td>Ellis Ingram</td>
+                                <td>Created at</td>
+                                <td>20-02-2025</td>
+                                <td>Boston</td>
+                                <td>NWS</td>
+                                <td>Edit</td>
+                            </tr>
+                            <tr>
+                                <td>#54895</td>
+                                <td>Ellis Ingram</td>
+                                <td>Created at</td>
+                                <td>20-02-2025</td>
+                                <td>Boston</td>
+                                <td>NWS</td>
+                                <td>Edit</td>
+                            </tr>
+                            <tr>
+                                <td>#54895</td>
+                                <td>Ellis Ingram</td>
+                                <td>Created at</td>
+                                <td>20-02-2025</td>
+                                <td>Boston</td>
+                                <td>NWS</td>
+                                <td>Edit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <app-table [displayedColumns]="columnsToDisplay"></app-table>
 </div>

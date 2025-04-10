@@ -7,6 +7,7 @@ body {
         transform: rotate(-180deg);
     }
 
+    // navs
     .nav-link {
         color: $dark;
         display: flex;
@@ -31,6 +32,7 @@ body {
         }
     }
 
+    // dropdowns 
     .dropdown-toggle::after {
         display: none !important;
     }
@@ -41,6 +43,7 @@ body {
         background-color: $white !important;
     }
 
+    // drawer sidebar mat 
     .mat-drawer-container {
         height: 100vh;
         background-color: $body-bg;
@@ -95,6 +98,15 @@ body {
                     transform: rotate(0);
                 }
             }
+        }
+    }
+
+    // tables 
+    .table {
+        margin-bottom: 0;
+
+        th {
+            background-color: $body-bg;
         }
     }
 }
