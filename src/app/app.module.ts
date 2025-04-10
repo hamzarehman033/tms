@@ -17,8 +17,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { IconComponent } from './shared/components/icon/icon.component';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
-import { Interceptor } from './core/interceptor/interceptor';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { AppInterceptor } from './core/interceptor/interceptor';
 
 @NgModule({
   declarations: [
@@ -44,8 +44,7 @@ import { Interceptor } from './core/interceptor/interceptor';
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient(),
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
+    provideHttpClient(withInterceptors([AppInterceptor])),
   ],
   bootstrap: [AppComponent]
 })
