@@ -27,5 +27,10 @@ export enum urlEnums {
     getUserPermission = '/userPermission/get',
     updateUserPermission = '/userPermission/update',
     deleteUserPErmission = '/userPermission/delete',
-    addUserPermission = '/userPermission/add'
+    addUserPermission = '/userPermission/add',
+    deleteZone = '/zone/delete',
+    getZone = '/zone/get',
+    zoneList = '/zone/list',
+    addZone = '/zone/add',
+    updateZone = '/zone/update'
 }

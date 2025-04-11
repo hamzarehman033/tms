@@ -1,13 +1,12 @@
-import { CommonModule, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTableModule } from '@angular/material/table';
 import { AppService } from '../../core/service/app.service';
+import { TableComponent } from '../../shared/components/table/table.component';
 
 @Component({
   selector: 'app-supplier',
   templateUrl: './supplier.component.html',
   standalone: true,
-  imports: [CommonModule, MatTableModule,MatHeaderCell, MatCell, MatRow, MatHeaderRow],
+  imports: [TableComponent],
   styleUrl: './supplier.component.scss'
 })
 
@@ -15,14 +14,13 @@ export class SupplierComponent implements OnInit{
 
   supplier_id: any = 1;
   supplier_data: any;
+  columnsToDisplay: string[] = ['ID', 'Company_Name', 'Company_Address', 'Documentation_Status', 'Activation', 'Phone_Number', 'Action'];
+  dataSource: any = [];
 
   constructor(private appService : AppService){ }
   ngOnInit(): void {
     this.supplierList();
   }
-
-  displayedColumns: string[] = ['id', 'company_name', 'company_address', 'Documentation_Status', 'Activation', 'Phone_Number', 'Action'];
-  dataSource: any = [];
 
   supplierList(){
     const payload = {
@@ -30,7 +28,7 @@ export class SupplierComponent implements OnInit{
     };
     this.appService.supplierList(payload).subscribe((data: any)=>{
       this.dataSource = data?.data?.suppliers;
-      console.log(data);
+      console.log("Supplier data:", data?.data?.suppliers);
     })
   }
 

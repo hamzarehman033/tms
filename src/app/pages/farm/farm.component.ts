@@ -10,6 +10,7 @@ import { TableComponent } from '../../shared/components/table/table.component';
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {
+  farm_id: any;
   first_name: any = "first name";
   last_name: any = "last name";
   email: any = "farm03246@gmail.com";
@@ -21,7 +22,7 @@ export class FarmComponent implements OnInit {
   longitude: any = '43.343';
 
   dataSource: any = [];
-  columnsToDisplay = ['id', 'Name', 'createdAt', 'Farm_Zone', 'Location', 'Suppliers', 'Action'];
+  columnsToDisplay = ['id', 'Farm_Name', 'createdAt', 'Farm_Zone', 'Farm_Location', 'Suppliers', 'Action'];
 
   constructor(private appService: AppService) { }
   ngOnInit(): void {
@@ -44,7 +45,6 @@ export class FarmComponent implements OnInit {
     this.appService.addFarm(payload).subscribe((data: any) => {
       console.log("Farm Data", data);
     })
-
   }
 
   farmList() {
@@ -53,7 +53,7 @@ export class FarmComponent implements OnInit {
     }
     this.appService.farmList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.farms;
-      console.log(this.dataSource);
+      console.log("Farm Data: ", this.dataSource);
     })
   }
 
@@ -74,6 +74,16 @@ export class FarmComponent implements OnInit {
     }
     this.appService.deleteFarm(payload).subscribe((data: any) => {
       console.log(data.data);
+    })
+  }
+
+  getFarm(){
+    const payload = {
+      "id": this.farm_id
+    }
+    this.appService.getFarm(payload).subscribe((data: any)=>{
+      console.log("Get Farm API working", data?.data);
+      
     })
   }
 }

@@ -11,7 +11,7 @@ import { TableComponent } from '../../shared/components/table/table.component';
 })
 export class DriversComponent implements OnInit{
   driver_id: any = 1;
-  columnsToDisplay = ['id', 'Name', 'age', 'Current_Allocated_Truck', 'phone_number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'status', 'Action'];
+  columnsToDisplay = ['ID', 'Name', 'age', 'Current_Allocated_Truck', 'Phone_Number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'status', 'Action'];
   dataSource: any = [];
 
   constructor(private appService: AppService){}
@@ -72,7 +72,7 @@ export class DriversComponent implements OnInit{
       "id": this.driver_id
   }
     this.appService.deleteDriver(payload).subscribe((data: any)=>{
-      console.log(data);
+      console.log("Delete driver API", data?.data);
     })
   }
 }

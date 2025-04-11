@@ -86,6 +86,10 @@ export class AppService {
     return this.http.post(`${this.baseURL}${urlEnums.deleteFarm}`, formData);
   }
 
+  getFarm(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getFarm}`, formData)
+  }
+
   getPermission(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.getPermission}`, formData);
   }
@@ -116,5 +120,25 @@ export class AppService {
 
   addUserPermission(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.addUserPermission}`, formData);
+  }
+
+  addZone(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.addZone}`, formData);
+  }
+
+  updateZone(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.updateZone}`, formData);
+  }
+
+  deleteZone(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.deleteZone}`, formData);
+  }
+
+  getZone(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getZone}`, formData);
+  }
+
+  zoneList(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.zoneList}`, formData);
   }
 }
