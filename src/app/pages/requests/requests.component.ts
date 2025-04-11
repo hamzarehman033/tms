@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './requests.component.scss'
 })
 export class RequestsComponent {
-  columnsToDisplay = ['Request_Id', 'Farm_Name', 'Deput', 'Date', 'Vessel', 'Veat', 'Status' ,'Action'];
+  columnsToDisplay = ['Request_Id', 'Farm_Name', 'Deput', 'Date', 'Vessel', 'Veat', 'status' ,'Action'];
 }

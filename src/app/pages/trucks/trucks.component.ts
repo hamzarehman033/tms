@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './trucks.component.scss'
 })
 export class TrucksComponent {
-  columnsToDisplay = ['ID', 'Farm_Name', 'Created_at', 'Truck_Number', 'Truck_Status', 'Document_Status' ,'Action'];
+  columnsToDisplay = ['id', 'Farm_Name', 'createdAt', 'Truck_Number', 'Truck_Status', 'Document_Status' ,'Action'];
 }

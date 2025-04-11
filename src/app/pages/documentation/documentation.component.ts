@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './documentation.component.scss'
 })
 export class DocumentationComponent {
-  columnsToDisplay = ['ID', 'Name', 'User_Id', 'Role', 'Created_at', 'Truck_Number', 'Type', 'Status' ,'Action'];
+  columnsToDisplay = ['id', 'Name', 'User_Id', 'Role', 'createdAt', 'Truck_Number', 'Type', 'status' ,'Action'];
 }

@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './restriction.component.scss'
 })
 export class RestrictionComponent {
-  columnsToDisplay = ['ID', 'Name', 'Phone_number', 'Documents', 'Reason', 'Action'];
+  columnsToDisplay = ['id', 'Name', 'Phone_number', 'Documents', 'Reason', 'Action'];
 }

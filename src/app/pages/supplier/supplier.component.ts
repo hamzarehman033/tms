@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTableModule } from '@angular/material/table';
 import { AppService } from '../../core/service/app.service';
@@ -15,46 +15,68 @@ export class SupplierComponent implements OnInit{
 
   supplier_id: any = 1;
   supplier_data: any;
+
   constructor(private appService : AppService){ }
   ngOnInit(): void {
     this.supplierList();
   }
-  // columnsToDisplay = ['ID', 'Name', 'Documentation_Status', 'Activation', 'Phone_Number', 'Action'];
 
-  displayedColumns: string[] = ['id', 'Name', 'Documentation_Status', 'Activation', 'Phone_Number', 'Action'];
+  displayedColumns: string[] = ['id', 'company_name', 'company_address', 'Documentation_Status', 'Activation', 'Phone_Number', 'Action'];
   dataSource: any = [];
+
   supplierList(){
     const payload = {
-      limit: 2
+      limit: 5
     };
     this.appService.supplierList(payload).subscribe((data: any)=>{
       this.dataSource = data?.data?.suppliers;
-      console.log("dataSource",data);
-      
+      console.log(data);
     })
   }
 
   getSupplier(){
-    this.appService.getSupplier(this.supplier_id).subscribe((data)=>{
-      console.log(data);
+    const payload = {
+      id: this.supplier_id 
+    };
+    this.appService.getSupplier(payload).subscribe((data: any)=>{
+      console.log(data?.data?.suppliers);
     })
   }
 
   addSupplier(){
-    this.appService.addSupplier(this.supplier_data).subscribe((data)=>{
-      console.log(data);
+    const payload = {
+      first_name: "supplier",
+      last_name: "user",
+      email: "supplier212996@gmail.com",
+      role_id: 3,
+      zone_id: 1,
+      status: 1,
+      company_name: "AbcTech",
+      company_address: "abc, mycity"
+  }
+    this.appService.addSupplier(payload).subscribe((data: any)=>{
+      console.log(data?.data?.suppliers);
     })
   }
   
   updateSupplier(){
-    this.appService.updateSupplier(this.supplier_id).subscribe((data)=>{
-      console.log(data);
+    const payload = {
+      id: 1,
+      first_name: "supplier01",
+      last_name: "test",
+      company_name: "FreshDelmonte"
+    }
+    this.appService.updateSupplier(payload).subscribe((data: any)=>{
+      console.log(data?.data?.suppliers);
     })
   }
 
   deleteSupplier(){
-    this.appService.deleteSupplier(this.supplier_id).subscribe((data)=>{
-      console.log(data);
+    const payload = {
+      id: 3
+    }
+    this.appService.deleteSupplier(payload).subscribe((data: any)=>{
+      console.log(data?.data?.suppliers);
     })
   }
 }

@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
 
   baseURL = environment.baseURL;
-  public token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoxLCJ0eXBlIjoiYXV0aCIsInNlc3Npb25faWQiOjksImlhdCI6MTc0NDI3ODc2NywiZXhwIjoxNzQ0NzEwNzY3fQ.Q5DQrIkiP6Ir5EDBb5jp3YYZjh7GInZ8oTPYZs8c4DM';
+  public token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJuYW1lIjoidGVzdDAxIHVzZXIiLCJyb2xlX2lkIjoxLCJyb2xlX25hbWUiOiJBZG1pbiIsInpvbmVfaWQiOjIsInpvbmVfbmFtZSI6InRlc3Qgem9uZTIiLCJ1c2VyX3Blcm1pc3Npb25zIjpbMSwyXSwicGVybWlzc2lvbnMiOlsiVmlldyBVc2VyIiwiQWRkIFVzZXIiXSwidHlwZSI6ImF1dGgiLCJzZXNzaW9uX2lkIjoxMCwiaWF0IjoxNzQ0MjgyMzQxLCJleHAiOjE3NDQ3MTQzNDF9.s38R7DTq8P0U_MvXXwn71R4u0J1w10fSSPfJ5CXKfVc';
   constructor(private http: HttpClient) { }
 
 }

@@ -74,6 +74,18 @@ export class AppService {
     return this.http.post(`${this.baseURL}${urlEnums.addFarm}`, formData);
   }
 
+  farmList(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.farmList}`, formData);
+  }
+  
+  updateFarm(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.updateFarm}`, formData);
+  }
+
+  deleteFarm(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.deleteFarm}`, formData);
+  }
+
   getPermission(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.getPermission}`, formData);
   }

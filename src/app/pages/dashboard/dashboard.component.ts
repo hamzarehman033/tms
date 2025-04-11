@@ -11,5 +11,5 @@ import { TableComponent } from '../../shared/components/table/table.component';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  columnsToDisplay = ['Division', 'Farm', 'Creation_Time', 'Depot', 'Status', 'Action'];
+  columnsToDisplay = ['Division', 'Farm', 'Creation_Time', 'Depot', 'status', 'Action'];
 }

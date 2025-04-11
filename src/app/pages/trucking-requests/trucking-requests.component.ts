@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './trucking-requests.component.scss'
 })
 export class TruckingRequestsComponent {
-  columnsToDisplay = ['Division', 'Farm', 'Creation_Time', 'Depot', 'Status', 'Action'];
+  columnsToDisplay = ['Division', 'Farm', 'Creation_Time', 'Depot', 'status', 'Action'];
 }
