@@ -14,7 +14,7 @@ export class SupplierComponent implements OnInit{
 
   supplier_id: any = 1;
   supplier_data: any;
-  columnsToDisplay: string[] = ['ID', 'Company_Name', 'Company_Address', 'Documentation_Status', 'Activation', 'Phone_Number', 'Action'];
+  columnsToDisplay: string[] = ['Booking_Id', 'Company_Name', 'Supplier_Contact_Person', 'Supplier_Email', 'Supplier_Phone_Number', 'Action'];
   dataSource: any = [];
 
   constructor(private appService : AppService){ }
@@ -24,7 +24,7 @@ export class SupplierComponent implements OnInit{
 
   supplierList(){
     const payload = {
-      limit: 5
+      limit: 10
     };
     this.appService.supplierList(payload).subscribe((data: any)=>{
       this.dataSource = data?.data?.suppliers;
@@ -43,38 +43,44 @@ export class SupplierComponent implements OnInit{
 
   addSupplier(){
     const payload = {
-      first_name: "supplier",
-      last_name: "user",
-      email: "supplier212996@gmail.com",
+      first_name: "supplier_0232",
+      last_name: "user_0223",
+      email: "supplier_223@gmail.com",
       role_id: 3,
       zone_id: 1,
       status: 1,
-      company_name: "AbcTech",
-      company_address: "abc, mycity"
+      company_name: "Supplier_023",
+      company_address: "werty address, mycity",
+      phone_number: "6545678"
   }
     this.appService.addSupplier(payload).subscribe((data: any)=>{
       console.log(data?.data?.suppliers);
+      this.supplierList();
     })
   }
   
   updateSupplier(){
     const payload = {
-      id: 1,
+      id: 9,
       first_name: "supplier01",
       last_name: "test",
-      company_name: "FreshDelmonte"
+      company_name: "FreshDelmonte",
+      email: "supplier01@gmail.com",
+      phone_number: "345678987"
     }
     this.appService.updateSupplier(payload).subscribe((data: any)=>{
       console.log(data?.data?.suppliers);
+      this.supplierList();
     })
   }
 
   deleteSupplier(){
     const payload = {
-      id: 3
+      id: 1
     }
     this.appService.deleteSupplier(payload).subscribe((data: any)=>{
       console.log(data?.data?.suppliers);
+      this.supplierList();
     })
   }
 }

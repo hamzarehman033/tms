@@ -1,1 +1,13 @@
 <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
+
+<div style="display: flex; gap: 10px; margin: 10px;">
+    <button class="btn btn-outline-secondary" (click)="addDriver()">
+        Add Driver
+    </button>
+    <button class="btn btn-outline-warning" (click)="updateDriver()">
+        Update Driver
+    </button>
+    <button class="btn btn-outline-primary" (click)="deleteDriver()">
+        Delete Driver
+    </button>
+</div>

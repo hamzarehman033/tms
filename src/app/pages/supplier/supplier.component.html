@@ -1,1 +1,13 @@
 <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
+
+<div style="display: flex; gap: 10px; margin: 10px;">
+    <button class="btn btn-outline-secondary" (click)="addSupplier()">
+        Add Supplier
+    </button>
+    <button class="btn btn-outline-warning" (click)="updateSupplier()">
+        Update Supplier
+    </button>
+    <button class="btn btn-outline-primary" (click)="deleteSupplier()">
+        Delete Supplier
+    </button>
+</div>
