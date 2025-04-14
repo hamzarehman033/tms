@@ -10,23 +10,22 @@ import { TableComponent } from '../../shared/components/table/table.component';
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {
-  farm_id: any;
-  first_name: any = "first name";
-  last_name: any = "last name";
-  email: any = "farm03246@gmail.com";
+  farm_id: any = 1;
+  first_name: any = "farm 99";
+  last_name: any = "last farm";
+  email: any = "farm99999@gmail.com";
   role_id: any = 4;
-  zone_id: any = 23654;
+  zone_id: any = 1;
   status: any = 1;
-  farm_address: any = 'AbcFarm, city xyz';
+  farm_address: any = 'Farm location, city xyz';
   latitude: any = '43.343';
   longitude: any = '43.343';
 
   dataSource: any = [];
-  columnsToDisplay = ['id', 'Farm_Name', 'createdAt', 'Farm_Zone', 'Farm_Location', 'Suppliers', 'Action'];
+  columnsToDisplay = ['Farm_ID', 'Farm_Name', 'createdAt', 'Farm_Zone', 'Farm_Location', 'Farm_Suppliers', 'Action'];
 
   constructor(private appService: AppService) { }
   ngOnInit(): void {
-    // this.addFarm();
     this.farmList();
   }
 
@@ -44,36 +43,39 @@ export class FarmComponent implements OnInit {
     };
     this.appService.addFarm(payload).subscribe((data: any) => {
       console.log("Farm Data", data);
+      this.farmList();
     })
   }
 
   farmList() {
     const payload = {
-      limit: 5
+      limit: 10
     }
     this.appService.farmList(payload).subscribe((data: any) => {
-      this.dataSource = data?.data?.farms;
+      this.dataSource = data?.data?.farms;     
       console.log("Farm Data: ", this.dataSource);
     })
   }
 
   updateFarm() {
     const payload = {
-      id: 1,
-      first_name: "updated_farm",
-      address: "abc xyz address"
+      id: 2,
+      first_name: "second farm updated",
+      address: "updated address"
     }
     this.appService.updateFarm(payload).subscribe((data: any) => {
       console.log(data?.data);
+      this.farmList();
     })
   }
 
   deleteFarm() {
     const payload = {
-      id: 4
+      id: 5
     }
     this.appService.deleteFarm(payload).subscribe((data: any) => {
       console.log(data.data);
+      this.farmList();
     })
   }
 
@@ -83,7 +85,7 @@ export class FarmComponent implements OnInit {
     }
     this.appService.getFarm(payload).subscribe((data: any)=>{
       console.log("Get Farm API working", data?.data);
-      
+      this.farmList();
     })
   }
 }
