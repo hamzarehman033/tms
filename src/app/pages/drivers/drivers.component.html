@@ -1,5 +1,23 @@
 <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
 
+<div>
+    <label>ID:</label>
+    <input type="text" placeholder="Enter ID" [(ngModel)]="driverFilters.id"/>
+
+    <label>Name:</label>
+    <input type="text" placeholder="Enter Name" [(ngModel)]="driverFilters.name"/>
+
+    <label>Age:</label>
+    <input type="text" placeholder="Enter Age" [(ngModel)]="driverFilters.age"/>
+
+    <label>License Status:</label>
+    <input type="text" placeholder="Enter status" [(ngModel)]="driverFilters.license_status"/>
+
+    <button type="submit" (click)="driverList()">Apply Filter</button>
+    <button type="submit" (click)="reset()">Reset Filter</button>
+</div>
+
+
 <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-outline-secondary" (click)="addDriver()">
         Add Driver

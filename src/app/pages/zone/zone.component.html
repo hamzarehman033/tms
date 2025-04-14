@@ -1,5 +1,19 @@
 <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource"></app-table>
 
+<div>
+    <label for="id">ID</label>
+    <input type="text" placeholder="Search ID" [(ngModel)]="zoneFilters.id">
+
+    <label>Name</label>
+    <input type="text" placeholder="Search Name" [(ngModel)]="zoneFilters.name">
+
+    <label>Legal ID</label>
+    <input type="text" placeholder="Search Legal ID" [(ngModel)]="zoneFilters.legal_id">
+
+    <button (click)="zoneList()">Apply</button>
+    <button (click)="reset()">Reset</button>
+</div>
+
 <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-outline-secondary" (click)="addZone()">
         Add Zone

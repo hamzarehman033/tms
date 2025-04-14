@@ -6,12 +6,6 @@
     <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
   </ng-container>
 
-  <!-- Farm Column -->
-  <ng-container matColumnDef="Farm">
-    <th mat-header-cell *matHeaderCellDef> Farm </th>
-    <td mat-cell *matCellDef="let element"> {{element.Farm}} </td>
-  </ng-container>
-
   <!-- Creation Time Column -->
   <ng-container matColumnDef="Creation_Time">
     <th mat-header-cell *matHeaderCellDef> Creation Time</th>
@@ -54,12 +48,6 @@
     <td mat-cell *matCellDef="let element"> {{element.age}} </td>
   </ng-container>
 
-  <!-- Driver Phone Number Column -->
-  <ng-container matColumnDef="Driver_Phone_Number">
-    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.user?.phone_number}} </td>
-  </ng-container>
-
   <!-- License Status Column -->
   <ng-container matColumnDef="license_status">
     <th mat-header-cell *matHeaderCellDef> License Status</th>
@@ -70,12 +58,6 @@
   <ng-container matColumnDef="Driving_License_Expiry">
     <th mat-header-cell *matHeaderCellDef> Driving License Expiry</th>
     <td mat-cell *matCellDef="let element"> {{element.license_expiry}} </td>
-  </ng-container>
-
-  <!-- Driving License Expiry -->
-  <ng-container matColumnDef="Driver_Status">
-    <th mat-header-cell *matHeaderCellDef>Status</th>
-    <td mat-cell *matCellDef="let element"> {{element.user?.status}} </td>
   </ng-container>
 
   <!-- Documents Column -->
@@ -96,24 +78,6 @@
     <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
   </ng-container>
 
-  <!-- Farm Zone Column -->
-  <ng-container matColumnDef="Farm_Zone">
-    <th mat-header-cell *matHeaderCellDef> Farm Zone </th>
-    <td mat-cell *matCellDef="let element"> {{element.user?.user_zones[0]?.zone?.name}} </td>
-  </ng-container>
-
-  <!-- Farm Location Column -->
-  <ng-container matColumnDef="Farm_Location">
-    <th mat-header-cell *matHeaderCellDef> Location </th>
-    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-  </ng-container>
-
-  <!-- Suppliers Column -->
-  <ng-container matColumnDef="Farm_Suppliers">
-    <th mat-header-cell *matHeaderCellDef> Suppliers </th>
-    <td mat-cell *matCellDef="let element"> {{element.supplier?.full_name}} </td>
-  </ng-container>
-
   <!-- Documentation Status Column -->
   <ng-container matColumnDef="Documentation_Status">
     <th mat-header-cell *matHeaderCellDef> Documentation Status </th>
@@ -126,72 +90,6 @@
     <td mat-cell *matCellDef="let element"> {{element.Activation}} </td>
   </ng-container>
 
-  <!-- Phone number Column -->
-  <ng-container matColumnDef="Supplier_Phone_Number">
-    <th mat-header-cell *matHeaderCellDef> Phone number </th>
-    <td mat-cell *matCellDef="let element"> {{element.user?.phone_number}} </td>
-  </ng-container>
-
-  <!-- Supplier id Column -->
-  <ng-container matColumnDef="Booking_Id">
-    <th mat-header-cell *matHeaderCellDef> Booking Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
-
-  <!-- Contact Person Column -->
-  <ng-container matColumnDef="Supplier_Contact_Person">
-    <th mat-header-cell *matHeaderCellDef> Contact Person </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.phone_number}} </td>
-  </ng-container>
-  
-  <!-- Zone id Column -->
-  <ng-container matColumnDef="Zone_ID">
-    <th mat-header-cell *matHeaderCellDef> Zone Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
-
-  <!-- Zone legal id Column -->
-  <ng-container matColumnDef="Legal_Id">
-    <th mat-header-cell *matHeaderCellDef> Legal Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.legal_id}} </td>
-  </ng-container>
-  
-  <!-- Zone Name Column -->
-  <ng-container matColumnDef="Zone_Name">
-    <th mat-header-cell *matHeaderCellDef> Zone Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-
-  <!-- Zone Created at Column -->
-  <ng-container matColumnDef="Created_at">
-    <th mat-header-cell *matHeaderCellDef> Created at </th>
-    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
-  </ng-container>
-
-  <!-- Zone Phone Number Column -->
-  <ng-container matColumnDef="Contact_Number">
-    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.contact_number}} </td>
-  </ng-container>
-
-  <!-- Zone Email Column -->
-  <ng-container matColumnDef="Zone_Email">
-    <th mat-header-cell *matHeaderCellDef> Zone Email </th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  </ng-container>
-
-  <!-- Supplier Email Column -->
-  <ng-container matColumnDef="Supplier_Email">
-    <th mat-header-cell *matHeaderCellDef> Email Address </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
-  </ng-container>
-
-  <!-- Zone Location Column -->
-  <ng-container matColumnDef="Zone_Location">
-    <th mat-header-cell *matHeaderCellDef> Zone Location </th>
-    <td mat-cell *matCellDef="let element"> {{element.location}} </td>
-  </ng-container>
-  
   <!-- Vessel Column -->
   <ng-container matColumnDef="Vessel">
     <th mat-header-cell *matHeaderCellDef> Vessel </th>
@@ -240,24 +138,6 @@
     <td mat-cell *matCellDef="let element"> {{element.Truck_Number}} </td>
   </ng-container>
 
-  <!-- Driver Column -->
-  <ng-container matColumnDef="Driver">
-    <th mat-header-cell *matHeaderCellDef> Driver </th>
-    <td mat-cell *matCellDef="let element"> {{element.Driver}} </td>
-  </ng-container>
-
-  <!-- Driver ID Column -->
-  <ng-container matColumnDef="Driver_ID">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
-
-  <!-- Driver Name Column -->
-  <ng-container matColumnDef="Driver_Name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.full_name}} </td>
-  </ng-container>
-
   <!-- Depot Status Column -->
   <ng-container matColumnDef="Depot_Status">
     <th mat-header-cell *matHeaderCellDef> Depot Status </th>
@@ -286,18 +166,6 @@
   <ng-container matColumnDef="Current_Allocated_Truck">
     <th mat-header-cell *matHeaderCellDef> Current Allocated Truck </th>
     <td mat-cell *matCellDef="let element"> {{element.Current_Allocated_Truck}} </td>
-  </ng-container>
-
-  <!-- Farm ID Column -->
-  <ng-container matColumnDef="Farm_ID">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
-
-  <!-- Form Name Column -->
-  <ng-container matColumnDef="Farm_Name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.full_name}} </td>
   </ng-container>
 
   <!-- Truck Status Column -->
@@ -348,8 +216,145 @@
     <td mat-cell *matCellDef="let element"> {{element.Destination}} </td>
   </ng-container>
 
+  <!-- FARM: -->
 
+  <!-- Farm ID Column -->
+  <ng-container matColumnDef="Farm_ID">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
 
+  <!-- Farm Name Column -->
+  <ng-container matColumnDef="Farm_Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.user.full_name}} </td>
+  </ng-container>
+
+  <!-- Farm Column -->
+  <ng-container matColumnDef="Farm">
+    <th mat-header-cell *matHeaderCellDef> Farm </th>
+    <td mat-cell *matCellDef="let element"> {{element.Farm}} </td>
+  </ng-container>
+
+  <!-- Farm Zone Column -->
+  <ng-container matColumnDef="Farm_Zone">
+    <th mat-header-cell *matHeaderCellDef> Farm Zone </th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.user_zones[0]?.zone?.name}} </td>
+  </ng-container>
+
+  <!-- Farm Location Column -->
+  <ng-container matColumnDef="Farm_Location">
+    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+  </ng-container>
+
+  <!-- Farm Suppliers Column -->
+  <ng-container matColumnDef="Farm_Suppliers">
+    <th mat-header-cell *matHeaderCellDef> Suppliers </th>
+    <td mat-cell *matCellDef="let element"> {{element.supplier?.full_name}} </td>
+  </ng-container>
+
+  <!-- Zone: -->
+
+  <!-- Zone id Column -->
+  <ng-container matColumnDef="Zone_ID">
+    <th mat-header-cell *matHeaderCellDef> Zone Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Zone legal id Column -->
+  <ng-container matColumnDef="Legal_Id">
+    <th mat-header-cell *matHeaderCellDef> Legal Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.legal_id}} </td>
+  </ng-container>
+
+  <!-- Zone Name Column -->
+  <ng-container matColumnDef="Zone_Name">
+    <th mat-header-cell *matHeaderCellDef> Zone Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Zone Created at Column -->
+  <ng-container matColumnDef="Created_at">
+    <th mat-header-cell *matHeaderCellDef> Created at </th>
+    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+  </ng-container>
+
+  <!-- Zone Phone Number Column -->
+  <ng-container matColumnDef="Contact_Number">
+    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.contact_number}} </td>
+  </ng-container>
+
+  <!-- Zone Email Column -->
+  <ng-container matColumnDef="Zone_Email">
+    <th mat-header-cell *matHeaderCellDef> Zone Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Zone Location Column -->
+  <ng-container matColumnDef="Zone_Location">
+    <th mat-header-cell *matHeaderCellDef> Zone Location </th>
+    <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+  </ng-container>
+
+  <!-- Driver: -->
+
+  <!-- Driver Column -->
+  <ng-container matColumnDef="Driver">
+    <th mat-header-cell *matHeaderCellDef> Driver </th>
+    <td mat-cell *matCellDef="let element"> {{element.Driver}} </td>
+  </ng-container>
+
+  <!-- Driver ID Column -->
+  <ng-container matColumnDef="Driver_ID">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Driver Name Column -->
+  <ng-container matColumnDef="Driver_Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.user.full_name}} </td>
+  </ng-container>
+
+  <!-- Driver Phone Number Column -->
+  <ng-container matColumnDef="Driver_Phone_Number">
+    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.phone_number}} </td>
+  </ng-container>
+
+  <!-- Driving License Expiry -->
+  <ng-container matColumnDef="Driver_Status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.status}} </td>
+  </ng-container>
+
+  <!-- Supplier -->
+
+  <!-- Supplier Phone number Column -->
+  <ng-container matColumnDef="Supplier_Phone_Number">
+    <th mat-header-cell *matHeaderCellDef> Phone number </th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.phone_number}} </td>
+  </ng-container>
+
+  <!-- Supplier id Column -->
+  <ng-container matColumnDef="Booking_Id">
+    <th mat-header-cell *matHeaderCellDef> Booking Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Contact Person Column -->
+  <ng-container matColumnDef="Supplier_Contact_Person">
+    <th mat-header-cell *matHeaderCellDef> Contact Person </th>
+    <td mat-cell *matCellDef="let element"> {{element.user.phone_number}} </td>
+  </ng-container>
+
+  <!-- Supplier Email Column -->
+  <ng-container matColumnDef="Supplier_Email">
+    <th mat-header-cell *matHeaderCellDef> Email Address </th>
+    <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+  </ng-container>
 
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

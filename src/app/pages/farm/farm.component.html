@@ -1,5 +1,16 @@
 <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
 
+<div>
+    <label>ID:</label>
+    <input type="text" placeholder="Enter ID" [(ngModel)]="farmFilters.id"/>
+
+    <label>Name:</label>
+    <input type="text" placeholder="Enter Name" [(ngModel)]="farmFilters.name"/>
+
+    <button type="submit" (click)="farmList()">Apply Filter</button>
+    <button type="submit" (click)="reset()">Reset Filter</button>
+</div>
+
 <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-outline-secondary" (click)="addFarm()">
         Add Farm

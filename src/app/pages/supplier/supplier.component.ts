@@ -22,6 +22,12 @@ export class SupplierComponent implements OnInit{
     this.supplierList();
   }
 
+  supplierFilter = {
+    booking_id: '',
+    company_name: '',
+    email: ''
+  }
+
   supplierList(){
     const payload = {
       limit: 10

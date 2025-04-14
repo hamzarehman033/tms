@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [TableComponent],
+  imports: [TableComponent, FormsModule],
   templateUrl: './drivers.component.html',
   styleUrl: './drivers.component.scss'
 })
@@ -19,13 +20,27 @@ export class DriversComponent implements OnInit{
     this.driverList();
   }
 
+  driverFilters = {
+    id:'',
+    name: '',
+    age: '',
+    license_status: ''
+  }
+
   driverList(){
-    const payload = {
+
+    const payload: any = {
       limit: 10
     }
+
+    if(this.driverFilters.id) payload["id"] = [Number (this.driverFilters.id)];
+    if(this.driverFilters.name) payload["name"] = this.driverFilters.name;
+    if(this.driverFilters.age) payload["age"] = Number (this.driverFilters.age);
+    if(this.driverFilters.license_status) payload["license_status"] = this.driverFilters.license_status;
+
     this.appService.driverList(payload).subscribe((data: any)=>{
-      this.dataSource = data?.data?.drivers;
-      console.log(this.dataSource);
+      this.dataSource = data?.data?.rows;
+      console.log("Drivers data: ", this.dataSource);
     })
   }
 
@@ -79,5 +94,12 @@ export class DriversComponent implements OnInit{
       console.log("Delete driver API", data?.data);
       this.driverList();
     })
+  }
+  reset(){
+    this.driverFilters.id = '';
+    this.driverFilters.name = '';
+    this.driverFilters.age = '';
+    this.driverFilters.license_status = '';
+    this.driverList();
   }
 }

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { AppService } from '../../core/service/app.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
   standalone: true,
-  imports: [TableComponent],
+  imports: [TableComponent, FormsModule],
   styleUrl: './zone.component.scss'
 })
 export class ZoneComponent implements OnInit {
@@ -20,6 +21,12 @@ export class ZoneComponent implements OnInit {
   columnsToDisplay = ['Zone_ID', 'Zone_Name', 'Created_at', 'Legal_Id', 'Contact_Number', 'Zone_Email', 'Zone_Location', 'Action'];
   dataSource: any = [];
 
+  zoneFilters = {
+    id: '',
+    name: '',
+    legal_id: ''
+  }
+
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
@@ -27,10 +34,16 @@ export class ZoneComponent implements OnInit {
   }
 
   zoneList() {
-    const payload = {
+    const payload: any = {
+      limit: 10
     }
+
+    if (this.zoneFilters.id) payload["id"] = [Number(this.zoneFilters.id)];
+    if (this.zoneFilters.name) payload["name"] = this.zoneFilters.name;
+    if (this.zoneFilters.legal_id) payload["legal_id"] = this.zoneFilters.legal_id;
+
     this.appService.zoneList(payload).subscribe((data: any) => {
-      this.dataSource = data?.zone?.zones;
+      this.dataSource = data?.zone?.rows;
       console.log("zone data", this.dataSource);
     })
   }
@@ -62,6 +75,7 @@ export class ZoneComponent implements OnInit {
       this.zoneList();
     })
   }
+
   deleteZone() {
     const payload = {
       id: 47
@@ -71,13 +85,21 @@ export class ZoneComponent implements OnInit {
       this.zoneList();
     })
   }
-  getZone(){
+
+  getZone() {
     const payload = {
       id: 1
     }
-    this.appService.getZone(payload).subscribe((data: any)=>{
+    this.appService.getZone(payload).subscribe((data: any) => {
       console.log("Get Zone API call: ", data?.zone);
-      this.zoneList();      
+      this.zoneList();
     })
+  }
+
+  reset() {
+    this.zoneFilters.id = '';
+    this.zoneFilters.name = '';
+    this.zoneFilters.legal_id = '';
+    this.zoneList();
   }
 }

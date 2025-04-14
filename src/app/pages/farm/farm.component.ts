@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-farm',
   templateUrl: './farm.component.html',
   standalone: true,
-  imports: [TableComponent],
+  imports: [TableComponent, FormsModule],
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {
@@ -28,6 +29,10 @@ export class FarmComponent implements OnInit {
   ngOnInit(): void {
     this.farmList();
   }
+  farmFilters = {
+    id: '',
+    name: ''
+  }
 
   addFarm() {
     const payload = {
@@ -48,9 +53,13 @@ export class FarmComponent implements OnInit {
   }
 
   farmList() {
-    const payload = {
+    const payload: any = {
       limit: 10
     }
+
+    if(this.farmFilters.id) payload['id'] = Number(this.farmFilters.id);
+    if(this.farmFilters.name) payload['name'] = this.farmFilters.name;
+
     this.appService.farmList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.farms;     
       console.log("Farm Data: ", this.dataSource);
@@ -81,11 +90,15 @@ export class FarmComponent implements OnInit {
 
   getFarm(){
     const payload = {
-      "id": this.farm_id
+      id: this.farm_id,
     }
-    this.appService.getFarm(payload).subscribe((data: any)=>{
-      console.log("Get Farm API working", data?.data);
-      this.farmList();
+    this.appService.getFarm(payload).subscribe((data: any)=>{ 
+      this.dataSource = data;
     })
+  }
+  reset(){
+    this.farmFilters.id = '';
+    this.farmFilters.name = '';
+    this.farmList();
   }
 }
