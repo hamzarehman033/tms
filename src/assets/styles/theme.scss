@@ -3,11 +3,13 @@
 
 body {
 
-    .collapse-icon {
-        transform: rotate(-180deg);
+    // form control 
+    .form-control,
+    .form-select {
+        border-radius: 5px;
     }
 
-    // navs
+    // navs 
     .nav-link {
         color: $dark;
         display: flex;
@@ -86,6 +88,10 @@ body {
 
         .mat-drawer-content {
             margin-left: 75px;
+
+            .collapse-icon {
+                transform: rotate(-180deg);
+            }
         }
 
         .mat-drawer-opened {
@@ -101,7 +107,17 @@ body {
         }
     }
 
-    // tables 
+    // table mat 
+    .mat-mdc-table {
+        box-shadow: none;
+        background-color: $white;
+
+        thead {
+            background-color: $body-bg;
+        }
+    }
+
+    // tables  bootstrap 
     .table {
         margin-bottom: 0;
 
