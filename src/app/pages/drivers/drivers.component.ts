@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [TableComponent, FormsModule],
+  imports: [TableComponent, FormsModule, CommonModule, MatButtonModule, ReactiveFormsModule],
   templateUrl: './drivers.component.html',
   styleUrl: './drivers.component.scss'
 })
 export class DriversComponent implements OnInit{
+  isModalOpen = false;
   driver_id: any = 5;
+  isAddDriver: boolean = false;
   columnsToDisplay = ['Driver_ID', 'Driver_Name', 'age', 'Driver_Phone_Number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'Driver_Status', 'Action'];
   dataSource: any = [];
-
-  constructor(private appService: AppService){}
-  ngOnInit(): void {
-    this.driverList();
-  }
-
   driverFilters = {
     id:'',
     name: '',
@@ -27,8 +25,33 @@ export class DriversComponent implements OnInit{
     license_status: ''
   }
 
-  driverList(){
+  constructor(private appService: AppService, private fb: FormBuilder){}
+  driverForm !: FormGroup;
 
+  ngOnInit(): void {
+    this.driverList();
+    this.driverForm = this.fb.group({
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      email: ['', Validators.required],
+      role_id: ['', [Validators.required, Validators.pattern('^[0-9]$')]],
+      zone_id: ['', [Validators.required, Validators.pattern('^[0-9]$')]],
+      license_number: ['', [Validators.required]],
+      license_expiry: ['', [Validators.required]],
+      age: ['', [Validators.required, Validators.pattern('^[0-9]$')]],
+      phone_number: ['', [Validators.required, Validators.pattern('^[0-9]$')]],
+    })
+  }
+
+  openModal(){
+    this.isModalOpen = true;
+  }
+
+  closeModal(){
+    this.isModalOpen = false;
+  }
+
+  driverList(){
     const payload: any = {
       limit: 10
     }
@@ -52,21 +75,16 @@ export class DriversComponent implements OnInit{
   }
 
   addDriver(){
-    const payload = {
-      first_name: "driver_002",
-      last_name: "driverrr 002",
-      email: "driver_02@gmail.com",
-      role_id: 5,
-      zone_id: 1,
-      license_number: "abclicense0002",
-      license_expiry : "12/08/2026",
-      age: 31,
-      phone_number: "983458327"
-  }
-    this.appService.addDriver(payload).subscribe((data: any)=>{
-      console.log(data);
-      this.driverList();
-    })
+    if(this.driverForm.valid){
+      const payload = this.driverForm.value;
+      this.appService.addDriver(payload).subscribe((data: any)=>{
+        console.log(data);
+        this.driverList();
+      })
+    }
+    else{
+      alert("All fields are required")
+    }
   }
   
   updateDriver(){
@@ -95,6 +113,7 @@ export class DriversComponent implements OnInit{
       this.driverList();
     })
   }
+
   reset(){
     this.driverFilters.id = '';
     this.driverFilters.name = '';

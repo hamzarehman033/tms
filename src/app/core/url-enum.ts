@@ -32,5 +32,7 @@ export enum urlEnums {
     getZone = '/zone/get',
     zoneList = '/zone/list',
     addZone = '/zone/add',
-    updateZone = '/zone/update'
+    updateZone = '/zone/update',
+    addRestriction = '/addRestriction',
+    getRestriction = '/getRestriction',
 }

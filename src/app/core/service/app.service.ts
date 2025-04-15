@@ -141,4 +141,12 @@ export class AppService {
   zoneList(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.zoneList}`, formData);
   }
+
+  addRestriction(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.addRestriction}`, formData)
+  }
+
+  getRestriction(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getRestriction}`, formData)
+  }
 }

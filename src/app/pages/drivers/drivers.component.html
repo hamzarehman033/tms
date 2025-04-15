@@ -1,31 +1,99 @@
 <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
 
+<!-- Filters -->
 <div>
     <label>ID:</label>
-    <input type="text" placeholder="Enter ID" [(ngModel)]="driverFilters.id"/>
+    <input type="text" placeholder="Enter ID" [(ngModel)]="driverFilters.id" />
 
     <label>Name:</label>
-    <input type="text" placeholder="Enter Name" [(ngModel)]="driverFilters.name"/>
+    <input type="text" placeholder="Enter Name" [(ngModel)]="driverFilters.name" />
 
     <label>Age:</label>
-    <input type="text" placeholder="Enter Age" [(ngModel)]="driverFilters.age"/>
+    <input type="text" placeholder="Enter Age" [(ngModel)]="driverFilters.age" />
 
     <label>License Status:</label>
-    <input type="text" placeholder="Enter status" [(ngModel)]="driverFilters.license_status"/>
+    <input type="text" placeholder="Enter status" [(ngModel)]="driverFilters.license_status" />
 
     <button type="submit" (click)="driverList()">Apply Filter</button>
     <button type="submit" (click)="reset()">Reset Filter</button>
 </div>
 
-
+<!-- Add, update, delete -->
 <div style="display: flex; gap: 10px; margin: 10px;">
-    <button class="btn btn-outline-secondary" (click)="addDriver()">
-        Add Driver
-    </button>
+    <button class="btn btn-secondary" (click)="openModal()">Add Driver</button>
     <button class="btn btn-outline-warning" (click)="updateDriver()">
         Update Driver
     </button>
     <button class="btn btn-outline-primary" (click)="deleteDriver()">
         Delete Driver
     </button>
+</div>
+
+<!-- Add Driver Modal -->
+<div *ngIf="isModalOpen" class="modal-backdrop">
+    <div class="modal-dialog"
+        style="display: flex; justify-content: center; background-color: white; padding: 30px; border-radius: 20px; width: 50%;">
+        <div class="modal-content" style="overflow-x: hidden; max-height: 85vh; max-width: 400px;">
+            <div class="modal-header" style="display: flex;">
+                <h5 class="modal-title" style="font-size: 25px; font-weight: 500;">Add New Driver</h5>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form [formGroup]="driverForm">
+                    <div style="margin-bottom: 15px;">
+                        <label>Driver First Name</label>
+                        <input type="text" class="form-control" placeholder="Enter driver first name"
+                            formControlName="first_name">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>Driver Last Name</label>
+                        <input type="text" class="form-control" placeholder="Enter driver last name"
+                            formControlName="last_name">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>Role ID</label>
+                        <input type="text" class="form-control" placeholder="Enter role ID" formControlName="role_id">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>Zone ID</label>
+                        <input type="text" class="form-control" placeholder="Enter zone ID" formControlName="zone_id">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>License Number</label>
+                        <input type="text" class="form-control" placeholder="Enter license number"
+                            formControlName="license_number">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>License Expiry</label>
+                        <input type="date" class="form-control" formControlName="license_expiry">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>Age</label>
+                        <input type="number" class="form-control" placeholder="Enter age" formControlName="age">
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="Enter phone number"
+                            formControlName="phone_number">
+                    </div>
+                    <button class="btn btn-outline-secondary" (click)="addDriver()">
+                        Add Driver
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

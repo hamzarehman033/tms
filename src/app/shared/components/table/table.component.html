@@ -48,6 +48,12 @@
     <td mat-cell *matCellDef="let element"> {{element.age}} </td>
   </ng-container>
 
+  <!-- Phone Number -->
+  <ng-container matColumnDef="Phone_Number">
+    <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+  </ng-container>
+
   <!-- License Status Column -->
   <ng-container matColumnDef="license_status">
     <th mat-header-cell *matHeaderCellDef> License Status</th>
@@ -63,13 +69,13 @@
   <!-- Documents Column -->
   <ng-container matColumnDef="Documents">
     <th mat-header-cell *matHeaderCellDef> Documents </th>
-    <td mat-cell *matCellDef="let element"> {{element.Documents}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.documents}} </td>
   </ng-container>
 
   <!-- Reason Column -->
   <ng-container matColumnDef="Reason">
     <th mat-header-cell *matHeaderCellDef> Reason </th>
-    <td mat-cell *matCellDef="let element"> {{element.Reason}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.restriction_reason}} </td>
   </ng-container>
 
   <!-- Created at Column -->
@@ -356,6 +362,19 @@
     <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
   </ng-container>
 
+
+  <!-- Restrictions -->
+  <!-- Restrictions Name -->
+  <ng-container matColumnDef="restriction_name">
+    <th mat-header-cell *matHeaderCellDef> Email Address </th>
+    <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
+  </ng-container>
+
+  <!-- Restrictions phone_number -->
+  <ng-container matColumnDef="restriction_ph_no">
+    <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
