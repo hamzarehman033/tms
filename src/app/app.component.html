@@ -11,3 +11,44 @@
     </div>
   </div>
 </mat-drawer-container>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row align-items-end g-3 mb-3">
+          <div class="col-md-6">
+            <label for="farmId" class="form-label">Farm ID</label>
+            <input type="text" class="form-control" id="farmId" placeholder="Enter Farm ID">
+          </div>
+          <div class="col-md-6">
+            <label for="farmCapacity" class="form-label">Farm Capacity</label>
+            <input type="text" class="form-control" id="farmCapacity" placeholder="Enter Farm Capacity">
+          </div>
+          <div class="col-md-6">
+            <label for="farmOwner" class="form-label">Farm Owner</label>
+            <input type="text" class="form-control" id="farmOwner" placeholder="Enter Farm Owner">
+          </div>
+          <div class="col-md-6">
+            <label for="farmType" class="form-label">Farm Type</label>
+            <select class="form-select" id="farmType">
+              <option selected>Choose...</option>
+              <option value="1">Type 1</option>
+              <option value="2">Type 2</option>
+              <option value="3">Type 3</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
