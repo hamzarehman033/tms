@@ -51,7 +51,7 @@
   <!-- Phone Number -->
   <ng-container matColumnDef="Phone_Number">
     <th mat-header-cell *matHeaderCellDef> Phone Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
   </ng-container>
 
   <!-- License Status Column -->
@@ -69,7 +69,7 @@
   <!-- Documents Column -->
   <ng-container matColumnDef="Documents">
     <th mat-header-cell *matHeaderCellDef> Documents </th>
-    <td mat-cell *matCellDef="let element"> {{element.documents}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.drivers[0].documents[0].status}} </td>
   </ng-container>
 
   <!-- Reason Column -->

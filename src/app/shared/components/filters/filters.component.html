@@ -1,1 +1,34 @@
-<p>filters works!</p>
+<div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">{{form_name}}</h5>
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">Add Farm</button>
+</div>
+<div class="card-body">
+    <div class="row align-items-end g-3 mb-3">
+        <div class="col-md">
+            <label for="farmId" class="form-label">Name</label>
+            <input type="text" class="form-control" id="farmId" placeholder="Enter Name here">
+        </div>
+        <div class="col-md">
+            <label for="farmCapacity" class="form-label">Id</label>
+            <input type="text" class="form-control" id="farmCapacity" placeholder="Enter Id here">
+        </div>       
+        <div class="col-md">
+            <label for="farmType" class="form-label">Select Zone</label>
+            <select class="form-select" id="farmType">
+                <option selected>Choose...</option>
+                <option value="1">Type 1</option>
+                <option value="2">Type 2</option>
+                <option value="3">Type 3</option>
+            </select>
+        </div>
+        <div class="col-md">
+            <label for="farmOwner" class="form-label">Search</label>
+            <input type="text" class="form-control" id="farmOwner" placeholder="Search here">
+        </div>
+        <div class="col-md text-end">
+            <button type="button" class="btn btn-outline-primary">Apply</button>
+            <!-- <app-icon icon="ion:sync-outline" [width]="24" [height]="24" class="nav-icon"></app-icon> -->
+        </div>
+    </div>
+</div>

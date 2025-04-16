@@ -2,23 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FormsModule } from '@angular/forms';
+import { FiltersComponent } from '../../shared/components/filters/filters.component';
 
 @Component({
   selector: 'app-farm',
   templateUrl: './farm.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule],
+  imports: [TableComponent, FormsModule, FiltersComponent],
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {
+  form_name: string = 'Add Farm';
   farm_id: any = 1;
-  first_name: any = "farm 99";
+  first_name: any = "new farm added";
   last_name: any = "last farm";
-  email: any = "farm99999@gmail.com";
+  email: any = "newFarm@gmail.com";
   role_id: any = 4;
   zone_id: any = 1;
   status: any = 1;
-  farm_address: any = 'Farm location, city xyz';
+  farm_address: any = 'Farm location, Farm address';
   latitude: any = '43.343';
   longitude: any = '43.343';
 
@@ -68,9 +70,9 @@ export class FarmComponent implements OnInit {
 
   updateFarm() {
     const payload = {
-      id: 2,
+      id: 8,
       first_name: "second farm updated",
-      address: "updated address"
+      address: "updated address for farm 8"
     }
     this.appService.updateFarm(payload).subscribe((data: any) => {
       console.log(data?.data);

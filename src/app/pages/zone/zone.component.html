@@ -1,4 +1,13 @@
-<app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource"></app-table>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <app-filters [form_name]="form_name"></app-filters>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource"></app-table>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+</div>
 
 <div>
     <label for="id">ID</label>

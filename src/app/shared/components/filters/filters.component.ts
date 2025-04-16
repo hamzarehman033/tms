@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
-  styleUrl: './filters.component.scss'
+  styleUrl: './filters.component.scss',
+  standalone: true
 })
 export class FiltersComponent {
   @Input() division_type: string = '';

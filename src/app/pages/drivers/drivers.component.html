@@ -1,4 +1,14 @@
-<app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <app-filters [form_name]="form_name"></app-filters>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Filters -->
 <div>
@@ -21,26 +31,35 @@
 <!-- Add, update, delete -->
 <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-secondary" (click)="openModal()">Add Driver</button>
-    <button class="btn btn-outline-warning" (click)="updateDriver()">
+    <button class="btn btn-warning" (click)="openUpdateModal()">Update Driver</button>
+    <!-- <button class="btn btn-outline-warning" (click)="updateDriver()">
         Update Driver
-    </button>
+    </button> -->
     <button class="btn btn-outline-primary" (click)="deleteDriver()">
         Delete Driver
     </button>
 </div>
 
 <!-- Add Driver Modal -->
-<div *ngIf="isModalOpen" class="modal-backdrop">
+<div *ngIf="isModalOpen || isUpdateModal" class="modal-backdrop">
     <div class="modal-dialog"
         style="display: flex; justify-content: center; background-color: white; padding: 30px; border-radius: 20px; width: 50%;">
-        <div class="modal-content" style="overflow-x: hidden; max-height: 85vh; max-width: 400px;">
+        <div class="modal-content" style="overflow-x: hidden; max-height: 85vh; max-width: 400px; scrollbar-width: none;">
             <div class="modal-header" style="display: flex;">
-                <h5 class="modal-title" style="font-size: 25px; font-weight: 500;">Add New Driver</h5>
+                <h5 *ngIf="!isUpdateModal" class="modal-title" style="font-size: 25px; font-weight: 500;">Add New Driver</h5>
+                
+                <h5 *ngIf="isUpdateModal" class="modal-title" style="font-size: 25px; font-weight: 500;">Update Driver</h5>
+
                 <button type="button" class="btn-close" (click)="closeModal()"></button>
             </div>
             <!-- Modal Body -->
             <div class="modal-body">
                 <form [formGroup]="driverForm">
+                    <div *ngIf="isUpdateModal" style="margin-bottom: 15px;">
+                        <label>ID</label>
+                        <input type="text" class="form-control" placeholder="Enter driver id"
+                            formControlName="id">
+                    </div>
                     <div style="margin-bottom: 15px;">
                         <label>Driver First Name</label>
                         <input type="text" class="form-control" placeholder="Enter driver first name"
@@ -89,8 +108,13 @@
                         <input type="tel" class="form-control" placeholder="Enter phone number"
                             formControlName="phone_number">
                     </div>
-                    <button class="btn btn-outline-secondary" (click)="addDriver()">
+
+                    <button *ngIf="!isUpdateModal" class="btn btn-outline-secondary" (click)="addDriver()">
                         Add Driver
+                    </button>
+
+                    <button *ngIf="isUpdateModal" class="btn btn-outline-warning" (click)="updateDriver()">
+                        Update Driver
                     </button>
                 </form>
             </div>
