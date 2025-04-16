@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
+import { filterObj } from '../../core/types';
 
 @Component({
   selector: 'app-drivers',
@@ -14,6 +15,14 @@ import { FiltersComponent } from '../../shared/components/filters/filters.compon
   styleUrl: './drivers.component.scss'
 })
 export class DriversComponent implements OnInit{
+
+  fields: filterObj[] = [
+    { type: 'text', key: 'id', placeholder: 'Enter Id here', value: ''},
+    { type: 'text', key: 'name', placeholder: 'Enter Name here', value: ''},
+    { type: 'text', key: 'age', placeholder: 'Enter Age here', value: ''},
+    { type: 'text', key: 'status', placeholder: 'Status', value: ''},
+    { type: 'text', key: 'search', placeholder: 'Search here', value: ''}
+  ];
   form_name: string = 'Add Driver'
   isModalOpen = false;
   isUpdateModal = false;

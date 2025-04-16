@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
+import { filterObj } from '../../core/types';
 
 @Component({
   selector: 'app-supplier',
@@ -12,6 +13,13 @@ import { FiltersComponent } from '../../shared/components/filters/filters.compon
 })
 
 export class SupplierComponent implements OnInit{
+  
+  fields: filterObj[] = [
+    { type: 'text', key: 'Booking Id', placeholder: 'Enter Id here', value: '' },
+    { type: 'text', key: 'Company name', placeholder: 'Enter name here', value: '' },
+    { type: 'text', key: 'email', placeholder: 'Select Email here', value: '' }
+  ];
+
   form_name: string = 'Trucking Company'
   supplier_id: any = 1;
   supplier_data: any;

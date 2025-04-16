@@ -3,6 +3,7 @@ import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
+import { filterObj } from '../../core/types';
 
 @Component({
   selector: 'app-farm',
@@ -27,14 +28,26 @@ export class FarmComponent implements OnInit {
   dataSource: any = [];
   columnsToDisplay = ['Farm_ID', 'Farm_Name', 'createdAt', 'Farm_Zone', 'Farm_Location', 'Farm_Suppliers', 'Action'];
 
+  fields: filterObj[] = [
+    { type: 'text', key: 'name', placeholder: 'Enter Name here', value: ''},
+    { type: 'text', key: 'id', placeholder: 'Enter Id here', value: ''},
+    { type: 'dropdown', key: 'zone', placeholder: 'Select Zone', value: '', 
+      options: [
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2 },
+        { label: 'Option 3', value: 3 }
+      ]
+    },
+    { type: 'text', key: 'search', placeholder: 'Search here', value: ''}
+  ];
+  
   constructor(private appService: AppService) { }
+
   ngOnInit(): void {
     this.farmList();
   }
-  farmFilters = {
-    id: '',
-    name: ''
-  }
+
+  farmFilters: any = {};
 
   addFarm() {
     const payload = {
@@ -58,9 +71,16 @@ export class FarmComponent implements OnInit {
     const payload: any = {
       limit: 10
     }
-
-    if(this.farmFilters.id) payload['id'] = Number(this.farmFilters.id);
+    this.fields.forEach(field => {
+      if (field.value) {
+        this.farmFilters[field.key] = field.value;
+      }
+    });
+    
+    if(this.farmFilters.id) payload['id'] = [Number(this.farmFilters.id)];
     if(this.farmFilters.name) payload['name'] = this.farmFilters.name;
+    if (this.farmFilters.zone) payload['zone'] = Number(this.farmFilters.zone);
+    if (this.farmFilters.search) payload['search'] = this.farmFilters.search;
 
     this.appService.farmList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.farms;     
@@ -98,9 +118,15 @@ export class FarmComponent implements OnInit {
       this.dataSource = data;
     })
   }
+
   reset(){
+    this.fields.forEach(field =>{
+      field.value = '';
+    })
     this.farmFilters.id = '';
     this.farmFilters.name = '';
+    this.farmFilters.zone = '';
+    this.farmFilters.search = '';
     this.farmList();
   }
 }

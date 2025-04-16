@@ -18,6 +18,7 @@ export class RestrictionComponent implements OnInit{
   rest_id: any
   rest_status: any;
   rest_reason: any;
+  showFilter: boolean = false;
 
   constructor(private appService: AppService ) { }
 
