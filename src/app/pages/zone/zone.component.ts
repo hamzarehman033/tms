@@ -2,20 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { AppService } from '../../core/service/app.service';
 import { FormsModule } from '@angular/forms';
+import { FiltersComponent } from '../../shared/components/filters/filters.component';
+import { filterObj } from '../../core/types';
 
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule],
+  imports: [TableComponent, FormsModule, FiltersComponent],
   styleUrl: './zone.component.scss'
 })
 export class ZoneComponent implements OnInit {
-  legal_id = "pkm_0001";
-  name = "zone@pkmpkm_0001";
-  email = "Zoqpkmpkmpkm@gmail.com";
-  contact_number = "9577731321";
-  location = "zone location 241";
+
+  fields: filterObj[] = [
+    { type: 'text', key: 'name', placeholder: 'Enter name here', value: '' },
+    { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
+    { type: 'text', key: 'search', placeholder: 'Select Email here', value: '' }
+    ];
+
+  form_name: string = 'Add Zone'
+
+  legal_id = "zone_123";
+  name = "zone_123";
+  email = "zone_123@gmail.com";
+  contact_number = "032950900000321";
+  location = "zone location 123";
   id: any;
 
   columnsToDisplay = ['Zone_ID', 'Zone_Name', 'Created_at', 'Legal_Id', 'Contact_Number', 'Zone_Email', 'Zone_Location', 'Action'];
@@ -43,7 +54,7 @@ export class ZoneComponent implements OnInit {
     if (this.zoneFilters.legal_id) payload["legal_id"] = this.zoneFilters.legal_id;
 
     this.appService.zoneList(payload).subscribe((data: any) => {
-      this.dataSource = data?.zone?.rows;
+      this.dataSource = data?.data?.rows;
       console.log("zone data", this.dataSource);
     })
   }
