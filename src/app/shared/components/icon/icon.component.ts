@@ -6,6 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-icon',
+  standalone: true,
   template: '<span #container></span>'
 })
 export class IconComponent implements OnChanges, OnInit, AfterViewInit {

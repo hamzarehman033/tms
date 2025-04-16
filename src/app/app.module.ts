@@ -32,7 +32,6 @@ import { AppInterceptor } from './core/interceptor/interceptor';
     DonutGraphComponent,
     LoginComponent,
     SidebarComponent,
-    IconComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +39,7 @@ import { AppInterceptor } from './core/interceptor/interceptor';
     MatSidenavModule,
     MatButtonModule,
     MatTableModule,
+    IconComponent,
     MatDrawerContainer
   ],
   providers: [
