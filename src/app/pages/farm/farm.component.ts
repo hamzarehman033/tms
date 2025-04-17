@@ -38,8 +38,7 @@ export class FarmComponent implements OnInit {
         { label: 'Option 2', value: 2 },
         { label: 'Option 3', value: 3 }
       ]
-    },
-    { type: 'text', key: 'search', placeholder: 'Search here', value: ''}
+    }
   ];
   
   constructor(private appService: AppService) { }
@@ -79,7 +78,6 @@ export class FarmComponent implements OnInit {
     if(this.farmFilters.id) payload['id'] = [Number(this.farmFilters.id)];
     if(this.farmFilters.name) payload['name'] = this.farmFilters.name;
     if (this.farmFilters.zone) payload['zone'] = Number(this.farmFilters.zone);
-    if (this.farmFilters.search) payload['search'] = this.farmFilters.search;
 
     this.appService.farmList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.farms;     
@@ -125,7 +123,6 @@ export class FarmComponent implements OnInit {
     this.farmFilters.id = '';
     this.farmFilters.name = '';
     this.farmFilters.zone = '';
-    this.farmFilters.search = '';
     this.farmList();
   }
 }

@@ -16,8 +16,7 @@ export class ZoneComponent implements OnInit {
 
   fields: filterObj[] = [
     { type: 'text', key: 'name', placeholder: 'Enter name here', value: '' },
-    { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
-    { type: 'text', key: 'search', placeholder: 'Select Email here', value: '' }
+    { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' }
     ];
 
   form_name: string = 'Add Zone';

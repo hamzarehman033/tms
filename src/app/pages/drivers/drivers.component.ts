@@ -20,8 +20,7 @@ export class DriversComponent implements OnInit{
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: ''},
     { type: 'text', key: 'name', placeholder: 'Enter Name here', value: ''},
     { type: 'text', key: 'age', placeholder: 'Enter Age here', value: ''},
-    { type: 'text', key: 'license_status', placeholder: 'Status', value: ''},
-    { type: 'text', key: 'search', placeholder: 'Search here', value: ''}
+    { type: 'text', key: 'license_status', placeholder: 'Status', value: ''}
   ];
 
   form_name: string = 'Add Driver';

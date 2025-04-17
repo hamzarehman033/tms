@@ -41,7 +41,6 @@ export class FiltersComponent {
     license_status: 'Status',
     name: 'Name',
     id: 'ID',
-    zone: 'Zone',
-    search: 'Search'
+    zone: 'Zone'
   };
 }
