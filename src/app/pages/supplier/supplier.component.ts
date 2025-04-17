@@ -21,6 +21,7 @@ export class SupplierComponent implements OnInit{
   ];
 
   form_name: string = 'Trucking Company'
+  button_name: string = 'Add Trucking Company'
   supplier_id: any = 1;
   supplier_data: any;
   columnsToDisplay: string[] = ['Booking_Id', 'Company_Name', 'Supplier_Contact_Person', 'Supplier_Email', 'Supplier_Phone_Number', 'Action'];
@@ -76,11 +77,11 @@ export class SupplierComponent implements OnInit{
   
   updateSupplier(){
     const payload = {
-      id: 9,
+      id: 8,
       first_name: "supplier01",
       last_name: "test",
       company_name: "FreshDelmonte",
-      email: "supplier01@gmail.com",
+      email: "supplier_22@gmail.com",
       phone_number: "345678987"
     }
     this.appService.updateSupplier(payload).subscribe((data: any)=>{
@@ -97,5 +98,9 @@ export class SupplierComponent implements OnInit{
       console.log(data?.data?.suppliers);
       this.supplierList();
     })
+  }
+  
+  reset(){
+
   }
 }

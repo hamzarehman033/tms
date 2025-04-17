@@ -1,14 +1,28 @@
 <div class="card-header d-flex justify-content-between align-items-center">
     <h5 class="mb-0">{{form_name}}</h5>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
-        Farm</button>
+    <button *ngIf="showFilter" type="button" class="btn btn-secondary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">{{ button_name }}</button>
+
+
+    <div *ngIf="!showFilter">
+        <button style="margin-left: 12px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            [ngClass]="activeButton === 'btn_1' ? 'btn btn-secondary' : 'btn btn-outline-secondary'"
+            (click)="setActive('btn_1')">Company</button>
+        <button style="margin-left: 12px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            [ngClass]="activeButton === 'btn_2' ? 'btn btn-secondary' : 'btn btn-outline-secondary'"
+            (click)="setActive('btn_2')">Truck</button>
+        <button style="margin-left: 12px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            [ngClass]="activeButton === 'btn_3' ? 'btn btn-secondary' : 'btn btn-outline-secondary'"
+            (click)="setActive('btn_3')">Driver</button>
+    </div>
 </div>
 
 <div class="card-body" *ngIf="showFilter">
     <div class="row align-items-end g-3 mb-3">
 
         <div class="col-md" *ngFor="let field of fields">
-            <label class="form-label" [attr.for]="field.key"> {{ field.key | titlecase }} </label>
+            <label class="form-label" [attr.for]="field.key"> {{ labelMapper[field.key] || field.key | titlecase }}
+            </label>
 
             <!-- Text Input -->
             <input *ngIf="field.type === 'text'" class="form-control" [id]="field.key" [name]="field.key"

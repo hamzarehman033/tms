@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <app-filters [form_name]="form_name" [fields]="fields"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
+            <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name"
+            (applyFilter)="zoneList()" (resetFilter)="reset()"></app-filters>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource"></app-table>
             <div class="card-footer">
             </div>
         </div>

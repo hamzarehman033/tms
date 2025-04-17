@@ -14,6 +14,7 @@ import { filterObj } from '../../core/types';
 })
 export class FarmComponent implements OnInit {
   form_name: string = 'Add Farm';
+  button_name: string = 'Add Farm'
   farm_id: any = 1;
   first_name: any = "new farm added";
   last_name: any = "last farm";
@@ -72,9 +73,7 @@ export class FarmComponent implements OnInit {
       limit: 10
     }
     this.fields.forEach(field => {
-      if (field.value) {
-        this.farmFilters[field.key] = field.value;
-      }
+      if (field.value) this.farmFilters[field.key] = field.value;
     });
     
     if(this.farmFilters.id) payload['id'] = [Number(this.farmFilters.id)];

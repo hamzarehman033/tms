@@ -13,11 +13,19 @@ import { IconComponent } from '../icon/icon.component';
 export class FiltersComponent {
 
   @Input() form_name: string = '';
+  @Input() button_name: string = '';
   @Input() fields: filterObj[] = [];
   @Input() showFilter: boolean = true;
 
   @Output() applyFilter = new EventEmitter<any>();
   @Output() resetFilter = new EventEmitter<any>();
+
+
+  activeButton: string = 'btn_1';
+
+  setActive(btn: string){
+    this.activeButton = btn;
+  }
   
   clickFilterButton(){
     this.applyFilter.emit();
@@ -25,4 +33,12 @@ export class FiltersComponent {
   clickResetButton(){
     this.resetFilter.emit();
   }
+
+  labelMapper: { [key: string]: string } = {
+    license_status: 'Status',
+    name: 'Name',
+    id: 'ID',
+    zone: 'Zone',
+    search: 'Search'
+  };
 }
