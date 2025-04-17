@@ -4,14 +4,14 @@
         data-bs-target="#exampleModal">{{ button_name }}</button>
 
 
-    <div *ngIf="!showFilter">
-        <button style="margin-left: 12px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    <div *ngIf="!showFilter" class="d-flex gap-3">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
             [ngClass]="activeButton === 'btn_1' ? 'btn btn-secondary' : 'btn btn-outline-secondary'"
             (click)="setActive('btn_1')">Company</button>
-        <button style="margin-left: 12px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
             [ngClass]="activeButton === 'btn_2' ? 'btn btn-secondary' : 'btn btn-outline-secondary'"
             (click)="setActive('btn_2')">Truck</button>
-        <button style="margin-left: 12px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
             [ngClass]="activeButton === 'btn_3' ? 'btn btn-secondary' : 'btn btn-outline-secondary'"
             (click)="setActive('btn_3')">Driver</button>
     </div>
@@ -40,7 +40,7 @@
 
         <div class="col-md text-end">
             <button type="button" class="btn btn-primary px-2" (click)="clickResetButton()">
-                <app-icon icon="ion:sync-outline" [width]="24" [height]="24" class="nav-icon"></app-icon>
+                <app-icon icon="ion:sync-outline" [width]="24" [height]="24"></app-icon>
             </button>
             <button type="button" class="btn btn-outline-primary ms-3" (click)="clickFilterButton()">Apply</button>
         </div>

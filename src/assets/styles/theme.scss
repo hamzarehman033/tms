@@ -72,8 +72,9 @@ body {
 
     // badges 
     .badge {
-        padding: 0.575rem 2rem !important;
-        font-size: 14px !important;
+        padding: 0.575rem 2rem;
+        font-size: 14px;
+        min-width: 145px;
     }
 
     // drawer sidebar mat 
@@ -145,6 +146,16 @@ body {
 
         thead {
             background-color: $body-bg;
+
+            .mat-mdc-header-cell {
+                border-color: transparent;
+            }
+        }
+
+        tbody {
+            .mat-mdc-cell {
+                border-color: $input;
+            }
         }
     }
 
@@ -155,5 +166,32 @@ body {
         th {
             background-color: $body-bg;
         }
+    }
+
+    // close buttons 
+    .btn-close {
+        opacity: 1;
+    }
+
+    // icon wrapper box 
+    .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: $body-bg;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dashboard-cards {
+        flex-direction: row;
+    }
+
+    .border-style {
+        border: 3px solid;
+        border-radius: 0 10px 10px 0;
+        height: 70px;
+        margin: auto;
     }
 }

@@ -32,9 +32,11 @@
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <!-- <td mat-cell *matCellDef="let element"> {{element.Action}} </td> -->
     <td mat-cell *matCellDef="let element">
-      <app-icon icon="hugeicons:view" [width]="24" [height]="24" class="nav-icon"></app-icon>
-      <app-icon icon="fluent:delete-28-regular" [width]="24" [height]="24" class="nav-icon"></app-icon>
-      <app-icon icon="iconamoon:edit-light" [width]="24" [height]="24" class="nav-icon"></app-icon>
+      <div class="d-flex align-items-center gap-3">
+        <app-icon icon="iconamoon:edit-light" [width]="24" [height]="24"></app-icon>
+        <app-icon icon="hugeicons:view" [width]="24" [height]="24"></app-icon>
+        <app-icon icon="fluent:delete-28-regular" [width]="24" [height]="24"></app-icon>
+      </div>
     </td>
   </ng-container>
 
@@ -65,7 +67,12 @@
   <!-- License Status Column -->
   <ng-container matColumnDef="license_status">
     <th mat-header-cell *matHeaderCellDef> License Status</th>
-    <td mat-cell *matCellDef="let element"> {{element.license_status}} </td>
+    <!-- <td mat-cell *matCellDef="let element"> {{element.license_status}} </td> -->
+    <td mat-cell *matCellDef="let element">
+      <span class="badge bg-primary-subtle ng-star-inserted rounded-pill text-primary">Rejected</span>
+      <!-- <span class="badge bg-warning-subtle ng-star-inserted rounded-pill text-warning">In Progress</span>
+      <span class="badge bg-success-subtle ng-star-inserted rounded-pill text-success">Approved</span> -->
+    </td>
   </ng-container>
 
   <!-- Driving License Expiry -->
