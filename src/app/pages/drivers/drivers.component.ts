@@ -20,22 +20,19 @@ export class DriversComponent implements OnInit{
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: ''},
     { type: 'text', key: 'name', placeholder: 'Enter Name here', value: ''},
     { type: 'text', key: 'age', placeholder: 'Enter Age here', value: ''},
-    { type: 'text', key: 'status', placeholder: 'Status', value: ''},
+    { type: 'text', key: 'license_status', placeholder: 'Status', value: ''},
     { type: 'text', key: 'search', placeholder: 'Search here', value: ''}
   ];
-  form_name: string = 'Add Driver'
+
+  form_name: string = 'Add Driver';
+  button_name: string = 'Add Driver';
   isModalOpen = false;
   isUpdateModal = false;
   driver_id: any = 5;
   isAddDriver: boolean = false;
   columnsToDisplay = ['Driver_ID', 'Driver_Name', 'age', 'Driver_Phone_Number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'Driver_Status', 'Action'];
   dataSource: any = [];
-  driverFilters = {
-    id:'',
-    name: '',
-    age: '',
-    license_status: ''
-  }
+  driverFilters: any = {}
 
   constructor(private appService: AppService, private fb: FormBuilder){}
   driverForm !: FormGroup;
@@ -72,6 +69,9 @@ export class DriversComponent implements OnInit{
     const payload: any = {
       limit: 10
     }
+    this.fields.forEach(field => {
+      if(field.value) this.driverFilters[field.key] = field.value;
+    });
 
     if(this.driverFilters.id) payload["id"] = [Number (this.driverFilters.id)];
     if(this.driverFilters.name) payload["name"] = this.driverFilters.name;

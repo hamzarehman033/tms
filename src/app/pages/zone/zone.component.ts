@@ -20,8 +20,8 @@ export class ZoneComponent implements OnInit {
     { type: 'text', key: 'search', placeholder: 'Select Email here', value: '' }
     ];
 
-  form_name: string = 'Add Zone'
-
+  form_name: string = 'Add Zone';
+  button_name: string = 'Add Zone';
   legal_id = "zone_123";
   name = "zone_123";
   email = "zone_123@gmail.com";
@@ -76,7 +76,7 @@ export class ZoneComponent implements OnInit {
 
   updateZone() {
     const payload = {
-      id: 61,
+      id: 1,
       name: this.name,
       contact_number: this.contact_number,
       location: this.location

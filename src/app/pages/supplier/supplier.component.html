@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <app-filters [form_name]="form_name" [fields]="fields"></app-filters>
+            <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name" 
+            (applyFilter)="supplierList()" (resetFilter)="reset()"></app-filters>
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
             <div class="card-footer">
             </div>
