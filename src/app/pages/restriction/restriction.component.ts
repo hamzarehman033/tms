@@ -12,8 +12,9 @@ import { FiltersComponent } from '../../shared/components/filters/filters.compon
   styleUrl: './restriction.component.scss'
 })
 export class RestrictionComponent implements OnInit{
-  form_name: string = 'Restrictions'
-  columnsToDisplay = ['ID', 'restriction_name', 'restriction_ph_no', 'Documents', 'Reason', 'Action'];
+  form_name: string = 'Restrictions';
+  columnsToDisplay: string[] = [];
+
   dataSource: any;
   rest_id: any
   rest_status: any;
@@ -23,7 +24,20 @@ export class RestrictionComponent implements OnInit{
   constructor(private appService: AppService ) { }
 
   ngOnInit(): void {
-    this.getRestriction();
+    this.list_button_type('supplier');
+    this.getRestriction('supplier');
+  }
+
+  list_button_type(type: string){
+    if (type === 'supplier') {
+      this.columnsToDisplay = ['ID', 'restriction_name', 'restriction_ph_no', 'Supplier_Documents', 'Reason', 'Action'];
+    } 
+    else if (type === 'truck') {
+      this.columnsToDisplay = ['ID', 'truck_number', 'truck_documents', 'Reason', 'Action'];;
+    } 
+    else if (type === 'driver') {
+      this.columnsToDisplay = ['ID', 'restriction_name', 'restriction_ph_no', 'Driver_Documents', 'Reason', 'Action'];
+    }
   }
 
   addRestriction(){
@@ -37,10 +51,10 @@ export class RestrictionComponent implements OnInit{
     })
   }
 
-  getRestriction(){
+  getRestriction(list: string){
     const payload =
     {
-      user_role: "driver"
+      user_role: list
     }
     this.appService.getRestriction(payload).subscribe((data: any)=>{
       this.dataSource = data?.data?.rows;

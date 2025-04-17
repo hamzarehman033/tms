@@ -5,9 +5,9 @@
 
 
     <div *ngIf="!showFilter" class="d-flex gap-3">
-        <button type="button" [ngClass]="activeButton === 'btn_1' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('btn_1')">Company</button>
-        <button type="button" [ngClass]="activeButton === 'btn_2' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('btn_2')">Truck</button>
-        <button type="button" [ngClass]="activeButton === 'btn_3' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('btn_3')">Driver</button>
+        <button type="button" [ngClass]="activeButton === 'supplier' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('supplier')">Company</button>
+        <button type="button" [ngClass]="activeButton === 'truck' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('truck')">Truck</button>
+        <button type="button" [ngClass]="activeButton === 'driver' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('driver')">Driver</button>
     </div>
 </div>
 
