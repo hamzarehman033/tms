@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTableModule } from '@angular/material/table';
 import { IconComponent } from '../icon/icon.component';
+import { OutgoingMessage } from 'http';
 
 
 @Component({
@@ -16,4 +17,11 @@ import { IconComponent } from '../icon/icon.component';
 export class TableComponent {
   @Input() displayedColumns: string[] = [];
   @Input() dataSource: any;
+  @Input() reActivate_button: any;
+
+  @Output() delete_button = new EventEmitter<any>();
+
+  deleteButton(id: any){
+    this.delete_button.emit(id);
+  }
 }

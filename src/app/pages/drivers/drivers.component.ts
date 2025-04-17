@@ -137,9 +137,9 @@ export class DriversComponent implements OnInit{
     }
   }
   
-  deleteDriver(){
+  deleteDriver(del_id: any){
     const payload = {
-      "id": this.driver_id
+      id: del_id
   }
     this.appService.deleteDriver(payload).subscribe((data: any)=>{
       console.log("Delete driver API", data?.data);

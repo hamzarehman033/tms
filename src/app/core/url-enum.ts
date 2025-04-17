@@ -35,4 +35,7 @@ export enum urlEnums {
     updateZone = '/zone/update',
     addRestriction = '/addRestriction',
     getRestriction = '/getRestriction',
+    removeRestriction = '/removeRestriction',
+    addTruckRestriction = '/addTruckRestriction',
+    removeTruckRestriction = '/removeTruckRestriction'
 }

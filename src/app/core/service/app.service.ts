@@ -149,4 +149,16 @@ export class AppService {
   getRestriction(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.getRestriction}`, formData)
   }
+
+  removeRestriction(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.removeRestriction}`, formData)
+  }
+
+  addTruckRestriction(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.addTruckRestriction}`, formData)
+  }
+
+  removeTruckRestriction(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.removeTruckRestriction}`, formData)
+  }
 }

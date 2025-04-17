@@ -90,9 +90,9 @@ export class SupplierComponent implements OnInit{
     })
   }
 
-  deleteSupplier(){
+  deleteSupplier(del_id: any){
     const payload = {
-      id: 1
+      id: del_id
     }
     this.appService.deleteSupplier(payload).subscribe((data: any)=>{
       console.log(data?.data?.suppliers);

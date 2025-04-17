@@ -19,7 +19,6 @@ export class FiltersComponent {
 
   @Output() applyFilter = new EventEmitter<any>();
   @Output() resetFilter = new EventEmitter<any>();
-  @Output() list_button_type = new EventEmitter<any>();
   @Output() list_type = new EventEmitter<any>();
 
   activeButton: string = 'supplier';
@@ -27,7 +26,6 @@ export class FiltersComponent {
   setActive(btn: string){
     this.activeButton = btn;
     this.list_type.emit(btn);
-    this.list_button_type.emit(btn);
   }
   
   clickFilterButton(){

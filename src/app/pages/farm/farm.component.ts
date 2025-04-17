@@ -85,9 +85,9 @@ export class FarmComponent implements OnInit {
     })
   }
 
-  updateFarm() {
+  updateFarm(id: any) {
     const payload = {
-      id: 8,
+      id: id,
       first_name: "second farm updated",
       address: "updated address for farm 8"
     }
@@ -97,9 +97,9 @@ export class FarmComponent implements OnInit {
     })
   }
 
-  deleteFarm() {
+  deleteFarm(del_id: any) {
     const payload = {
-      id: 5
+      id: del_id
     }
     this.appService.deleteFarm(payload).subscribe((data: any) => {
       console.log(data.data);
