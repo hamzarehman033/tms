@@ -2,14 +2,14 @@
     <div class="col-12">
         <div class="card">
             <app-filters [form_name]="form_name" [fields]="fields"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource"></app-table>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"></app-table>
             <div class="card-footer">
             </div>
         </div>
     </div>
 </div>
 
-<div>
+<!-- <div>
     <label for="id">ID</label>
     <input type="text" placeholder="Search ID" [(ngModel)]="zoneFilters.id">
 
@@ -21,9 +21,9 @@
 
     <button (click)="zoneList()">Apply</button>
     <button (click)="reset()">Reset</button>
-</div>
+</div> -->
 
-<div style="display: flex; gap: 10px; margin: 10px;">
+<!-- <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-outline-secondary" (click)="addZone()">
         Add Zone
     </button>
@@ -33,4 +33,4 @@
     <button class="btn btn-outline-primary" (click)="deleteZone()">
         Delete Zone
     </button>
-</div>
+</div> -->

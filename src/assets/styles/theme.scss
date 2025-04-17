@@ -7,6 +7,8 @@ body {
     .form-control,
     .form-select {
         border-radius: 5px;
+        border-color: $input;
+        background-color: $white;
     }
 
     // navs 
@@ -20,13 +22,17 @@ body {
         margin: auto;
         font-weight: 500;
 
-        &.active {
+        &:hover {
             color: $primary;
-            font-weight: bold;
         }
 
         &:focus {
-            color: $dark;
+            color: $primary;
+        }
+
+        &.active {
+            color: $primary;
+            font-weight: bold;
         }
 
         .nav-label {
@@ -43,6 +49,25 @@ body {
         width: 100% !important;
         margin-top: 1rem !important;
         background-color: $white !important;
+    }
+
+    // cards 
+    .card {
+        .card-header {
+            padding: 1rem;
+        }
+    }
+
+    // modals 
+    .modal {
+        .modal-content {
+            background-color: $white;
+        }
+    }
+
+    // buttons 
+    .btn {
+        padding: 0.375rem 2rem;
     }
 
     // drawer sidebar mat 

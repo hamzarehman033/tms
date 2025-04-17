@@ -11,7 +11,7 @@
 
 
 <!-- Filters -->
-<div>
+<!-- <div>
     <label>ID:</label>
     <input type="text" placeholder="Enter ID" [(ngModel)]="driverFilters.id" />
 
@@ -26,22 +26,22 @@
 
     <button type="submit" (click)="driverList()">Apply Filter</button>
     <button type="submit" (click)="reset()">Reset Filter</button>
-</div>
+</div> -->
 
 <!-- Add, update, delete -->
-<div style="display: flex; gap: 10px; margin: 10px;">
+<!-- <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-secondary" (click)="openModal()">Add Driver</button>
     <button class="btn btn-warning" (click)="openUpdateModal()">Update Driver</button>
-    <!-- <button class="btn btn-outline-warning" (click)="updateDriver()">
+    <button class="btn btn-outline-warning" (click)="updateDriver()">
         Update Driver
-    </button> -->
+    </button>
     <button class="btn btn-outline-primary" (click)="deleteDriver()">
         Delete Driver
     </button>
-</div>
+</div> -->
 
 <!-- Add Driver Modal -->
-<div *ngIf="isModalOpen || isUpdateModal" class="modal-backdrop">
+<!-- <div *ngIf="isModalOpen || isUpdateModal" class="modal-backdrop">
     <div class="modal-dialog"
         style="display: flex; justify-content: center; background-color: white; padding: 30px; border-radius: 20px; width: 50%;">
         <div class="modal-content" style="overflow-x: hidden; max-height: 85vh; max-width: 400px; scrollbar-width: none;">
@@ -52,7 +52,6 @@
 
                 <button type="button" class="btn-close" (click)="closeModal()"></button>
             </div>
-            <!-- Modal Body -->
             <div class="modal-body">
                 <form [formGroup]="driverForm">
                     <div *ngIf="isUpdateModal" style="margin-bottom: 15px;">
@@ -120,4 +119,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

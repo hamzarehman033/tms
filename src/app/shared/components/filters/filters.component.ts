@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { filterObj } from '../../../core/types';
+import { IconComponent } from '../icon/icon.component';
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.scss',
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, IconComponent]
 })
 export class FiltersComponent {
 
