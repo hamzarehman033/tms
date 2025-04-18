@@ -88,7 +88,7 @@ export class RestrictionComponent implements OnInit {
     if (this.rest_status) payload["status"] = this.rest_status;
     if (this.rest_reason) payload["restriction_reason"] = this.rest_reason;
 
-    this.appService.addRestriction(payload).subscribe((data: any) => {
+    this.appService.addTruckRestriction(payload).subscribe((data: any) => {
       console.log("Add restriction API: ", data);
     })
   }
