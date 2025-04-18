@@ -32,16 +32,25 @@ export class SupplierComponent implements OnInit{
     this.supplierList();
   }
 
-  supplierFilter = {
+  supplierFilter: any = {
     booking_id: '',
     company_name: '',
     email: ''
   }
 
   supplierList(){
-    const payload = {
+    const payload: any = {
       limit: 10
     };
+
+    this.fields.forEach(field => {
+      if (field.value) this.supplierFilter[field.key] = field.value;
+    });
+
+    if(this.supplierFilter.booking_id) payload['booking_id'] = [Number(this.supplierFilter.booking_id)];
+    if(this.supplierFilter.company_name) payload['company_name'] = this.supplierFilter.company_name;
+    if (this.supplierFilter.email) payload['email'] = this.supplierFilter.email;
+
     this.appService.supplierList(payload).subscribe((data: any)=>{
       this.dataSource = data?.data?.rows;
       console.log("Supplier data:", data?.data?.rows);
@@ -101,6 +110,9 @@ export class SupplierComponent implements OnInit{
   }
   
   reset(){
-
+    this.fields.forEach(field => {
+      field.value = '';
+    });
+    this.supplierFilter.id 
   }
 }

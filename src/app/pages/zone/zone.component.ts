@@ -31,11 +31,7 @@ export class ZoneComponent implements OnInit {
   columnsToDisplay = ['Zone_ID', 'Zone_Name', 'Created_at', 'Legal_Id', 'Contact_Number', 'Zone_Email', 'Zone_Location', 'Action'];
   dataSource: any = [];
 
-  zoneFilters = {
-    id: '',
-    name: '',
-    legal_id: ''
-  }
+  zoneFilters: any = { }
 
   constructor(private appService: AppService) { }
 
@@ -47,10 +43,12 @@ export class ZoneComponent implements OnInit {
     const payload: any = {
       limit: 10
     }
+    this.fields.forEach(field =>{
+      if (field.value) this.zoneFilters[field.key] = field.value;
+    })
 
     if (this.zoneFilters.id) payload["id"] = [Number(this.zoneFilters.id)];
     if (this.zoneFilters.name) payload["name"] = this.zoneFilters.name;
-    if (this.zoneFilters.legal_id) payload["legal_id"] = this.zoneFilters.legal_id;
 
     this.appService.zoneList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
@@ -107,9 +105,11 @@ export class ZoneComponent implements OnInit {
   }
 
   reset() {
+    this.fields.forEach(field=>{
+      field.value = '';
+    })
     this.zoneFilters.id = '';
     this.zoneFilters.name = '';
-    this.zoneFilters.legal_id = '';
     this.zoneList();
   }
 }

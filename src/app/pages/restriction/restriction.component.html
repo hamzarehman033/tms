@@ -2,7 +2,8 @@
     <div class="col-12">
         <div class="card">
             <app-filters [form_name]="form_name" [showFilter]="showFilter" (list_type)="getRestriction($event)"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" [reActivate_button]="reActivate_button" (delete_button)="removeRestrictionFunction($event)"></app-table>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" [reActivate_button]="reActivate_button" 
+            (delete_button)="removeRestrictionFunction($event)"></app-table>
             <div class="card-footer">
             </div>
         </div>

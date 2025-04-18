@@ -22,6 +22,7 @@ export class FarmComponent implements OnInit {
   role_id: any = 4;
   zone_id: any = 1;
   status: any = 1;
+  user_id: any;
   farm_address: any = 'Farm location, Farm address';
   latitude: any = '43.343';
   longitude: any = '43.343';
@@ -80,14 +81,14 @@ export class FarmComponent implements OnInit {
     if (this.farmFilters.zone) payload['zone'] = Number(this.farmFilters.zone);
 
     this.appService.farmList(payload).subscribe((data: any) => {
-      this.dataSource = data?.data?.farms;     
+      this.dataSource = data?.data?.rows;     
       console.log("Farm Data: ", this.dataSource);
     })
   }
 
-  updateFarm(id: any) {
+  updateFarm() {
     const payload = {
-      id: id,
+      id: this.user_id,
       first_name: "second farm updated",
       address: "updated address for farm 8"
     }

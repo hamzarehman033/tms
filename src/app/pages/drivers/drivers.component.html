@@ -3,7 +3,7 @@
         <div class="card">
             <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name" 
             (applyFilter)="driverList()" (resetFilter)="reset()"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" (delete_button)="deleteDriver($event)"></app-table>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" (delete_button)="deleteDriver($event)" (update_button)="updateDriver()"></app-table>
             <div class="card-footer">
             </div>
         </div>
@@ -11,34 +11,10 @@
 </div>
 
 
-<!-- Filters -->
-<!-- <div>
-    <label>ID:</label>
-    <input type="text" placeholder="Enter ID" [(ngModel)]="driverFilters.id" />
-
-    <label>Name:</label>
-    <input type="text" placeholder="Enter Name" [(ngModel)]="driverFilters.name" />
-
-    <label>Age:</label>
-    <input type="text" placeholder="Enter Age" [(ngModel)]="driverFilters.age" />
-
-    <label>License Status:</label>
-    <input type="text" placeholder="Enter status" [(ngModel)]="driverFilters.license_status" />
-
-    <button type="submit" (click)="driverList()">Apply Filter</button>
-    <button type="submit" (click)="reset()">Reset Filter</button>
-</div> -->
-
 <!-- Add, update, delete -->
 <!-- <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-secondary" (click)="openModal()">Add Driver</button>
     <button class="btn btn-warning" (click)="openUpdateModal()">Update Driver</button>
-    <button class="btn btn-outline-warning" (click)="updateDriver()">
-        Update Driver
-    </button>
-    <button class="btn btn-outline-primary" (click)="deleteDriver()">
-        Delete Driver
-    </button>
 </div> -->
 
 <!-- Add Driver Modal -->
@@ -111,10 +87,6 @@
 
                     <button *ngIf="!isUpdateModal" class="btn btn-outline-secondary" (click)="addDriver()">
                         Add Driver
-                    </button>
-
-                    <button *ngIf="isUpdateModal" class="btn btn-outline-warning" (click)="updateDriver()">
-                        Update Driver
                     </button>
                 </form>
             </div>

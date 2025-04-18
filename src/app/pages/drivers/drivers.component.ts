@@ -148,6 +148,9 @@ export class DriversComponent implements OnInit{
   }
 
   reset(){
+    this.fields.forEach(field => {
+      field.value = '';
+    });
     this.driverFilters.id = '';
     this.driverFilters.name = '';
     this.driverFilters.age = '';

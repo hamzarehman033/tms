@@ -33,7 +33,7 @@
     <td mat-cell *matCellDef="let element">
       <div class="d-flex align-items-center gap-3" *ngIf="!reActivate_button">
         <app-icon icon="iconamoon:edit-light" [width]="24" [height]="24">
-          <button></button>
+          <button (click)="updateButton(element.id)"></button>
         </app-icon>
         <app-icon icon="hugeicons:view" [width]="24" [height]="24">
           <button></button>

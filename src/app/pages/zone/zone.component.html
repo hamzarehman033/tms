@@ -3,35 +3,17 @@
         <div class="card">
             <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name"
             (applyFilter)="zoneList()" (resetFilter)="reset()"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource" (delete_button)="deleteZone($event)"></app-table>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource" 
+            (delete_button)="deleteZone($event)" (update_button)="updateZone()"></app-table>
             <div class="card-footer">
             </div>
         </div>
     </div>
 </div>
 
-<!-- <div>
-    <label for="id">ID</label>
-    <input type="text" placeholder="Search ID" [(ngModel)]="zoneFilters.id">
-
-    <label>Name</label>
-    <input type="text" placeholder="Search Name" [(ngModel)]="zoneFilters.name">
-
-    <label>Legal ID</label>
-    <input type="text" placeholder="Search Legal ID" [(ngModel)]="zoneFilters.legal_id">
-
-    <button (click)="zoneList()">Apply</button>
-    <button (click)="reset()">Reset</button>
-</div> -->
 
 <!-- <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-outline-secondary" (click)="addZone()">
         Add Zone
-    </button>
-    <button class="btn btn-outline-warning" (click)="updateZone()">
-        Update Zone
-    </button>
-    <button class="btn btn-outline-primary" (click)="deleteZone()">
-        Delete Zone
     </button>
 </div> -->

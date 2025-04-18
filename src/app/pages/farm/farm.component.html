@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name" (applyFilter)="farmList()" (resetFilter)="reset()"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" (delete_button)="deleteFarm($event)"></app-table>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" (delete_button)="deleteFarm($event)" (update_button)="updateFarm()"></app-table>
             <div class="card-footer">
             </div>
         </div>
@@ -10,14 +10,8 @@
 </div>
 
 
-<!-- <div style="display: flex; gap: 10px; margin: 10px;">
+<div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-outline-secondary" (click)="addFarm()">
         Add Farm
     </button>
-    <button class="btn btn-outline-warning" (click)="updateFarm()">
-        Update Farm
-    </button>
-    <button class="btn btn-outline-primary" (click)="deleteFarm()">
-        Delete Farm
-    </button>
-</div> -->
+</div>

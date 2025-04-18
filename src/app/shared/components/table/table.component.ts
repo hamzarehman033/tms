@@ -20,8 +20,13 @@ export class TableComponent {
   @Input() reActivate_button: any;
 
   @Output() delete_button = new EventEmitter<any>();
+  @Output() update_button = new EventEmitter<any>();
 
   deleteButton(id: any){
     this.delete_button.emit(id);
+  }
+
+  updateButton(id: any){
+    this.update_button.emit(id);
   }
 }
