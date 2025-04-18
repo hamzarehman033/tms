@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTableModule } from '@angular/material/table';
 import { IconComponent } from '../icon/icon.component';
-import { OutgoingMessage } from 'http';
-
 
 @Component({
   selector: 'app-table',

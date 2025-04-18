@@ -18,6 +18,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
 import { IconComponent } from './shared/components/icon/icon.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AppInterceptor } from './core/interceptor/interceptor';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AppInterceptor } from './core/interceptor/interceptor';
     DonutGraphComponent,
     LoginComponent,
     SidebarComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

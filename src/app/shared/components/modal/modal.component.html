@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New farm Request</h5>
+                    <p class="text-light mb-0">
+                        Kindly fill the below details to add the farm.
+                    </p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-end g-3 mb-3">
+                    
+                    <!-- Input field -->
+                    <div class="col-md-6">
+                        <label for="farmId" class="form-label">Farm ID</label>
+                        <input type="text" class="form-control" id="farmId" placeholder="Enter Farm ID">
+                    </div>
+
+                    <!-- 🗓️ Date Field -->
+                    <div class="col-md-6">
+                        <label for="farmDate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="farmDate">
+                    </div>
+
+                    <!-- Dropdown -->
+                    <div class="col-md-6">
+                        <label for="farmType" class="form-label">Farm Type</label>
+                        <select class="form-select" id="farmType">
+                            <option selected>Choose...</option>
+                            <option value="1">Type 1</option>
+                            <option value="2">Type 2</option>
+                            <option value="3">Type 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Add Farm</button>
+            </div>
+        </div>
+    </div>
+</div>

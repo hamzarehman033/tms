@@ -1,7 +1,16 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <app-filters [form_name]="form_name" [showFilter]="showFilter" (list_type)="getRestriction($event)"></app-filters>
+            <!-- Filter Header -->
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Restrictions</h5>
+                <div class="d-flex gap-3">
+                    <button type="button" [ngClass]="activeButton === 'supplier' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('supplier')">Company</button>
+                    <button type="button" [ngClass]="activeButton === 'truck' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('truck')">Truck</button>
+                    <button type="button" [ngClass]="activeButton === 'driver' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('driver')">Driver</button>
+                </div>
+            </div>
+            <app-filters [showFilter]="showFilter"></app-filters>
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" [reActivate_button]="reActivate_button" 
             (delete_button)="removeRestrictionFunction($event)"></app-table>
             <div class="card-footer">

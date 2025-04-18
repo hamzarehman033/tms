@@ -23,8 +23,6 @@ export class DriversComponent implements OnInit{
     { type: 'text', key: 'license_status', placeholder: 'Status', value: ''}
   ];
 
-  form_name: string = 'Add Driver';
-  button_name: string = 'Add Driver';
   isModalOpen = false;
   isUpdateModal = false;
   driver_id: any = 5;

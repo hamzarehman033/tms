@@ -1,8 +1,15 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name" (applyFilter)="farmList()" (resetFilter)="reset()"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" (delete_button)="deleteFarm($event)" (update_button)="updateFarm()"></app-table>
+            <!-- Filter Header -->
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Add Farm</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add Farm</button>
+            </div>
+            <app-filters [fields]="fields" (applyFilter)="farmList()" (resetFilter)="reset()"></app-filters>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
+            (delete_button)="deleteFarm($event)" (update_button)="updateFarm()"></app-table>
             <div class="card-footer">
             </div>
         </div>

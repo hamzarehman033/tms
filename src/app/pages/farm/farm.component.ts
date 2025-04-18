@@ -13,8 +13,6 @@ import { filterObj } from '../../core/types';
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {
-  form_name: string = 'Add Farm';
-  button_name: string = 'Add Farm'
   farm_id: any = 1;
   first_name: any = "new farm added";
   last_name: any = "last farm";

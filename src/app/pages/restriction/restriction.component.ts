@@ -3,18 +3,18 @@ import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
-import { urlEnums } from '../../core/url-enum';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-restriction',
   templateUrl: './restriction.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule, FiltersComponent],
+  imports: [TableComponent, FormsModule, FiltersComponent, CommonModule],
   styleUrl: './restriction.component.scss'
 })
 export class RestrictionComponent implements OnInit {
-  form_name: string = 'Restrictions';
   columnsToDisplay: string[] = [];
+  activeButton: string = 'supplier';
 
   dataSource: any;
   rest_id: any
@@ -41,9 +41,13 @@ export class RestrictionComponent implements OnInit {
       this.columnsToDisplay = ['ID', 'restriction_name', 'restriction_ph_no', 'Driver_Documents', 'Reason', 'Action'];
     }
     console.log(type, this.columnsToDisplay);
-
   }
 
+  // Set Active List
+  setActive(btn: string){
+    this.activeButton = btn;
+    this.getRestriction(btn);
+  }
   addRestriction() {
     const payload: any = {}
     if (this.rest_id) payload["id"] = this.rest_id;

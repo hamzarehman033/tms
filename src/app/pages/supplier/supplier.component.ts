@@ -20,8 +20,6 @@ export class SupplierComponent implements OnInit{
     { type: 'text', key: 'email', placeholder: 'Select Email here', value: '' }
   ];
 
-  form_name: string = 'Trucking Company'
-  button_name: string = 'Add Trucking Company'
   supplier_id: any = 1;
   supplier_data: any;
   columnsToDisplay: string[] = ['Booking_Id', 'Company_Name', 'Supplier_Contact_Person', 'Supplier_Email', 'Supplier_Phone_Number', 'Action'];

@@ -12,21 +12,11 @@ import { IconComponent } from '../icon/icon.component';
 })
 export class FiltersComponent {
 
-  @Input() form_name: string = '';
-  @Input() button_name: string = '';
   @Input() fields: filterObj[] = [];
   @Input() showFilter: boolean = true;
 
   @Output() applyFilter = new EventEmitter<any>();
   @Output() resetFilter = new EventEmitter<any>();
-  @Output() list_type = new EventEmitter<any>();
-
-  activeButton: string = 'supplier';
-
-  setActive(btn: string){
-    this.activeButton = btn;
-    this.list_type.emit(btn);
-  }
   
   clickFilterButton(){
     this.applyFilter.emit();
@@ -41,4 +31,21 @@ export class FiltersComponent {
     id: 'ID',
     zone: 'Zone'
   };
+
+  form_title_Mapper:  { [key: string]: string } = {
+    farm: 'Add Farm',
+    driver: 'Add Driver',
+    zone: 'Add Zone',
+    restrictions: 'Restrictions',
+    trucking_company: 'Trucking Company'
+  }
+
+  modal_title: { [key: string]: string} = {
+    farm: 'Add  New Farm',
+    documents: 'Add  New Documents',
+    driver: 'Add New Driver',
+    zone: 'Add New Zone',
+    restrictions: 'Restrictions',
+    trucking_company: 'Add  New Trucking Company'
+  }
 }

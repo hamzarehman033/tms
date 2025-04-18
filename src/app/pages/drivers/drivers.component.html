@@ -1,9 +1,15 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name" 
-            (applyFilter)="driverList()" (resetFilter)="reset()"></app-filters>
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" (delete_button)="deleteDriver($event)" (update_button)="updateDriver()"></app-table>
+            <!-- Filter Header -->
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Add Driver</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add Driver</button>
+            </div>
+            <app-filters [fields]="fields" (applyFilter)="driverList()" (resetFilter)="reset()"></app-filters>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
+            (delete_button)="deleteDriver($event)" (update_button)="updateDriver()"></app-table>
             <div class="card-footer">
             </div>
         </div>
@@ -14,7 +20,6 @@
 <!-- Add, update, delete -->
 <!-- <div style="display: flex; gap: 10px; margin: 10px;">
     <button class="btn btn-secondary" (click)="openModal()">Add Driver</button>
-    <button class="btn btn-warning" (click)="openUpdateModal()">Update Driver</button>
 </div> -->
 
 <!-- Add Driver Modal -->

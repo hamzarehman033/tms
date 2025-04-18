@@ -1,8 +1,20 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <app-filters [form_name]="form_name" [fields]="fields" [button_name]="button_name" 
-            (applyFilter)="supplierList()" (resetFilter)="reset()"></app-filters>
+            <!-- Filter Header -->
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Trucking Company</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add Trucking Company</button>
+            
+            
+                <!-- <div *ngIf="!showFilter" class="d-flex gap-3">
+                    <button type="button" [ngClass]="activeButton === 'supplier' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('supplier')">Company</button>
+                    <button type="button" [ngClass]="activeButton === 'truck' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('truck')">Truck</button>
+                    <button type="button" [ngClass]="activeButton === 'driver' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('driver')">Driver</button>
+                </div> -->
+            </div>
+            <app-filters [fields]="fields" (applyFilter)="supplierList()" (resetFilter)="reset()"></app-filters>
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
             (delete_button)="deleteSupplier($event)" (update_button)="updateSupplier()"></app-table>
             <div class="card-footer">

@@ -19,8 +19,6 @@ export class ZoneComponent implements OnInit {
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' }
     ];
 
-  form_name: string = 'Add Zone';
-  button_name: string = 'Add Zone';
   legal_id = "zone_123";
   name = "zone_123";
   email = "zone_123@gmail.com";
