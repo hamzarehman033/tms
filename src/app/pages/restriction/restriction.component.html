@@ -10,6 +10,7 @@
                     <button type="button" [ngClass]="activeButton === 'driver' ? 'btn btn-secondary' : 'btn btn-outline-secondary'" (click)="setActive('driver')">Driver</button>
                 </div>
             </div>
+            <app-modal #modalRef></app-modal>
             <app-filters [showFilter]="showFilter"></app-filters>
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" [reActivate_button]="reActivate_button" 
             (delete_button)="removeRestrictionFunction($event)"></app-table>

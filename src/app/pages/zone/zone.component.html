@@ -4,9 +4,9 @@
             <!-- Filter Header -->
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Add Zone</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Add Zone</button>
+                <button type="button" class="btn btn-secondary" (click)="openModal()">Add Zone</button>
             </div>
+            <app-modal #modalRef></app-modal>
             <app-filters [fields]="fields" (applyFilter)="zoneList()" (resetFilter)="reset()"></app-filters>
             <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource" 
             (delete_button)="deleteZone($event)" (update_button)="updateZone()"></app-table>

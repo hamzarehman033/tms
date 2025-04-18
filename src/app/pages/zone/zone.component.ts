@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { AppService } from '../../core/service/app.service';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { filterObj } from '../../core/types';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule, FiltersComponent],
+  imports: [TableComponent, FormsModule, FiltersComponent, ModalComponent],
   styleUrl: './zone.component.scss'
 })
 export class ZoneComponent implements OnInit {
-
+  @ViewChild('modalRef') modalComponent!: ModalComponent;
   fields: filterObj[] = [
     { type: 'text', key: 'name', placeholder: 'Enter name here', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' }
@@ -37,6 +38,10 @@ export class ZoneComponent implements OnInit {
     this.zoneList();
   }
 
+  openModal() {
+    this.modalComponent.open(); // Call the open method from the modal component
+  }
+  
   zoneList() {
     const payload: any = {
       limit: 10

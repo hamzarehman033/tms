@@ -2,7 +2,7 @@
     <div class="row align-items-end g-3 mb-3">
 
         <div class="col-md" *ngFor="let field of fields">
-            <label class="form-label" [attr.for]="field.key"> {{ labelMapper[field.key] || field.key | titlecase }}
+            <label class="form-label" [attr.for]="field.key"> {{ field.key | titlecase }}
             </label>
 
             <!-- Text Input -->

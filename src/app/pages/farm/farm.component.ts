@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { filterObj } from '../../core/types';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-farm',
   templateUrl: './farm.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule, FiltersComponent],
+  imports: [TableComponent, FormsModule, FiltersComponent, ModalComponent],
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {
+  @ViewChild('modalRef') modalComponent!: ModalComponent;
   farm_id: any = 1;
   first_name: any = "new farm added";
   last_name: any = "last farm";
@@ -25,6 +27,7 @@ export class FarmComponent implements OnInit {
   latitude: any = '43.343';
   longitude: any = '43.343';
 
+  farmFilters: any = {};
   dataSource: any = [];
   columnsToDisplay = ['Farm_ID', 'Farm_Name', 'createdAt', 'Farm_Zone', 'Farm_Location', 'Farm_Suppliers', 'Action'];
 
@@ -45,8 +48,9 @@ export class FarmComponent implements OnInit {
   ngOnInit(): void {
     this.farmList();
   }
-
-  farmFilters: any = {};
+  openModal() {
+      this.modalComponent.open(); // Call the open method from the modal component
+    }
 
   addFarm() {
     const payload = {

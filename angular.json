@@ -121,7 +121,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/@iconify/iconify/dist/iconify.min.js"
+              "node_modules/@iconify/iconify/dist/iconify.min.js",
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
         }

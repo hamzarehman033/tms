@@ -1,25 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { filterObj } from '../../core/types';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-supplier',
   templateUrl: './supplier.component.html',
   standalone: true,
-  imports: [TableComponent, FiltersComponent],
+  imports: [TableComponent, FiltersComponent, ModalComponent],
   styleUrl: './supplier.component.scss'
 })
 
 export class SupplierComponent implements OnInit{
-  
+  @ViewChild('modalRef') modalComponent!: ModalComponent;
   fields: filterObj[] = [
     { type: 'text', key: 'Booking Id', placeholder: 'Enter Id here', value: '' },
     { type: 'text', key: 'Company name', placeholder: 'Enter name here', value: '' },
     { type: 'text', key: 'email', placeholder: 'Select Email here', value: '' }
   ];
-
+  
+  supplierFilter: any = { }
   supplier_id: any = 1;
   supplier_data: any;
   columnsToDisplay: string[] = ['Booking_Id', 'Company_Name', 'Supplier_Contact_Person', 'Supplier_Email', 'Supplier_Phone_Number', 'Action'];
@@ -29,11 +31,9 @@ export class SupplierComponent implements OnInit{
   ngOnInit(): void {
     this.supplierList();
   }
-
-  supplierFilter: any = {
-    booking_id: '',
-    company_name: '',
-    email: ''
+  
+  openModal() {
+    this.modalComponent.open(); // Call the open method from the modal component
   }
 
   supplierList(){

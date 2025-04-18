@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { CommonModule } from '@angular/common';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-restriction',
   templateUrl: './restriction.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule, FiltersComponent, CommonModule],
+  imports: [TableComponent, FormsModule, FiltersComponent, CommonModule, ModalComponent],
   styleUrl: './restriction.component.scss'
 })
 export class RestrictionComponent implements OnInit {
+  @ViewChild('modalRef') modalComponent!: ModalComponent;
   columnsToDisplay: string[] = [];
   activeButton: string = 'supplier';
 
@@ -29,7 +31,10 @@ export class RestrictionComponent implements OnInit {
     this.list_type('supplier');
     this.getRestriction('supplier');
   }
-
+  openModal() {
+    this.modalComponent.open(); // Call the open method from the modal component
+  }
+  
   list_type(type: any) {
     if (type === 'supplier') {
       this.columnsToDisplay = ['ID', 'restriction_name', 'restriction_ph_no', 'Supplier_Documents', 'Reason', 'Action'];

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -6,16 +6,17 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { filterObj } from '../../core/types';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [TableComponent, FormsModule, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent],
+  imports: [TableComponent, FormsModule, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent, ModalComponent],
   templateUrl: './drivers.component.html',
   styleUrl: './drivers.component.scss'
 })
 export class DriversComponent implements OnInit{
-
+  @ViewChild('modalRef') modalComponent!: ModalComponent;
   fields: filterObj[] = [
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: ''},
     { type: 'text', key: 'name', placeholder: 'Enter Name here', value: ''},
@@ -50,8 +51,8 @@ export class DriversComponent implements OnInit{
     })
   }
 
-  openModal(){
-    this.isModalOpen = true;
+  openModal() {
+    this.modalComponent.open(); // Call the open method from the modal component
   }
   openUpdateModal(){
     this.isUpdateModal = true;
