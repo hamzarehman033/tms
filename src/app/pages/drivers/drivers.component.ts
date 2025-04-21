@@ -24,8 +24,6 @@ export class DriversComponent implements OnInit{
     { type: 'text', key: 'license_status', placeholder: 'Status', value: ''}
   ];
 
-  isModalOpen = false;
-  isUpdateModal = false;
   driver_id: any = 5;
   isAddDriver: boolean = false;
   columnsToDisplay = ['Driver_ID', 'Driver_Name', 'age', 'Driver_Phone_Number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'Driver_Status', 'Action'];
@@ -54,14 +52,7 @@ export class DriversComponent implements OnInit{
   openModal() {
     this.modalComponent.open(); // Call the open method from the modal component
   }
-  openUpdateModal(){
-    this.isUpdateModal = true;
-  }
 
-  closeModal(){
-    this.isModalOpen = false;
-    this.isUpdateModal = false;
-  }
 
   driverList(){
     const payload: any = {
@@ -105,7 +96,6 @@ export class DriversComponent implements OnInit{
       }
       this.appService.addDriver(payload).subscribe((data: any)=>{
         console.log(data);
-        this.isModalOpen = false;
         this.driverList();
       })
     }

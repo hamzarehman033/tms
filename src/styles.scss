@@ -37,4 +37,8 @@ body {
         border-radius: 12px;
         object-fit: cover;
     }
+
+    .modal-backdrop {
+        display: none;
+    }
 }
