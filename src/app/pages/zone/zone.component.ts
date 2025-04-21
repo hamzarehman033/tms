@@ -3,7 +3,7 @@ import { TableComponent } from '../../shared/components/table/table.component';
 import { AppService } from '../../core/service/app.service';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
-import { filterObj } from '../../core/types';
+import { filterObj, modalObj } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
@@ -15,6 +15,8 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 })
 export class ZoneComponent implements OnInit {
   @ViewChild('modalRef') modalComponent!: ModalComponent;
+    
+  zoneFilter: any = {};
   fields: filterObj[] = [
     { type: 'text', key: 'name', placeholder: 'Enter name here', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' }
@@ -29,8 +31,16 @@ export class ZoneComponent implements OnInit {
 
   columnsToDisplay = ['Zone_ID', 'Zone_Name', 'Created_at', 'Legal_Id', 'Contact_Number', 'Zone_Email', 'Zone_Location', 'Action'];
   dataSource: any = [];
-
-  zoneFilters: any = { }
+  button_name = 'Add Zone';
+  heading = 'Add  New Zone'
+    description = 'Kindly fill the below details to add the Zone.';
+    modal_fields: modalObj[] = [
+      { type: 'text', key: 'legal_id', placeholder: 'Legal ID', value: '' },
+      { type: 'text', key: 'name', placeholder: 'Zone Name', value: '' },
+      { type: 'text', key: 'email', placeholder: 'Email', value: '' },
+      { type: 'text', key: 'contact_number', placeholder: 'Phone Number', value: '' },
+      { type: 'text', key: 'location', placeholder: 'Location', value: '' }
+  ];
 
   constructor(private appService: AppService) { }
 
@@ -47,11 +57,11 @@ export class ZoneComponent implements OnInit {
       limit: 10
     }
     this.fields.forEach(field =>{
-      if (field.value) this.zoneFilters[field.key] = field.value;
+      if (field.value) this.zoneFilter[field.key] = field.value;
     })
 
-    if (this.zoneFilters.id) payload["id"] = [Number(this.zoneFilters.id)];
-    if (this.zoneFilters.name) payload["name"] = this.zoneFilters.name;
+    if (this.zoneFilter.id) payload["id"] = [Number(this.zoneFilter.id)];
+    if (this.zoneFilter.name) payload["name"] = this.zoneFilter.name;
 
     this.appService.zoneList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
@@ -60,17 +70,21 @@ export class ZoneComponent implements OnInit {
   }
 
   addZone() {
-    const payload = {
-      legal_id: this.legal_id,
-      name: this.name,
-      email: this.email,
-      contact_number: this.contact_number,
-      location: this.location
-    };
+    const payload: any = {};
+    this.modal_fields.forEach(field =>{
+      if (field.value) this.zoneFilter[field.key] = field.value;
+    })
+    if (this.zoneFilter.legal_id) payload['legal_id'] = this.zoneFilter.legal_id;
+    if (this.zoneFilter.name) payload['name'] = this.zoneFilter.name;
+    if (this.zoneFilter.email) payload['email'] = this.zoneFilter.email;
+    if (this.zoneFilter.contact_number) payload['contact_number'] = this.zoneFilter.contact_number;
+    if (this.zoneFilter.location) payload['location'] = this.zoneFilter.location;
+
 
     this.appService.addZone(payload).subscribe((data: any) => {
-      console.log("Add zone working");
-      this.zoneList();
+      console.log("Add zone working", data?.data?.rows);
+      this.modalComponent.close();
+      this.reset();
     })
   }
 
@@ -108,11 +122,19 @@ export class ZoneComponent implements OnInit {
   }
 
   reset() {
-    this.fields.forEach(field=>{
-      field.value = '';
-    })
-    this.zoneFilters.id = '';
-    this.zoneFilters.name = '';
+    this.fields.forEach(f => {
+      f.value = '';
+    });
+
+    this.modal_fields.forEach(f => {
+      f.value = '';
+    });
+    this.zoneFilter.legal_id = '';
+    this.zoneFilter.email = '';
+    this.zoneFilter.contact_number = '';
+    this.zoneFilter.location = '';
+    this.zoneFilter.id = '';
+    this.zoneFilter.name = '';
     this.zoneList();
   }
 }

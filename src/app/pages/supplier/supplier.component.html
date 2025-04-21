@@ -6,8 +6,12 @@
                 <h5 class="mb-0">Trucking Company</h5>
                 <button type="button" class="btn btn-secondary" (click)="openModal()">Add Trucking Company</button>
             </div>
-            <app-modal #modalRef></app-modal>
+
+            <app-modal #modalRef (addModalDetails)="addSupplier()" [modal_fields]="modal_fields" 
+            [modal_heading]="heading" [description]="description" [button_name]="button_name"></app-modal>
+
             <app-filters [fields]="fields" (applyFilter)="supplierList()" (resetFilter)="reset()"></app-filters>
+
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
             (delete_button)="deleteSupplier($event)" (update_button)="updateSupplier()"></app-table>
             <div class="card-footer">
