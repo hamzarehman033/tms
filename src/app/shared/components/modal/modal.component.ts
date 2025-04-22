@@ -28,6 +28,7 @@ export class ModalComponent {
 
   private modal: any;
   private deleteModal: any;
+  parameter: any;
 
   // Add modal details
   addDetails() {
@@ -49,7 +50,8 @@ export class ModalComponent {
   deleteDetails() {
     this.yesClicked.emit();
   }
-  openDelete(id: any) {
+  openDelete(id: any, param: any) {
+    this.parameter = param;
     this.selectedId = id;
     if (this.selectedId) {
       this.deleteModal = new bootstrap.Modal(this.deleteModalElement?.nativeElement);

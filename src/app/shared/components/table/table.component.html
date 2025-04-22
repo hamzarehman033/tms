@@ -43,13 +43,13 @@
         </button>
         <!-- Delete Button -->
         <button class="btn">
-          <app-icon icon="fluent:delete-28-regular" [width]="24" [height]="24" (click)="deleteButton(element.id)"></app-icon>
+          <app-icon icon="fluent:delete-28-regular" [width]="24" [height]="24" (click)="deleteButton(element.id, 'delete')"></app-icon>
         </button>
       </div>
 
       <!-- Re-Activate Button for restrictions -->
       <div *ngIf="reActivate_button">
-        <button class="btn btn-primary re_activate" (click)="deleteButton(element.id)">Re-Activate</button>
+        <button class="btn btn-primary re_activate" (click)="deleteButton(element.id, 'reActivate')">Re-Activate</button>
       </div>
     </td>
   </ng-container>

@@ -25,9 +25,9 @@ export class TableComponent {
 
   selectedId: any;
 
-  deleteButton(id: any){
+  deleteButton(id: any, param: any){
     this.selectedId = id;
-    this.modalComponent.openDelete(this.selectedId);
+    this.modalComponent.openDelete(this.selectedId, param);
   }
 
   updateButton(id: any){
