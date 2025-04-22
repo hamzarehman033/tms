@@ -13,7 +13,7 @@
             <app-filters [fields]="fields" (applyFilter)="zoneList()" (resetFilter)="reset()"></app-filters>
 
             <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource" 
-            (delete_button)="deleteZone($event)" (update_button)="updateZone()"></app-table>
+            (deleteModalDetails)="deleteZone($event)" (update_button)="updateZone()"></app-table>
             <div class="card-footer">
             </div>
         </div>

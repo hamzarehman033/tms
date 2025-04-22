@@ -13,7 +13,7 @@
             <app-modal #modalRef></app-modal>
             <app-filters [showFilter]="showFilter"></app-filters>
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" [reActivate_button]="reActivate_button" 
-            (delete_button)="removeRestrictionFunction($event)"></app-table>
+            (deleteModalDetails)="removeRestrictionFunction($event)"></app-table>
             <div class="card-footer">
             </div>
         </div>

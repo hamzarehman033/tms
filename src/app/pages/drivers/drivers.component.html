@@ -12,7 +12,7 @@
             <app-filters [fields]="fields" (applyFilter)="driverList()" (resetFilter)="reset()"></app-filters>
             
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
-            (delete_button)="deleteDriver($event)" (update_button)="updateDriver()"></app-table>
+            (deleteModalDetails)="deleteDriver($event)" (update_button)="updateDriver()"></app-table>
             <div class="card-footer">
             </div>
         </div>

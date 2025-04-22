@@ -16,23 +16,49 @@ export class ModalComponent {
   @Input() modal_heading = '';
   @Input() description = '';
   @Input() button_name = '';
+
+  // Input delete id from table componenet
+  selectedId: any;
+
   @Output() addModalDetails = new EventEmitter<any>();
+  @Output() yesClicked = new EventEmitter<any>();
+
   @ViewChild('exampleModal', { static: true }) modalElement!: ElementRef;
+  @ViewChild('deleteModal', { static: true }) deleteModalElement!: ElementRef;
 
   private modal: any;
+  private deleteModal: any;
+
   // Add modal details
-  addDetails(){
+  addDetails() {
     this.addModalDetails.emit();
   }
-
   open() {
-    this.modal = new bootstrap.Modal(this.modalElement.nativeElement);
+    if (!this.modal) {
+      this.modal = new bootstrap.Modal(this.modalElement?.nativeElement);
+    }
     this.modal.show();
   }
-  
-  close(){
+  close() {
     if (this.modal) {
       this.modal.hide();
+    }
+  }
+
+  // Delete details
+  deleteDetails() {
+    this.yesClicked.emit();
+  }
+  openDelete(id: any) {
+    this.selectedId = id;
+    if (this.selectedId) {
+      this.deleteModal = new bootstrap.Modal(this.deleteModalElement?.nativeElement);
+    }
+    this.deleteModal.show();
+  }
+  closeDelete() {
+    if (this.deleteModal) {
+      this.deleteModal.hide();
     }
   }
 }
