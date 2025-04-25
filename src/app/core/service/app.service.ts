@@ -161,4 +161,13 @@ export class AppService {
   removeTruckRestriction(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.removeTruckRestriction}`, formData)
   }
+  
+  // Audit Trail
+  getAuditTrail(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getAuditTrail}`, formData)
+  }
+
+  getAllAuditTrail(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getAllAuditTrails}`, formData)
+  }
 }

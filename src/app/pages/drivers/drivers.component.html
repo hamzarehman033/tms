@@ -14,6 +14,8 @@
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
             (deleteModalDetails)="deleteDriver($event)" (get_button)="getDriver($event)"></app-table>
             <div class="card-footer">
+                <app-paginator [pagination]="pagination" (pageChange)="goToPage($event)" (page_selected)="selectedPage($event)" 
+                [(pageNo)]="pageCount"></app-paginator>
             </div>
         </div>
     </div>

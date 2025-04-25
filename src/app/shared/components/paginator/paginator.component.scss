@@ -1,0 +1,17 @@
+#pageCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    background-color: white;
+    border-color: gainsboro; 
+    color: #525252;
+    height: 29px;
+    border-radius: 4px;
+    margin-top: 1.5px;
+}
+#navPagination{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}

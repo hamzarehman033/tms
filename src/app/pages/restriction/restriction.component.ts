@@ -1,20 +1,20 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { CommonModule } from '@angular/common';
-import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
+import { Pagination } from '../../core/types';
 
 @Component({
   selector: 'app-restriction',
   templateUrl: './restriction.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule, FiltersComponent, CommonModule, ModalComponent],
+  imports: [TableComponent, FormsModule, FiltersComponent, CommonModule, PaginatorComponent],
   styleUrl: './restriction.component.scss'
 })
 export class RestrictionComponent implements OnInit {
-  @ViewChild('modalRef') modalComponent!: ModalComponent;
   columnsToDisplay: string[] = [];
   activeButton: string = 'supplier';
 
@@ -25,16 +25,23 @@ export class RestrictionComponent implements OnInit {
   showFilter: boolean = false;
   reActivate_button: boolean = true;
   type: any;
+
+  // Pagination
+  pagination: Pagination = {
+    current_page: 1,
+    per_page: 10,
+    total_pages: [],
+    total_records: 10,
+  }
+  pageCount: number = 10;
+
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
     this.list_type('supplier');
     this.getRestriction('supplier');
   }
-  openModal() {
-    this.modalComponent.open('','add'); // Call the open method from the modal component
-  }
-  
+
   list_type(type: any) {
     if (type === 'supplier') {
       this.columnsToDisplay = ['ID', 'restriction_name', 'restriction_ph_no', 'Supplier_Documents', 'Reason', 'Action'];
@@ -49,10 +56,11 @@ export class RestrictionComponent implements OnInit {
   }
 
   // Set Active List
-  setActive(btn: string){
+  setActive(btn: string) {
     this.activeButton = btn;
     this.getRestriction(btn);
   }
+
   addRestriction() {
     const payload: any = {}
     if (this.rest_id) payload["id"] = this.rest_id;
@@ -71,11 +79,16 @@ export class RestrictionComponent implements OnInit {
 
     const payload =
     {
+      limit: this.pagination.per_page,
+      page: this.pagination.current_page,
       user_role: list
     }
     this.appService.getRestriction(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
       console.log("Restriction's Data: ", this.dataSource);
+      this.pagination.total_records = data.data.count;
+      let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
+      this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
   }
 
@@ -121,4 +134,16 @@ export class RestrictionComponent implements OnInit {
       this.removeRestriction(del_id);
     }
   }
+
+  goToPage(page: number): void {
+    this.pagination.current_page = page;
+    this.getRestriction(this.type);
+  }
+
+  selectedPage(pages_Selected: number) {
+    this.pagination.per_page = pages_Selected;
+    this.pagination.current_page = 1;
+    this.getRestriction(this.type);
+  }
 }
+

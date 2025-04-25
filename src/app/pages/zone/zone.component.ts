@@ -3,14 +3,15 @@ import { TableComponent } from '../../shared/components/table/table.component';
 import { AppService } from '../../core/service/app.service';
 import { FormsModule, Validators } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
-import { filterObj, modalObj } from '../../core/types';
+import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule, FiltersComponent, ModalComponent],
+  imports: [TableComponent, FormsModule, FiltersComponent, ModalComponent, PaginatorComponent],
   styleUrl: './zone.component.scss'
 })
 export class ZoneComponent implements OnInit {
@@ -55,6 +56,15 @@ export class ZoneComponent implements OnInit {
     { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true }
   ];
 
+  // Pagination
+  pagination: Pagination = {
+    current_page: 1,
+    per_page: 10,
+    total_pages: [],
+    total_records: 10,
+  }
+  pageCount:number = 10;
+
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
@@ -68,7 +78,8 @@ export class ZoneComponent implements OnInit {
 
   zoneList() {
     const payload: any = {
-      limit: 10
+      limit: this.pagination.per_page,
+      page: this.pagination.current_page
     }
     this.fields.forEach(field => {
       if (field.value) this.zoneFilter[field.key] = field.value;
@@ -79,7 +90,10 @@ export class ZoneComponent implements OnInit {
 
     this.appService.zoneList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
-      console.log("zone data", this.dataSource);
+      // console.log("zone data", this.dataSource);
+      this.pagination.total_records = data.data.count;
+      let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
+      this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
   }
 
@@ -144,6 +158,22 @@ export class ZoneComponent implements OnInit {
     this.zoneFilter.location = '';
     this.zoneFilter.id = '';
     this.zoneFilter.name = '';
+
+    this.pagination.current_page = 1;
+    this.pagination.per_page = 10;
+    this.pageCount = 10;
+
+    this.zoneList();
+  }
+
+  goToPage(page: number): void {
+    this.pagination.current_page = page;
+    this.zoneList();
+  }
+
+  selectedPage(pages_Selected: number){
+    this.pagination.per_page = pages_Selected;
+    this.pagination.current_page = 1;
     this.zoneList();
   }
 }

@@ -2,15 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
-import { filterObj, modalObj } from '../../core/types';
+import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { Validators } from '@angular/forms';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
   selector: 'app-supplier',
   templateUrl: './supplier.component.html',
   standalone: true,
-  imports: [TableComponent, FiltersComponent, ModalComponent],
+  imports: [TableComponent, FiltersComponent, ModalComponent, PaginatorComponent],
   styleUrl: './supplier.component.scss'
 })
 
@@ -67,6 +68,15 @@ export class SupplierComponent implements OnInit {
     }
   };
 
+  // Pagination
+  pagination: Pagination = {
+    current_page: 1,
+    per_page: 10,
+    total_pages: [],
+    total_records: 10,
+  }
+  pageCount:number = 10;
+
   constructor(private appService: AppService) { }
   ngOnInit(): void {
     this.supplierList();
@@ -79,7 +89,8 @@ export class SupplierComponent implements OnInit {
 
   supplierList() {
     const payload: any = {
-      limit: 10
+      limit: this.pagination.per_page,
+      page: this.pagination.current_page
     };
 
     this.fields.forEach(field => {
@@ -93,6 +104,9 @@ export class SupplierComponent implements OnInit {
     this.appService.supplierList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
       console.log("Supplier data:", data?.data?.rows);
+      this.pagination.total_records = data.data.count;
+      let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
+      this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
   }
 
@@ -168,6 +182,21 @@ export class SupplierComponent implements OnInit {
     this.supplierFilter.company_name = '';
     this.supplierFilter.company_address = '';
     this.supplierFilter.phone_number = '';
+
+    this.pagination.current_page = 1;
+    this.pagination.per_page = 10;
+    this.pageCount = 10;
+    this.supplierList();
+  }
+
+  goToPage(page: number): void {
+    this.pagination.current_page = page;
+    this.supplierList();
+  }
+
+  selectedPage(pages_Selected: number) {
+    this.pagination.per_page = pages_Selected;
+    this.pagination.current_page = 1;
     this.supplierList();
   }
 }

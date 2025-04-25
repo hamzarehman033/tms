@@ -1,1 +1,47 @@
-<p>paginator works!</p>
+<nav aria-label="Page navigation example">
+    <div id="navPagination" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <!-- Left Side: Pagination -->
+        <ul *ngIf="pagination.total_records > 0" class="pagination bg-transparent me-4">
+        <li class="page-item">
+            <button [disabled]="pagination.current_page < 2" class="page-link"
+                (click)="goToPage(pagination.current_page - 1)">
+                Previous
+            </button>
+        </li>
+
+        <li *ngFor="let page of getVisiblePages()" class="page-item"
+            [ngClass]="{'active': page == pagination.current_page}">
+            <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+        </li>
+
+        <li class="page-item">
+            <button [disabled]="pagination.current_page == pagination.total_pages.length" class="page-link"
+                (click)="goToPage(pagination.current_page + 1)">
+                Next
+            </button>
+        </li>
+    </ul>
+    <!-- Right Side: Records & Total Records -->
+    <div class="mt-0" style="display: flex; align-items: center; gap: 16px;">
+        <div *ngIf="showPaginator" style="display: flex; align-items: center; gap: 4px;">
+            <label style="padding: 4.8px;">Records:</label>
+            <div class="dropdown">
+                <button class="btn btn_secondary dropdown-toggle" id="pageCount" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    {{ pageNo }}
+                </button>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let pages of pagesList">
+                        <a class="dropdown-item" (click)="pagesSelected(pages)">
+                            {{ pages }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div *ngIf="showPaginator">
+            <label style="padding: 4.8px;">Total Records: {{ pagination.total_records || 0 }}</label>
+        </div>
+    </div>
+</div>
+</nav>

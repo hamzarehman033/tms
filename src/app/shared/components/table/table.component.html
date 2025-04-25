@@ -421,6 +421,42 @@
     </td>
   </ng-container>
 
+  <!-- Audit Trail -->
+  <ng-container matColumnDef="audit_id">
+    <th mat-header-cell *matHeaderCellDef> Audit ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="module_name">
+    <th mat-header-cell *matHeaderCellDef> Module Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.module_name}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="audit_type">
+    <th mat-header-cell *matHeaderCellDef> Audit Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="audit_activity">
+    <th mat-header-cell *matHeaderCellDef> Audit Activity </th>
+    <td mat-cell *matCellDef="let element"> {{element.activity}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="audit_email">
+    <th mat-header-cell *matHeaderCellDef> Audit Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.user_email}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="ip_address">
+    <th mat-header-cell *matHeaderCellDef> IP Address </th>
+    <td mat-cell *matCellDef="let element"> {{element.user_ip}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="audit_action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element"> {{element.action_type_id}} </td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

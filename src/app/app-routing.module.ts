@@ -67,6 +67,11 @@ const routes: Routes = [
     loadComponent: () =>
       import('./pages/trucking-requests/trucking-requests.component').then(m => m.TruckingRequestsComponent),
   },
+  {
+    path: 'audit-trail',
+    loadComponent: () =>
+      import('./pages/audit-trail/audit-trail.component').then(m => m.AuditTrailComponent),
+  },
 ];
 
 @NgModule({

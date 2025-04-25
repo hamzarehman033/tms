@@ -3,15 +3,16 @@ import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { Validators } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
-import { filterObj, modalObj } from '../../core/types';
+import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { CommonModule } from '@angular/common';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
   selector: 'app-farm',
   templateUrl: './farm.component.html',
   standalone: true,
-  imports: [TableComponent, FiltersComponent, ModalComponent, CommonModule],
+  imports: [TableComponent, FiltersComponent, ModalComponent, CommonModule, PaginatorComponent],
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {
@@ -24,7 +25,8 @@ export class FarmComponent implements OnInit {
   fields: filterObj[] = [
     { type: 'text', key: 'name', placeholder: 'Enter Name here', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
-    { type: 'dropdown', key: 'zone', placeholder: 'Select Zone', value: '',
+    {
+      type: 'dropdown', key: 'zone', placeholder: 'Select Zone', value: '',
       options: [
         { label: 'Option 1', value: 1 },
         { label: 'Option 2', value: 2 },
@@ -37,8 +39,8 @@ export class FarmComponent implements OnInit {
     { type: 'text', key: 'first_name', placeholder: 'First Name', value: '' },
     { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '' },
     { type: 'text', key: 'email', placeholder: 'Email', value: '' },
-    { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [ { label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 } ] },
-    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [ { label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 } ] },
+    { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }] },
+    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }] },
     { type: 'text', key: 'farm_address', placeholder: 'Farm Address', value: '' },
     { type: 'text', key: 'latitude', placeholder: 'Latitude', value: '' },
     { type: 'text', key: 'longitude', placeholder: 'Longitude', value: '' }
@@ -64,7 +66,15 @@ export class FarmComponent implements OnInit {
       description: 'Kindly fill the below details to update farm.'
     }
   };
-  
+
+  // Pagination
+  pagination: Pagination = {
+    current_page: 1,
+    per_page: 10,
+    total_pages: [],
+    total_records: 10,
+  }
+  pageCount: number = 10;
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
@@ -73,12 +83,12 @@ export class FarmComponent implements OnInit {
 
   openModal() {
     this.editMode = false;
-    this.modalComponent.open('','add'); // Call the open method from the modal component
+    this.modalComponent.open('', 'add'); // Call the open method from the modal component
   }
 
   addFarm(data: any) {
-    
-    const payload: any ={}
+
+    const payload: any = {}
     if (data.first_name) payload['first_name'] = data.first_name;
     if (data.last_name) payload['last_name'] = data.last_name;
     if (data.email) payload['email'] = data.email;
@@ -98,7 +108,8 @@ export class FarmComponent implements OnInit {
 
   farmList() {
     const payload: any = {
-      limit: 10
+      limit: this.pagination.per_page,
+      page: this.pagination.current_page
     }
     this.fields.forEach(field => {
       if (field.value) this.farmFilters[field.key] = field.value;
@@ -111,6 +122,9 @@ export class FarmComponent implements OnInit {
     this.appService.farmList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
       console.log("Farm Data: ", this.dataSource);
+      this.pagination.total_records = data.data.count;
+      let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
+      this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
   }
 
@@ -144,7 +158,7 @@ export class FarmComponent implements OnInit {
       id: id,
     }
     this.appService.getFarm(payload).subscribe((data: any) => {
-    this.modalComponent.open(data, 'update'); 
+      this.modalComponent.open(data, 'update');
     })
   }
 
@@ -165,6 +179,21 @@ export class FarmComponent implements OnInit {
     this.farmFilters.id = '';
     this.farmFilters.name = '';
     this.farmFilters.zone = '';
+
+    this.pagination.current_page = 1;
+    this.pagination.per_page = 10;
+    this.pageCount = 10;
+    this.farmList();
+  }
+
+  goToPage(page: number): void {
+    this.pagination.current_page = page;
+    this.farmList();
+  }
+
+  selectedPage(pages_Selected: number){
+    this.pagination.per_page = pages_Selected;
+    this.pagination.current_page = 1;
     this.farmList();
   }
 }

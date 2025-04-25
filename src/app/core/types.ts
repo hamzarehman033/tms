@@ -17,3 +17,10 @@ export interface filterObj {
     hidden?: boolean;
     validators?: ValidatorFn[];
   }
+
+  export interface Pagination {
+    current_page: number;
+    per_page: number;
+    total_pages: number[];
+    total_records: number;
+  }

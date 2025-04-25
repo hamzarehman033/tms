@@ -5,13 +5,14 @@ import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
-import { filterObj, modalObj } from '../../core/types';
+import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [TableComponent, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent, ModalComponent],
+  imports: [TableComponent, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent, ModalComponent, PaginatorComponent],
   templateUrl: './drivers.component.html',
   styleUrl: './drivers.component.scss'
 })
@@ -69,6 +70,15 @@ export class DriversComponent implements OnInit {
     }
   };
 
+  // Pagination
+  pagination: Pagination = {
+    current_page: 1,
+    per_page: 10,
+    total_pages: [],
+    total_records: 10,
+  }
+  pageCount:number = 10;
+
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
@@ -82,7 +92,8 @@ export class DriversComponent implements OnInit {
 
   driverList() {
     const payload: any = {
-      limit: 10
+      limit: this.pagination.per_page,
+      page: this.pagination.current_page
     }
     this.fields.forEach(field => {
       if (field.value) this.driverFilter[field.key] = field.value;
@@ -96,6 +107,9 @@ export class DriversComponent implements OnInit {
     this.appService.driverList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
       console.log("Drivers data: ", this.dataSource);
+      this.pagination.total_records = data.data.count;
+      let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
+      this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
   }
 
@@ -175,6 +189,20 @@ export class DriversComponent implements OnInit {
     this.driverFilter.license_number = '';
     this.driverFilter.license_expiry = '';
 
+    this.pagination.current_page = 1;
+    this.pagination.per_page = 10;
+    this.pageCount = 10;
+    this.driverList();
+  }
+
+  goToPage(page: number): void {
+    this.pagination.current_page = page;
+    this.driverList();
+  }
+
+  selectedPage(pages_Selected: number){
+    this.pagination.per_page = pages_Selected;
+    this.pagination.current_page = 1;
     this.driverList();
   }
 }
