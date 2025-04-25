@@ -4,6 +4,7 @@ import { TableComponent } from '../../shared/components/table/table.component';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { filterObj, modalObj } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-supplier',
@@ -16,21 +17,17 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 export class SupplierComponent implements OnInit {
   @ViewChild('modalRef') modalComponent!: ModalComponent;
   fields: filterObj[] = [
-    { type: 'text', key: 'Booking Id', placeholder: 'Enter Id here', value: '' },
-    { type: 'text', key: 'Company name', placeholder: 'Enter name here', value: '' },
+    { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
+    { type: 'text', key: 'company_name', placeholder: 'Enter name here', value: '' },
     { type: 'text', key: 'email', placeholder: 'Select Email here', value: '' }
   ];
 
   supplierFilter: any = {};
-  supplier_id: any = 1;
-  supplier_data: any;
-  columnsToDisplay: string[] = ['Booking_Id', 'Company_Name', 'Supplier_Contact_Person', 'Supplier_Email', 'Supplier_Phone_Number', 'Action'];
+  columnsToDisplay: string[] = ['Booking_Id', 'Company_Name', 'Supplier_Contact_Person', 'Supplier_Email', 'Action'];
   dataSource: any = [];
+  editMode: any;
 
-  button_name = 'Add Trucking Company';
-  heading = 'Add  New Trucking Company';
-  description = 'Kindly fill the below details to add the Trucking Company.';
-  modal_fields: modalObj[] = [
+  add_fields: modalObj[] = [
     { type: 'text', key: 'first_name', placeholder: 'First Name', value: '' },
     { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '' },
     { type: 'text', key: 'email', placeholder: 'Email', value: '' },
@@ -42,13 +39,42 @@ export class SupplierComponent implements OnInit {
     { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '' }
   ];
 
+  update_fields: modalObj[] = [
+    { type: 'text', key: 'id', placeholder: 'ID', value: '', hidden: true },
+    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
+    { type: 'text', key: 'company_name', placeholder: 'Company Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'company_address', placeholder: 'Company Address', value: '', validators: [Validators.required] },
+    {
+      type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11),
+      Validators.pattern(/^[0-9]+$/)]
+    },
+    { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 1 }, { label: 'In Active', value: 0 }], validators: [Validators.required] },
+    { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true }
+  ];
+
+  dataObject: any = {
+    add_modal: {
+      button_name: 'Add Trucking Company',
+      heading: 'Add New Trucking Company',
+      description: 'Kindly fill the below details to add the Trucking Company.'
+    },
+    update_modal: {
+      button_name: 'Update Trucking Company',
+      heading: 'Update Trucking Company',
+      description: 'Kindly fill the below details to update the Trucking Company.'
+    }
+  };
+
   constructor(private appService: AppService) { }
   ngOnInit(): void {
     this.supplierList();
   }
 
   openModal() {
-    this.modalComponent.open(); // Call the open method from the modal component
+    this.editMode = false;
+    this.modalComponent.open('', 'add'); // Call the open method from the modal component
   }
 
   supplierList() {
@@ -70,30 +96,28 @@ export class SupplierComponent implements OnInit {
     })
   }
 
-  getSupplier() {
+  getSupplier(id: any) {
+    this.editMode = true;
     const payload = {
-      id: this.supplier_id
+      id: id
     };
     this.appService.getSupplier(payload).subscribe((data: any) => {
-      console.log(data?.data?.suppliers);
+      this.modalComponent.open(data, 'update');
     })
   }
 
-  addSupplier() {
-    this.modal_fields.forEach(field => {
-      if (field.value) this.supplierFilter[field.key] = field.value;
-    });
+  addSupplier(data: any) {
 
     const payload: any = {}
-    if (this.supplierFilter.first_name) payload['first_name'] = this.supplierFilter.first_name;
-    if (this.supplierFilter.last_name) payload['last_name'] = this.supplierFilter.last_name;
-    if (this.supplierFilter.email) payload['email'] = this.supplierFilter.email;
-    if (this.supplierFilter.role_id) payload['role_id'] = Number(this.supplierFilter.role_id);
-    if (this.supplierFilter.zone_id) payload['zone_id'] = Number(this.supplierFilter.zone_id);
-    if (this.supplierFilter.status) payload['status'] = Number(this.supplierFilter.status);
-    if (this.supplierFilter.company_name) payload['company_name'] = this.supplierFilter.company_name;
-    if (this.supplierFilter.company_address) payload['company_address'] = this.supplierFilter.company_address;
-    if (this.supplierFilter.phone_number) payload['phone_number'] = this.supplierFilter.phone_number;
+    if (data.first_name) payload['first_name'] = data.first_name;
+    if (data.last_name) payload['last_name'] = data.last_name;
+    if (data.email) payload['email'] = data.email;
+    if (data.role_id) payload['role_id'] = Number(data.role_id);
+    if (data.zone_id) payload['zone_id'] = Number(data.zone_id);
+    if (data.status) payload['status'] = Number(data.status);
+    if (data.company_name) payload['company_name'] = data.company_name;
+    if (data.company_address) payload['company_address'] = data.company_address;
+    if (data.phone_number) payload['phone_number'] = data.phone_number;
 
     this.appService.addSupplier(payload).subscribe((data: any) => {
       console.log(data?.data?.rows);
@@ -102,24 +126,27 @@ export class SupplierComponent implements OnInit {
     })
   }
 
-  updateSupplier() {
-    const payload = {
-      id: 8,
-      first_name: "supplier01",
-      last_name: "test",
-      company_name: "FreshDelmonte",
-      email: "supplier_22@gmail.com",
-      phone_number: "345678987"
-    }
+  updateSupplier(data: any) {
+
+    const payload: any = {}
+    if (data.first_name) payload['id'] = data.id;
+    if (data.first_name) payload['first_name'] = data.first_name;
+    if (data.last_name) payload['last_name'] = data.last_name;
+    if (data.email) payload['email'] = data.email;
+    if (data.status) payload['status'] = Number(data.status);
+    if (data.restriction_reason) payload['restriction_reason'] = data.restriction_reason;
+    if (data.company_name) payload['company_name'] = data.company_name;
+    if (data.company_address) payload['company_address'] = data.company_address;
+    if (data.phone_number) payload['phone_number'] = data.phone_number;
+
     this.appService.updateSupplier(payload).subscribe((data: any) => {
-      console.log(data?.data?.suppliers);
       this.supplierList();
     })
   }
 
-  deleteSupplier(del_id: any) {
+  deleteSupplier(id: any) {
     const payload = {
-      id: del_id
+      id: id
     }
     this.appService.deleteSupplier(payload).subscribe((data: any) => {
       console.log(data?.data?.suppliers);
@@ -131,9 +158,7 @@ export class SupplierComponent implements OnInit {
     this.fields.forEach(f => {
       f.value = '';
     });
-    this.modal_fields.forEach(f => {
-      f.value = '';
-    });
+
     this.supplierFilter.first_name = '';
     this.supplierFilter.last_name = '';
     this.supplierFilter.email = '';

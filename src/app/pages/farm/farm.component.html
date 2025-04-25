@@ -7,13 +7,13 @@
                 <button type="button" class="btn btn-secondary" (click)="openModal()">Add Farm</button>
             </div>
             
-            <app-modal #modalRef (addModalDetails)="addFarm()" [modal_fields]="modal_fields" 
-            [modal_heading]="heading" [description]="description" [button_name]="button_name"></app-modal>
+            <app-modal #modalRef (addModalDetails)="addFarm($event)" (updateModalDetails)="updateFarm($event)"
+            [modal_fields]="editMode ? update_fields : add_fields" [modal_info]="dataObject"></app-modal>
 
             <app-filters [fields]="fields" (applyFilter)="farmList()" (resetFilter)="reset()"></app-filters>
 
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
-            (deleteModalDetails)="deleteFarm($event)" (update_button)="updateFarm()"></app-table>
+            (deleteModalDetails)="deleteFarm($event)" (get_button)="getFarm($event)"></app-table>
             <div class="card-footer">
             </div>
         </div>

@@ -7,21 +7,15 @@
                 <button type="button" class="btn btn-secondary" (click)="openModal()">Add Trucking Company</button>
             </div>
 
-            <app-modal #modalRef (addModalDetails)="addSupplier()" [modal_fields]="modal_fields" 
-            [modal_heading]="heading" [description]="description" [button_name]="button_name"></app-modal>
+            <app-modal #modalRef (addModalDetails)="addSupplier($event)" (updateModalDetails)="updateSupplier($event)" 
+            [modal_fields]="editMode ? update_fields : add_fields" [modal_info]="dataObject"></app-modal>
 
             <app-filters [fields]="fields" (applyFilter)="supplierList()" (resetFilter)="reset()"></app-filters>
 
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
-            (deleteModalDetails)="deleteSupplier($event)" (update_button)="updateSupplier()"></app-table>
+            (deleteModalDetails)="deleteSupplier($event)" (get_button)="getSupplier($event)"></app-table>
             <div class="card-footer">
             </div>
         </div>
     </div>
 </div>
-
-<!-- <div style="display: flex; gap: 10px; margin: 10px;">
-    <button class="btn btn-outline-secondary" (click)="addSupplier()">
-        Add Supplier
-    </button>
-</div> -->

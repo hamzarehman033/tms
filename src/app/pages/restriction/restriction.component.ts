@@ -32,7 +32,7 @@ export class RestrictionComponent implements OnInit {
     this.getRestriction('supplier');
   }
   openModal() {
-    this.modalComponent.open(); // Call the open method from the modal component
+    this.modalComponent.open('','add'); // Call the open method from the modal component
   }
   
   list_type(type: any) {
@@ -86,7 +86,6 @@ export class RestrictionComponent implements OnInit {
     }
     this.appService.removeRestriction(payload).subscribe((data: any) => {
       console.log("Restrictionnnnnn typeeeeeeee from supplier and driver", this.type);
-
       this.getRestriction(this.type);
     })
   }
@@ -109,7 +108,6 @@ export class RestrictionComponent implements OnInit {
     }
     this.appService.removeTruckRestriction(payload).subscribe((data: any) => {
       console.log("Restrictionnnnnn typeeeeeeee from tuckkkkk", this.type);
-
       this.getRestriction(this.type);
     })
   }

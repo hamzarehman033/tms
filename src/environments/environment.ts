@@ -1,3 +1,3 @@
 export const environment = {
-    baseURL: `https://15c6-203-82-55-94.ngrok-free.app/api`,
+    baseURL: `https://b8cg175f-3000.inc1.devtunnels.ms/api`,
 };

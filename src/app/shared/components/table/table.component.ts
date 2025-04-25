@@ -18,7 +18,7 @@ export class TableComponent {
   @Input() dataSource: any;
   @Input() reActivate_button: any;
 
-  @Output() update_button = new EventEmitter<any>();
+  @Output() get_button = new EventEmitter<any>();
   @Output() deleteModalDetails = new EventEmitter<any>();
  
   @ViewChild('deleteModal') modalComponent !: ModalComponent;
@@ -30,8 +30,8 @@ export class TableComponent {
     this.modalComponent.openDelete(this.selectedId, param);
   }
 
-  updateButton(id: any){
-    this.update_button.emit(id);
+  getButton(id: any){
+    this.get_button.emit(id);
   }
 
   confirmDelete(){

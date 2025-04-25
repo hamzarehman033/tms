@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { AppService } from '../../core/service/app.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, Validators } from '@angular/forms';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { filterObj, modalObj } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
@@ -15,31 +15,44 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 })
 export class ZoneComponent implements OnInit {
   @ViewChild('modalRef') modalComponent!: ModalComponent;
-    
+  editMode: any;
   zoneFilter: any = {};
+
   fields: filterObj[] = [
     { type: 'text', key: 'name', placeholder: 'Enter name here', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' }
-    ];
-
-  legal_id = "zone_123";
-  name = "zone_123";
-  email = "zone_123@gmail.com";
-  contact_number = "032950900000321";
-  location = "zone location 123";
-  id: any;
+  ];
 
   columnsToDisplay = ['Zone_ID', 'Zone_Name', 'Created_at', 'Legal_Id', 'Contact_Number', 'Zone_Email', 'Zone_Location', 'Action'];
   dataSource: any = [];
-  button_name = 'Add Zone';
-  heading = 'Add  New Zone'
-    description = 'Kindly fill the below details to add the Zone.';
-    modal_fields: modalObj[] = [
-      { type: 'text', key: 'legal_id', placeholder: 'Legal ID', value: '' },
-      { type: 'text', key: 'name', placeholder: 'Zone Name', value: '' },
-      { type: 'text', key: 'email', placeholder: 'Email', value: '' },
-      { type: 'text', key: 'contact_number', placeholder: 'Phone Number', value: '' },
-      { type: 'text', key: 'location', placeholder: 'Location', value: '' }
+
+  dataObject: any = {
+    add_modal: {
+      button_name: 'Add Zone',
+      heading: 'Add  New Zone',
+      description: 'Kindly fill the below details to add the Zone.'
+    },
+    update_modal: {
+      button_name: 'Update Zone',
+      heading: 'Update Zone',
+      description: 'Kindly fill the below details to update Zone.'
+    }
+  };
+  add_fields: modalObj[] = [
+    { type: 'text', key: 'legal_id', placeholder: 'Legal ID', value: '' },
+    { type: 'text', key: 'name', placeholder: 'Zone Name', value: '' },
+    { type: 'text', key: 'email', placeholder: 'Email', value: '' },
+    { type: 'text', key: 'contact_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
+    { type: 'text', key: 'location', placeholder: 'Location', value: '' }
+  ];
+
+  update_fields: modalObj[] = [
+    { type: 'text', key: 'id', placeholder: 'ID', value: '', hidden: true },
+    { type: 'text', key: 'name', placeholder: 'Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'contact_number', placeholder: 'Contact Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
+    { type: 'text', key: 'location', placeholder: 'Location', value: '', validators: [Validators.required] },
+    { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 1 }, { label: 'In Active', value: 0 }], validators: [Validators.required] },
+    { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true }
   ];
 
   constructor(private appService: AppService) { }
@@ -49,14 +62,15 @@ export class ZoneComponent implements OnInit {
   }
 
   openModal() {
-    this.modalComponent.open(); // Call the open method from the modal component
+    this.editMode = false;
+    this.modalComponent.open('', 'add'); // Call the open method from the modal component
   }
-  
+
   zoneList() {
     const payload: any = {
       limit: 10
     }
-    this.fields.forEach(field =>{
+    this.fields.forEach(field => {
       if (field.value) this.zoneFilter[field.key] = field.value;
     })
 
@@ -69,16 +83,14 @@ export class ZoneComponent implements OnInit {
     })
   }
 
-  addZone() {
+  addZone(data: any) {
     const payload: any = {};
-    this.modal_fields.forEach(field =>{
-      if (field.value) this.zoneFilter[field.key] = field.value;
-    })
-    if (this.zoneFilter.legal_id) payload['legal_id'] = this.zoneFilter.legal_id;
-    if (this.zoneFilter.name) payload['name'] = this.zoneFilter.name;
-    if (this.zoneFilter.email) payload['email'] = this.zoneFilter.email;
-    if (this.zoneFilter.contact_number) payload['contact_number'] = this.zoneFilter.contact_number;
-    if (this.zoneFilter.location) payload['location'] = this.zoneFilter.location;
+
+    if (data.legal_id) payload['legal_id'] = data.legal_id;
+    if (data.name) payload['name'] = data.name;
+    if (data.email) payload['email'] = data.email;
+    if (data.contact_number) payload['contact_number'] = data.contact_number;
+    if (data.location) payload['location'] = data.location;
 
 
     this.appService.addZone(payload).subscribe((data: any) => {
@@ -88,22 +100,22 @@ export class ZoneComponent implements OnInit {
     })
   }
 
-  updateZone() {
-    const payload = {
-      id: 1,
-      name: this.name,
-      contact_number: this.contact_number,
-      location: this.location
-    }
+  updateZone(data: any) {
+    const payload: any = {};
+
+    if (data.id) payload['id'] = data.id;
+    if (data.name) payload['name'] = data.name;
+    if (data.contact_number) payload['contact_number'] = data.contact_number;
+    if (data.location) payload['location'] = data.location;
+
     this.appService.updateZone(payload).subscribe((data: any) => {
-      console.log("Update Zone Called", data?.zone);
       this.zoneList();
     })
   }
 
-  deleteZone(del_id: any) {
+  deleteZone(id: any) {
     const payload = {
-      id: del_id
+      id: id
     }
     this.appService.deleteZone(payload).subscribe((data: any) => {
       console.log("Delete zone api called: ", data?.zone);
@@ -111,13 +123,13 @@ export class ZoneComponent implements OnInit {
     })
   }
 
-  getZone() {
+  getZone(id: any) {
+    this.editMode = true;
     const payload = {
-      id: 1
+      id: id
     }
     this.appService.getZone(payload).subscribe((data: any) => {
-      console.log("Get Zone API call: ", data?.zone);
-      this.zoneList();
+    this.modalComponent.open(data, 'update');
     })
   }
 
@@ -126,9 +138,6 @@ export class ZoneComponent implements OnInit {
       f.value = '';
     });
 
-    this.modal_fields.forEach(f => {
-      f.value = '';
-    });
     this.zoneFilter.legal_id = '';
     this.zoneFilter.email = '';
     this.zoneFilter.contact_number = '';

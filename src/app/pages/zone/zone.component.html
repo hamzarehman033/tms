@@ -7,13 +7,13 @@
                 <button type="button" class="btn btn-secondary" (click)="openModal()">Add Zone</button>
             </div>
 
-            <app-modal #modalRef (addModalDetails)="addZone()" [modal_fields]="modal_fields" 
-            [modal_heading]="heading" [description]="description" [button_name]="button_name"></app-modal>
+            <app-modal #modalRef (addModalDetails)="addZone($event)" (updateModalDetails)="updateZone($event)" 
+            [modal_fields]="editMode ? update_fields : add_fields" [modal_info]="dataObject"></app-modal>
 
             <app-filters [fields]="fields" (applyFilter)="zoneList()" (resetFilter)="reset()"></app-filters>
 
             <app-table [displayedColumns]="columnsToDisplay" [dataSource] = "dataSource" 
-            (deleteModalDetails)="deleteZone($event)" (update_button)="updateZone()"></app-table>
+            (deleteModalDetails)="deleteZone($event)" (get_button)="getZone($event)"></app-table>
             <div class="card-footer">
             </div>
         </div>

@@ -1,13 +1,19 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer [opened]="true" class="example-sidenav" mode="side">
-    <app-sidebar></app-sidebar>
-  </mat-drawer>
-  <div class="example-sidenav-content">
-    <!-- <app-icon [icon]="icon" width="32" height="32" color="blue"></app-icon> -->
-    <!-- <app-icon icon="mdi:menu-open" [width]="24" [height]="24" class="text-dark"></app-icon> -->
-    <app-header (toggleDrawer)="drawer.toggle()"></app-header>
-    <div class="base-content">
-      <router-outlet />
+<ng-container *ngIf="showLayout; else loginOnly">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer [opened]="true" class="example-sidenav" mode="side">
+      <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <div class="example-sidenav-content">
+      <!-- <app-icon [icon]="icon" width="32" height="32" color="blue"></app-icon> -->
+      <!-- <app-icon icon="mdi:menu-open" [width]="24" [height]="24" class="text-dark"></app-icon> -->
+      <app-header (toggleDrawer)="drawer.toggle()"></app-header>
+      <div class="base-content">
+        <router-outlet />
+      </div>
     </div>
-  </div>
-</mat-drawer-container>
+  </mat-drawer-container>
+</ng-container>
+
+<ng-template #loginOnly>
+  <router-outlet></router-outlet>
+</ng-template>

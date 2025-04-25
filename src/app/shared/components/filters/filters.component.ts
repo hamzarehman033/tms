@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { filterObj } from '../../../core/types';
 import { IconComponent } from '../icon/icon.component';
@@ -24,5 +24,10 @@ export class FiltersComponent {
   }
   clickResetButton(){
     this.resetFilter.emit();
+  }
+
+  filterMapper: any = {
+    company_name: 'Company Name',
+    license_status: 'License Status'
   }
 }

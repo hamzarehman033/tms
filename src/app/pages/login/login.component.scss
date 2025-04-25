@@ -1,0 +1,84 @@
+@import "https://github.com/hamzarehman033/tms/blob/main/src/assets/css/variable.scss";
+
+
+.bg-login {
+    background-image: url("/assets/images/bg-login.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .logo-login {
+        position: absolute;
+        top: 3rem;
+        left: 2rem;
+    }
+
+    .form-control {
+        // background-color: $color-input;
+        // border-color: $color-input;
+        padding: 1.5rem !important;
+        border-radius: 0.75rem;
+        // font-size: $font-lg !important;
+    }
+
+    .btn-primary {
+        padding: 0.65rem !important;
+        border-radius: 0.5rem;
+    }
+
+    .card {
+        border-radius: 32px;
+        position: relative;
+        z-index: 2;
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .shape-left {
+            position: absolute;
+            top: -51px;
+            left: -108px;
+        }
+
+        .shape-right {
+            position: absolute;
+            bottom: -145px;
+            right: -88px;
+            z-index: -1;
+        }
+    }
+
+    .shape-top {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        img {
+            height: 70px;
+        }
+    }
+
+    .eye-login {
+        right: 1rem;
+        top: 13px;
+        cursor: pointer;
+        img {
+            height: 16px;
+        }
+    }
+
+
+}
+::-ms-reveal {
+    display: none;
+}
+.text-dark{
+    color: black !important;
+}

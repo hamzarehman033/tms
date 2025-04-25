@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../core/service/app.service';
 import { TableComponent } from '../../shared/components/table/table.component';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
@@ -11,7 +11,7 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [TableComponent, FormsModule, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent, ModalComponent],
+  imports: [TableComponent, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent, ModalComponent],
   templateUrl: './drivers.component.html',
   styleUrl: './drivers.component.scss'
 })
@@ -25,35 +25,59 @@ export class DriversComponent implements OnInit {
     { type: 'text', key: 'license_status', placeholder: 'Status', value: '' }
   ];
 
-  driver_id: any = 5;
   isAddDriver: boolean = false;
   columnsToDisplay = ['Driver_ID', 'Driver_Name', 'age', 'Driver_Phone_Number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'Driver_Status', 'Action'];
   dataSource: any = [];
   driverFilter: any = {};
+  editMode: any;
 
-  button_name = 'Add Driver';
-  heading = 'Add  New Trucking Company'
-  description = 'Kindly fill the below details to add the Trucking Company.';
-  modal_fields: modalObj[] = [
+  add_fields: modalObj[] = [
     { type: 'text', key: 'first_name', placeholder: 'First Name', value: '' },
     { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '' },
     { type: 'text', key: 'email', placeholder: 'Email', value: '' },
     { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }] },
     { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }] },
     { type: 'text', key: 'license_number', placeholder: 'License Number', value: '' },
-    { type: 'date', key: 'license_expiry', placeholder: 'license Expiry Date', value: '' },
+    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '' },
     { type: 'text', key: 'age', placeholder: 'Age', value: '' },
     { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '' }
   ];
 
-  constructor(private appService: AppService, private fb: FormBuilder) { }
+  update_fields: modalObj[] = [
+    { type: 'text', key: 'id', placeholder: 'ID', value: '', hidden: true },
+    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
+    { type: 'text', key: 'license_number', placeholder: 'License Number', value: '', validators: [Validators.required] },
+    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'age', placeholder: 'Age', value: '' },
+    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required,Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
+    { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 1 }, { label: 'In Active', value: 0 }] },
+    { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true },
+  ];
+
+  dataObject: any = {
+    add_modal: {
+      button_name: 'Add Driver',
+      heading: 'Add New Driver',
+      description: 'Kindly fill the below details to add Driver.'
+    },
+    update_modal: {
+      button_name: 'Update Driver',
+      heading: 'Update Driver',
+      description: 'Kindly fill the below details to update Driver.'
+    }
+  };
+
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
     this.driverList();
   }
 
   openModal() {
-    this.modalComponent.open(); // Call the open method from the modal component
+    this.editMode = false;
+    this.modalComponent.open('','add'); // Call the open method from the modal component
   }
 
   driverList() {
@@ -75,29 +99,28 @@ export class DriversComponent implements OnInit {
     })
   }
 
-  getDriver() {
-    this.appService.getDriver(this.driver_id).subscribe((data: any) => {
-      console.log(data);
-      this.driverList();
+  getDriver(id: any) {
+    this.editMode = true;
+    const payload: any = {
+      id: id
+    }
+    this.appService.getDriver(payload).subscribe((data: any) => {
+    this.modalComponent.open(data, 'update');
     })
   }
 
-  addDriver() {
+  addDriver(data: any) {
     const payload: any = {};
 
-    this.modal_fields.forEach(field => {
-      if (field.value) this.driverFilter[field.key] = field.value;
-    });
-
-    if (this.driverFilter.first_name) payload['first_name'] = this.driverFilter.first_name;
-    if (this.driverFilter.last_name) payload['last_name'] = this.driverFilter.last_name;
-    if (this.driverFilter.email) payload['email'] = this.driverFilter.email;
-    if (this.driverFilter.role_id) payload['role_id'] = this.driverFilter.role_id;
-    if (this.driverFilter.zone_id) payload['zone_id'] = this.driverFilter.zone_id;
-    if (this.driverFilter.license_number) payload['license_number'] = this.driverFilter.license_number;
-    if (this.driverFilter.license_expiry) payload['license_expiry'] = this.driverFilter.license_expiry;
-    if (this.driverFilter.age) payload['age'] = this.driverFilter.age;
-    if (this.driverFilter.phone_number) payload['phone_number'] = this.driverFilter.phone_number;
+    if (data.first_name) payload['first_name'] = data.first_name;
+    if (data.last_name) payload['last_name'] = data.last_name;
+    if (data.email) payload['email'] = data.email;
+    if (data.role_id) payload['role_id'] = data.role_id;
+    if (data.zone_id) payload['zone_id'] = data.zone_id;
+    if (data.license_number) payload['license_number'] = data.license_number;
+    if (data.license_expiry) payload['license_expiry'] = data.license_expiry;
+    if (data.age) payload['age'] = data.age;
+    if (data.phone_number) payload['phone_number'] = data.phone_number;
 
     this.appService.addDriver(payload).subscribe((data: any) => {
       console.log("Driver data: ", data.data.rows);
@@ -106,27 +129,28 @@ export class DriversComponent implements OnInit {
     })
   }
 
-  updateDriver() {
-
-    const payload = {
-      // id: this.id,
-      // first_name: this.first_name,
-      // last_name: this.last_name,
-      // email: this.email,
-      // zone_id: this.zone_id,
-      // license_number: this.license_number,
-      // license_expiry : this.license_expiry,
-      // age: this.age
-    }
+  updateDriver(data: any) {
+    const payload: any = {};
+    
+    if (data.id) payload['id'] = data.id;
+    if (data.first_name) payload['first_name'] = data.first_name;
+    if (data.last_name) payload['last_name'] = data.last_name;
+    if (data.email) payload['email'] = data.email;
+    if (data.license_number) payload['license_number'] = data.license_number;
+    if (data.license_expiry) payload['license_expiry'] = data.license_expiry;
+    if (data.age) payload['age'] = data.age;
+    if (data.phone_number) payload['phone_number'] = data.phone_number;
+    if (data.status) payload['status'] = data.status;
+    if (data.restriction_reason) payload['restriction_reason'] = data.restriction_reason;
+    
     this.appService.updateDriver(payload).subscribe((data: any) => {
-      console.log(data);
       this.driverList();
     })
   }
 
-  deleteDriver(del_id: any) {
+  deleteDriver(id: any) {
     const payload = {
-      id: del_id
+      id: id
     }
     this.appService.deleteDriver(payload).subscribe((data: any) => {
       console.log("Delete driver API", data?.data);
@@ -138,9 +162,7 @@ export class DriversComponent implements OnInit {
     this.fields.forEach(field => {
       field.value = '';
     });
-    this.modal_fields.forEach(field => {
-      field.value = '';
-    });
+
     this.driverFilter.id = '';
     this.driverFilter.name = '';
     this.driverFilter.age = '';
