@@ -6,6 +6,7 @@ import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { Validators } from '@angular/forms';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-supplier',
@@ -77,7 +78,7 @@ export class SupplierComponent implements OnInit {
   }
   pageCount:number = 10;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private toastr: ToastrService) { }
   ngOnInit(): void {
     this.supplierList();
   }
@@ -136,8 +137,12 @@ export class SupplierComponent implements OnInit {
     this.appService.addSupplier(payload).subscribe((data: any) => {
       console.log(data?.data?.rows);
       this.modalComponent.close();
+      this.toastr.success("Record Added Successfully!");
       this.reset();
-    })
+    },
+    (err) => {
+      this.toastr.error(err.error.message, 'Error')
+    });
   }
 
   updateSupplier(data: any) {
@@ -155,7 +160,11 @@ export class SupplierComponent implements OnInit {
 
     this.appService.updateSupplier(payload).subscribe((data: any) => {
       this.supplierList();
-    })
+      this.toastr.success("Record Updated!");
+    },
+    (err) => {
+      this.toastr.error(err.error.message, 'Error')
+    });
   }
 
   deleteSupplier(id: any) {
@@ -165,7 +174,11 @@ export class SupplierComponent implements OnInit {
     this.appService.deleteSupplier(payload).subscribe((data: any) => {
       console.log(data?.data?.suppliers);
       this.supplierList();
-    })
+      this.toastr.success("Record Deleted Successfully!");
+    },
+    (err) => {
+      this.toastr.success(err.error.message)
+    });
   }
 
   reset() {

@@ -6,6 +6,7 @@ import { FiltersComponent } from '../../shared/components/filters/filters.compon
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { Pagination } from '../../core/types';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-restriction',
@@ -35,7 +36,7 @@ export class RestrictionComponent implements OnInit {
   }
   pageCount: number = 10;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.list_type('supplier');
@@ -61,16 +62,16 @@ export class RestrictionComponent implements OnInit {
     this.getRestriction(btn);
   }
 
-  addRestriction() {
-    const payload: any = {}
-    if (this.rest_id) payload["id"] = this.rest_id;
-    if (this.rest_status) payload["status"] = this.rest_status;
-    if (this.rest_reason) payload["restriction_reason"] = this.rest_reason;
+  // addRestriction() {
+  //   const payload: any = {}
+  //   if (this.rest_id) payload["id"] = this.rest_id;
+  //   if (this.rest_status) payload["status"] = this.rest_status;
+  //   if (this.rest_reason) payload["restriction_reason"] = this.rest_reason;
 
-    this.appService.addRestriction(payload).subscribe((data: any) => {
-      console.log("Add restriction API: ", data);
-    })
-  }
+  //   this.appService.addRestriction(payload).subscribe((data: any) => {
+  //     console.log("Add restriction API: ", data);
+  //   })
+  // }
 
   getRestriction(list: any) {
     this.type = list;
@@ -86,7 +87,7 @@ export class RestrictionComponent implements OnInit {
     this.appService.getRestriction(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
       console.log("Restriction's Data: ", this.dataSource);
-      this.pagination.total_records = data?.data?.count;
+      this.pagination.total_records = data.data.count;
       let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
       this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
@@ -100,19 +101,20 @@ export class RestrictionComponent implements OnInit {
     this.appService.removeRestriction(payload).subscribe((data: any) => {
       console.log("Restrictionnnnnn typeeeeeeee from supplier and driver", this.type);
       this.getRestriction(this.type);
+      this.toastr.success("Restriction Removed!");
     })
   }
 
-  addTruckRestriction() {
-    const payload: any = {}
-    if (this.rest_id) payload["id"] = this.rest_id;
-    if (this.rest_status) payload["status"] = this.rest_status;
-    if (this.rest_reason) payload["restriction_reason"] = this.rest_reason;
+  // addTruckRestriction() {
+  //   const payload: any = {}
+  //   if (this.rest_id) payload["id"] = this.rest_id;
+  //   if (this.rest_status) payload["status"] = this.rest_status;
+  //   if (this.rest_reason) payload["restriction_reason"] = this.rest_reason;
 
-    this.appService.addTruckRestriction(payload).subscribe((data: any) => {
-      console.log("Add restriction API: ", data);
-    })
-  }
+  //   this.appService.addTruckRestriction(payload).subscribe((data: any) => {
+  //     console.log("Add restriction API: ", data);
+  //   })
+  // }
 
   // remove truck restriction
   removeTruckRestriction(del_id: any) {
@@ -122,6 +124,7 @@ export class RestrictionComponent implements OnInit {
     this.appService.removeTruckRestriction(payload).subscribe((data: any) => {
       console.log("Restrictionnnnnn typeeeeeeee from tuckkkkk", this.type);
       this.getRestriction(this.type);
+      this.toastr.success("Restriction Removed!");
     })
   }
 

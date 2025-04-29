@@ -6,6 +6,7 @@ import { FiltersComponent } from '../../shared/components/filters/filters.compon
 import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-zone',
@@ -39,6 +40,7 @@ export class ZoneComponent implements OnInit {
       description: 'Kindly fill the below details to update Zone.'
     }
   };
+
   add_fields: modalObj[] = [
     { type: 'text', key: 'legal_id', placeholder: 'Legal ID', value: '' },
     { type: 'text', key: 'name', placeholder: 'Zone Name', value: '' },
@@ -65,7 +67,7 @@ export class ZoneComponent implements OnInit {
   }
   pageCount:number = 10;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.zoneList();
@@ -90,7 +92,7 @@ export class ZoneComponent implements OnInit {
 
     this.appService.zoneList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
-      // console.log("zone data", this.dataSource);
+      console.log("zone data", this.dataSource);
       this.pagination.total_records = data.data.count;
       let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
       this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
@@ -108,9 +110,12 @@ export class ZoneComponent implements OnInit {
 
 
     this.appService.addZone(payload).subscribe((data: any) => {
-      console.log("Add zone working", data?.data?.rows);
+      console.log("zone added", data?.data?.rows);
       this.modalComponent.close();
-      this.reset();
+      this.zoneList();
+      this.toastr.success("Zone added successfully!");
+    }, (err)=>{
+      this.toastr.error(err.error.message, 'Error');
     })
   }
 
@@ -124,6 +129,7 @@ export class ZoneComponent implements OnInit {
 
     this.appService.updateZone(payload).subscribe((data: any) => {
       this.zoneList();
+      this.toastr.success("Zone updated!");
     })
   }
 
@@ -134,6 +140,7 @@ export class ZoneComponent implements OnInit {
     this.appService.deleteZone(payload).subscribe((data: any) => {
       console.log("Delete zone api called: ", data?.zone);
       this.zoneList();
+      this.toastr.success("Zone deleted!");
     })
   }
 

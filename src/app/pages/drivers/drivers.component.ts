@@ -8,6 +8,8 @@ import { FiltersComponent } from '../../shared/components/filters/filters.compon
 import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
+import { ToastrService } from 'ngx-toastr';
+import { title } from 'process';
 
 @Component({
   selector: 'app-drivers',
@@ -19,6 +21,12 @@ import { PaginatorComponent } from '../../shared/components/paginator/paginator.
 export class DriversComponent implements OnInit {
   @ViewChild('modalRef') modalComponent!: ModalComponent;
 
+  isAddDriver: boolean = false;
+  columnsToDisplay = ['Driver_ID', 'Driver_Name', 'age', 'Driver_Phone_Number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'Driver_Status', 'Action'];
+  dataSource: any = [];
+  driverFilter: any = {};
+  editMode: any;
+
   fields: filterObj[] = [
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
     { type: 'text', key: 'name', placeholder: 'Name', value: '' },
@@ -26,17 +34,11 @@ export class DriversComponent implements OnInit {
     { type: 'text', key: 'license_status', placeholder: 'Status', value: '' }
   ];
 
-  isAddDriver: boolean = false;
-  columnsToDisplay = ['Driver_ID', 'Driver_Name', 'age', 'Driver_Phone_Number', 'license_status', 'createdAt', 'Driving_License_Expiry', 'Driver_Status', 'Action'];
-  dataSource: any = [];
-  driverFilter: any = {};
-  editMode: any;
-
   add_fields: modalObj[] = [
     { type: 'text', key: 'first_name', placeholder: 'First Name', value: '' },
     { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '' },
     { type: 'text', key: 'email', placeholder: 'Email', value: '' },
-    { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }] },
+    { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }], hidden: true },
     { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }] },
     { type: 'text', key: 'license_number', placeholder: 'License Number', value: '' },
     { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '' },
@@ -79,7 +81,7 @@ export class DriversComponent implements OnInit {
   }
   pageCount:number = 10;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.driverList();
@@ -139,7 +141,10 @@ export class DriversComponent implements OnInit {
     this.appService.addDriver(payload).subscribe((data: any) => {
       console.log("Driver data: ", data.data.rows);
       this.modalComponent.close();
-      this.reset();
+      this.driverList();
+      this.toastr.success("Driver added successfully!", 'Success');
+    }, (err)=>{
+      this.toastr.error(err.error.message, 'Error');
     })
   }
 
@@ -159,6 +164,7 @@ export class DriversComponent implements OnInit {
     
     this.appService.updateDriver(payload).subscribe((data: any) => {
       this.driverList();
+      this.toastr.success("Record updated!");
     })
   }
 
@@ -169,6 +175,7 @@ export class DriversComponent implements OnInit {
     this.appService.deleteDriver(payload).subscribe((data: any) => {
       console.log("Delete driver API", data?.data);
       this.driverList();
+      this.toastr.success("Recoed deleted!");
     })
   }
 

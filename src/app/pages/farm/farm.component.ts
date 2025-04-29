@@ -7,6 +7,7 @@ import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-farm',
@@ -75,7 +76,7 @@ export class FarmComponent implements OnInit {
     total_records: 10,
   }
   pageCount: number = 10;
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.farmList();
@@ -87,7 +88,6 @@ export class FarmComponent implements OnInit {
   }
 
   addFarm(data: any) {
-
     const payload: any = {}
     if (data.first_name) payload['first_name'] = data.first_name;
     if (data.last_name) payload['last_name'] = data.last_name;
@@ -102,7 +102,10 @@ export class FarmComponent implements OnInit {
     this.appService.addFarm(payload).subscribe((data: any) => {
       console.log("Farm Data", data);
       this.modalComponent.close();
-      this.reset();
+      this.farmList();
+      this.toastr.success("Record added successfully!");
+    },(err)=>{
+      this.toastr.error(err.error.message, 'Error');
     })
   }
 
@@ -139,6 +142,9 @@ export class FarmComponent implements OnInit {
 
     this.appService.updateFarm(payload).subscribe((data: any) => {
       this.farmList();
+      this.toastr.success("Record updated");
+    },(err)=>{
+      this.toastr.error(err.error.message, 'Error');
     })
   }
 
@@ -149,6 +155,7 @@ export class FarmComponent implements OnInit {
     this.appService.deleteFarm(payload).subscribe((data: any) => {
       console.log(data.data);
       this.farmList();
+      this.toastr.success("Farm deleted successfully!");
     })
   }
 

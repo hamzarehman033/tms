@@ -36,9 +36,10 @@ export class LoginComponent {
 
   login() {
     if (!this.email || !this.password) {
-      this.toastr.error("Please enter correct details!")
+      this.toastr.error("Please enter correct details!", 'Error')
     } else {
-      this.router.navigateByUrl("/dashboard")
+      this.router.navigateByUrl("/dashboard");
+      this.toastr.success("Login Successful!");
     }
   }
 
