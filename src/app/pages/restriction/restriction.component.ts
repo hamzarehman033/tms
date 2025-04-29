@@ -86,7 +86,7 @@ export class RestrictionComponent implements OnInit {
     this.appService.getRestriction(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
       console.log("Restriction's Data: ", this.dataSource);
-      this.pagination.total_records = data.data.count;
+      this.pagination.total_records = data?.data?.count;
       let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
       this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })

@@ -26,7 +26,7 @@ export class FarmComponent implements OnInit {
     { type: 'text', key: 'name', placeholder: 'Enter Name here', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
     {
-      type: 'dropdown', key: 'zone', placeholder: 'Select Zone', value: '',
+      type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '',
       options: [
         { label: 'Option 1', value: 1 },
         { label: 'Option 2', value: 2 },

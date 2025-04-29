@@ -29,7 +29,7 @@ export class FiltersComponent {
   filterMapper: any = {
     id: 'ID',
     company_name: 'Company Name',
-    license_status: 'License Status',
+    license_status: 'Status',
     user_email: 'Email',
     user_ip: 'IP Address',
     createdAt: 'Created At',

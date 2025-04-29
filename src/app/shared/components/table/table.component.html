@@ -2,25 +2,25 @@
 
   <!-- Division Column -->
   <ng-container matColumnDef="Division">
-    <th mat-header-cell *matHeaderCellDef> Division </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Division</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
   </ng-container>
 
   <!-- Creation Time Column -->
   <ng-container matColumnDef="Creation_Time">
-    <th mat-header-cell *matHeaderCellDef> Creation Time</th>
+    <th mat-header-cell *matHeaderCellDef> <b>Creation Time</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Creation_Time}} </td>
   </ng-container>
 
   <!-- Depot Column -->
   <ng-container matColumnDef="Depot">
-    <th mat-header-cell *matHeaderCellDef> Depot </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Depot</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Depot}} </td>
   </ng-container>
 
   <!-- Status Column -->
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Status</b> </th>
     <!-- <td mat-cell *matCellDef="let element"> {{element.status}} </td> -->
     <td mat-cell *matCellDef="let element">
       <span class="badge bg-primary-subtle ng-star-inserted rounded-pill text-primary">Primary</span>
@@ -29,7 +29,7 @@
 
   <!-- Action Column -->
   <ng-container matColumnDef="Action">
-    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Action</b> </th>
     <td mat-cell *matCellDef="let element">
 
       <div class="d-flex align-items-center gap-3" *ngIf="!reActivate_button">
@@ -38,9 +38,9 @@
         <app-icon icon="iconamoon:edit-light" [width]="24" [height]="24" (click)="getButton(element.id)"></app-icon>
         </button>       
         <!-- View Button -->
-        <button class="btn">
+        <!-- <button class="btn">
           <app-icon icon="hugeicons:view" [width]="24" [height]="24"></app-icon>
-        </button>
+        </button> -->
         <!-- Delete Button -->
         <button class="btn">
           <app-icon icon="fluent:delete-28-regular" [width]="24" [height]="24" (click)="deleteButton(element.id, 'delete')"></app-icon>
@@ -56,31 +56,31 @@
 
   <!-- ID Column -->
   <ng-container matColumnDef="ID">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <th mat-header-cell *matHeaderCellDef> <b>ID</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="Name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Name</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
   </ng-container>
 
   <!-- Age Column -->
   <ng-container matColumnDef="age">
-    <th mat-header-cell *matHeaderCellDef> Age </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Age</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.age}} </td>
   </ng-container>
 
   <!-- Phone Number -->
-  <ng-container matColumnDef="Phone_Number">
+  <!-- <ng-container matColumnDef="Phone_Number">
     <th mat-header-cell *matHeaderCellDef> Phone Number </th>
     <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
-  </ng-container>
+  </ng-container> -->
 
   <!-- License Status Column -->
   <ng-container matColumnDef="license_status">
-    <th mat-header-cell *matHeaderCellDef> License Status</th>
+    <th mat-header-cell *matHeaderCellDef> <b>License Status</b> </th>
     <!-- <td mat-cell *matCellDef="let element"> {{element.license_status}} </td> -->
     <td mat-cell *matCellDef="let element">
       <ng-container *ngIf="element.license_status === 'In Active'">
@@ -97,145 +97,145 @@
 
   <!-- Driving License Expiry -->
   <ng-container matColumnDef="Driving_License_Expiry">
-    <th mat-header-cell *matHeaderCellDef> Driving License Expiry</th>
-    <td mat-cell *matCellDef="let element"> {{element.license_expiry}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Driving License Expiry</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.license_expiry | date: 'dd-MM-yyyy'}} </td>
   </ng-container>
 
   <!-- Reason Column -->
   <ng-container matColumnDef="Reason">
-    <th mat-header-cell *matHeaderCellDef> Reason </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Reason</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.restriction_reason}} </td>
   </ng-container>
 
   <!-- Created at Column -->
   <ng-container matColumnDef="createdAt">
-    <th mat-header-cell *matHeaderCellDef> Created at </th>
-    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Created at</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd-MM-yyyy'}} </td>
   </ng-container>
 
   <!-- Documentation Status Column -->
   <ng-container matColumnDef="Documentation_Status">
-    <th mat-header-cell *matHeaderCellDef> Documentation Status </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Documentation Status</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Documentation_Status}} </td>
   </ng-container>
 
   <!-- Activation Column -->
   <ng-container matColumnDef="Activation">
-    <th mat-header-cell *matHeaderCellDef> Activation </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Activation</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Activation}} </td>
   </ng-container>
 
   <!-- Vessel Column -->
   <ng-container matColumnDef="Vessel">
-    <th mat-header-cell *matHeaderCellDef> Vessel </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Vessel</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Vessel}} </td>
   </ng-container>
 
   <!-- Booking Column -->
   <ng-container matColumnDef="Booking">
-    <th mat-header-cell *matHeaderCellDef> Booking </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Booking</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Ship CO Column -->
   <ng-container matColumnDef="Ship_CO">
-    <th mat-header-cell *matHeaderCellDef> Ship CO </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Ship CO</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Ship_CO}} </td>
   </ng-container>
 
   <!-- Chasis Column -->
   <ng-container matColumnDef="Chasis">
-    <th mat-header-cell *matHeaderCellDef> Chasis </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Chasis</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Chasis}} </td>
   </ng-container>
 
   <!-- Temp Column -->
   <ng-container matColumnDef="Temp">
-    <th mat-header-cell *matHeaderCellDef> Temp </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Temp</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Temp}} </td>
   </ng-container>
 
   <!-- Deput Column -->
   <ng-container matColumnDef="Deput">
-    <th mat-header-cell *matHeaderCellDef> Deput </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Deput</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Deput}} </td>
   </ng-container>
 
   <!-- Request Id Column -->
   <ng-container matColumnDef="Request_Id">
-    <th mat-header-cell *matHeaderCellDef> Request Id </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Request Id</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Request_Id}} </td>
   </ng-container>
 
   <!-- Depot Status Column -->
   <ng-container matColumnDef="Depot_Status">
-    <th mat-header-cell *matHeaderCellDef> Depot Status </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Depot Status</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Depot_Status}} </td>
   </ng-container>
 
   <!-- User Id Column -->
   <ng-container matColumnDef="User_Id">
-    <th mat-header-cell *matHeaderCellDef> User Id </th>
+    <th mat-header-cell *matHeaderCellDef> <b>User Id</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.User_Id}} </td>
   </ng-container>
 
   <!-- Role Column -->
   <ng-container matColumnDef="Role">
-    <th mat-header-cell *matHeaderCellDef> Role </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Role</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Role}} </td>
   </ng-container>
 
   <!-- Type Column -->
   <ng-container matColumnDef="Type">
-    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Type</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Type}} </td>
   </ng-container>
 
   <!-- Current Allocated Truck Column -->
   <ng-container matColumnDef="Current_Allocated_Truck">
-    <th mat-header-cell *matHeaderCellDef> Current Allocated Truck </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Current Allocated Truck</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Current_Allocated_Truck}} </td>
   </ng-container>
 
   <!-- Document Status Column -->
   <ng-container matColumnDef="Document_Status">
-    <th mat-header-cell *matHeaderCellDef> Document Status </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Document Status</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Document_Status}} </td>
   </ng-container>
 
   <!-- Date Column -->
   <ng-container matColumnDef="Date">
-    <th mat-header-cell *matHeaderCellDef> Date </th>
-    <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Date</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.Date | date: 'dd-MM-yyyy'}} </td>
   </ng-container>
 
   <!-- Veat Column -->
   <ng-container matColumnDef="Veat">
-    <th mat-header-cell *matHeaderCellDef> Veat </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Veat</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Veat}} </td>
   </ng-container>
 
   <!-- Trans Company Column -->
   <ng-container matColumnDef="Trans_Company">
-    <th mat-header-cell *matHeaderCellDef> Trans Company </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Trans Company</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Trans_Company}} </td>
   </ng-container>
 
   <!-- Company Name Column -->
   <ng-container matColumnDef="Company_Name">
-    <th mat-header-cell *matHeaderCellDef> Company Name </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Company Name</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.company_name}} </td>
   </ng-container>
 
   <!-- Company Address Column -->
   <ng-container matColumnDef="Company_Address">
-    <th mat-header-cell *matHeaderCellDef> Company Address </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Company Address</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.company_address}} </td>
   </ng-container>
 
   <!-- Destination Column -->
   <ng-container matColumnDef="Destination">
-    <th mat-header-cell *matHeaderCellDef> Destination </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Destination</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Destination}} </td>
   </ng-container>
 
@@ -243,37 +243,37 @@
 
   <!-- Farm ID Column -->
   <ng-container matColumnDef="Farm_ID">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <th mat-header-cell *matHeaderCellDef> <b>ID</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Farm Name Column -->
   <ng-container matColumnDef="Farm_Name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.full_name}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Name</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.full_name}} </td>
   </ng-container>
 
   <!-- Farm Column -->
   <ng-container matColumnDef="Farm">
-    <th mat-header-cell *matHeaderCellDef> Farm </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Farm</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Farm}} </td>
   </ng-container>
 
   <!-- Farm Zone Column -->
   <ng-container matColumnDef="Farm_Zone">
-    <th mat-header-cell *matHeaderCellDef> Farm Zone </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Farm Zone</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.user?.user_zones[0]?.zone?.name}} </td>
   </ng-container>
 
   <!-- Farm Location Column -->
   <ng-container matColumnDef="Farm_Location">
-    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Location</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.address}} </td>
   </ng-container>
 
   <!-- Farm Suppliers Column -->
   <ng-container matColumnDef="Farm_Suppliers">
-    <th mat-header-cell *matHeaderCellDef> Suppliers </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Trucking Company</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.supplier?.full_name}} </td>
   </ng-container>
 
@@ -281,43 +281,43 @@
 
   <!-- Zone id Column -->
   <ng-container matColumnDef="Zone_ID">
-    <th mat-header-cell *matHeaderCellDef> Zone Id </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Zone Id</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Zone legal id Column -->
   <ng-container matColumnDef="Legal_Id">
-    <th mat-header-cell *matHeaderCellDef> Legal Id </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Legal Id</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.legal_id}} </td>
   </ng-container>
 
   <!-- Zone Name Column -->
   <ng-container matColumnDef="Zone_Name">
-    <th mat-header-cell *matHeaderCellDef> Zone Name </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Zone Name</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <!-- Zone Created at Column -->
   <ng-container matColumnDef="Created_at">
-    <th mat-header-cell *matHeaderCellDef> Created at </th>
-    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Created at</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd-MM-yyyy'}} </td>
   </ng-container>
 
   <!-- Zone Phone Number Column -->
   <ng-container matColumnDef="Contact_Number">
-    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Contact Number</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.contact_number}} </td>
   </ng-container>
 
   <!-- Zone Email Column -->
   <ng-container matColumnDef="Zone_Email">
-    <th mat-header-cell *matHeaderCellDef> Zone Email </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Email Address</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.email}} </td>
   </ng-container>
 
   <!-- Zone Location Column -->
   <ng-container matColumnDef="Zone_Location">
-    <th mat-header-cell *matHeaderCellDef> Zone Location </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Zone Location</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.location}} </td>
   </ng-container>
 
@@ -325,39 +325,39 @@
 
   <!-- Driver Column -->
   <ng-container matColumnDef="Driver">
-    <th mat-header-cell *matHeaderCellDef> Driver </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Driver</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.Driver}} </td>
   </ng-container>
 
   <!-- Driver ID Column -->
   <ng-container matColumnDef="Driver_ID">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <th mat-header-cell *matHeaderCellDef> <b>ID</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Driver Name Column -->
   <ng-container matColumnDef="Driver_Name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.full_name}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Name</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.full_name}} </td>
   </ng-container>
 
   <!-- Driver Phone Number Column -->
   <ng-container matColumnDef="Driver_Phone_Number">
-    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Contact Number</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.user?.phone_number}} </td>
   </ng-container>
 
   <!-- Driver Documents Column -->
   <ng-container matColumnDef="Driver_Documents">
-    <th mat-header-cell *matHeaderCellDef> Documents </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Documents</b> </th>
     <td mat-cell *matCellDef="let element">
-      <ng-container *ngIf="element.drivers?.length > 0"> {{element.drivers[0]?.documents[0]?.expiry_date}}</ng-container>
+      <ng-container *ngIf="element.drivers?.length > 0"> {{element.drivers[0]?.documents[0]?.expiry_date | date: 'dd-MM-yyyy'}}</ng-container>
     </td>
   </ng-container>
 
   <!-- Driving License Expiry -->
   <ng-container matColumnDef="Driver_Status">
-    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <th mat-header-cell *matHeaderCellDef> <b>Status</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.user?.status}} </td>
   </ng-container>
 
@@ -365,27 +365,27 @@
 
   <!-- Supplier id Column -->
   <ng-container matColumnDef="Booking_Id">
-    <th mat-header-cell *matHeaderCellDef> Booking Id </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Booking Id</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
   <!-- Contact Person Column -->
   <ng-container matColumnDef="Supplier_Contact_Person">
-    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.phone_number}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Contact Number</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.phone_number}} </td>
   </ng-container>
 
   <!-- Supplier Email Column -->
   <ng-container matColumnDef="Supplier_Email">
-    <th mat-header-cell *matHeaderCellDef> Email Address </th>
-    <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+    <th mat-header-cell *matHeaderCellDef> <b>Email Address</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.user?.email}} </td>
   </ng-container>
 
   <!-- Supplier Documents Column -->
   <ng-container matColumnDef="Supplier_Documents">
-    <th mat-header-cell *matHeaderCellDef> Documents </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Documents</b> </th>
     <td mat-cell *matCellDef="let element">
-      <ng-container *ngIf="element.suppliers?.length > 0"> {{element.suppliers[0]?.documents[0]?.expiry_date}}</ng-container>
+      <ng-container *ngIf="element.suppliers?.length > 0"> {{element.suppliers[0]?.documents[0]?.expiry_date | date: 'dd-MM-yyyy'}}</ng-container>
     </td>
   </ng-container>
 
@@ -393,13 +393,13 @@
 
   <!-- Restrictions Name -->
   <ng-container matColumnDef="restriction_name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Name</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
   </ng-container>
 
   <!-- Restrictions phone_number -->
   <ng-container matColumnDef="restriction_ph_no">
-    <th mat-header-cell *matHeaderCellDef> Contact Number </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Contact Number</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
   </ng-container>
 
@@ -407,13 +407,13 @@
 
   <!-- Truck Number Column -->
   <ng-container matColumnDef="truck_number">
-    <th mat-header-cell *matHeaderCellDef> Truck Number </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Truck Number</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.number}} </td>
   </ng-container>
 
   <!-- Truck Documents Column -->
   <ng-container matColumnDef="truck_documents">
-    <th mat-header-cell *matHeaderCellDef> Documents </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Documents</b> </th>
     <td mat-cell *matCellDef="let element">
       <ng-container *ngIf="element.documents?.length > 0">
         {{element?.documents[0]?.expiry_date}}
@@ -423,37 +423,37 @@
 
   <!-- Audit Trail -->
   <ng-container matColumnDef="audit_id">
-    <th mat-header-cell *matHeaderCellDef> Audit ID </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Audit ID</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
   
   <ng-container matColumnDef="module_name">
-    <th mat-header-cell *matHeaderCellDef> Module Name </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Module Name</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.module_name}} </td>
   </ng-container>
   
   <ng-container matColumnDef="audit_type">
-    <th mat-header-cell *matHeaderCellDef> Audit Type </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Audit Type</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.type}} </td>
   </ng-container>
   
   <ng-container matColumnDef="audit_activity">
-    <th mat-header-cell *matHeaderCellDef> Audit Activity </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Audit Activity</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.activity}} </td>
   </ng-container>
   
   <ng-container matColumnDef="audit_email">
-    <th mat-header-cell *matHeaderCellDef> Audit Email </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Audit Email</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.user_email}} </td>
   </ng-container>
   
   <ng-container matColumnDef="ip_address">
-    <th mat-header-cell *matHeaderCellDef> IP Address </th>
+    <th mat-header-cell *matHeaderCellDef> <b>IP Address</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.user_ip}} </td>
   </ng-container>
 
   <ng-container matColumnDef="audit_action">
-    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <th mat-header-cell *matHeaderCellDef> <b>Action</b> </th>
     <td mat-cell *matCellDef="let element"> {{element.action_type_id}} </td>
   </ng-container>
 

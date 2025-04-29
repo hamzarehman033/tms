@@ -9,3 +9,17 @@
     justify-content: space-between;
     padding: 1rem 2rem;
 }
+
+.dropdown {
+    display: flex;
+}
+
+.notification_icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    background-color: #F6F7F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -3,22 +3,36 @@
         <div class="d-flex gap-2 align-items-center">
             <app-icon icon="mdi:menu-open" [width]="36" [height]="36" (click)="onToggle()"
                 class="cursor collapse-icon"></app-icon>
-            <h4 class="mb-0 fw-bold">Good Morning Anima</h4>
+
+            <h4 class="mb-0 fw-bold">{{ pageHeading }}</h4>
+            <h4 *ngIf="dashboard_heading" class="mb-0 fw-bold">Good Morning {{user_name}}</h4>
         </div>
-        <p class="text-light mb-0 fw-semibold">Hope you have a good day and work better</p>
+        <p *ngIf="dashboard_heading" class="text-light mb-0 fw-semibold">Hope you have a good day and work better</p>
     </div>
-    <div class="dropdown">
-        <div class="d-flex align-items-center gap-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../../../../assets/images/user.jpg" class="user" alt="logo">
-            <p class="mb-0">Kane Williamson</p>
-            <app-icon icon="formkit:caretdown" [width]="14" [height]="14" class="text-light ms-3"></app-icon>
+    <div style="display: flex; gap: 15px;">
+        <div class="notification_icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M13.4605 9.37337L12.7071 8.12003C12.5405 7.8467 12.3938 7.32003 12.3938 7.00003V5.75337C12.3938 3.33337 10.4271 1.3667 8.01379 1.3667C5.59379 1.37337 3.62713 3.33337 3.62713 5.75337V6.99337C3.62713 7.31337 3.48046 7.84003 3.32046 8.11337L2.56713 9.3667C2.28046 9.85336 2.21379 10.4067 2.39379 10.8867C2.57379 11.3734 2.98046 11.76 3.51379 11.9334C4.23379 12.1734 4.96046 12.3467 5.70046 12.4734C5.77379 12.4867 5.84713 12.4934 5.92046 12.5067C6.01379 12.52 6.11379 12.5334 6.21379 12.5467C6.38713 12.5734 6.56046 12.5934 6.74046 12.6067C7.16046 12.6467 7.58713 12.6667 8.01379 12.6667C8.43379 12.6667 8.85379 12.6467 9.26713 12.6067C9.42046 12.5934 9.57379 12.58 9.72046 12.56C9.84046 12.5467 9.96046 12.5334 10.0805 12.5134C10.1538 12.5067 10.2271 12.4934 10.3005 12.48C11.0471 12.36 11.7871 12.1734 12.5071 11.9334C13.0205 11.76 13.4138 11.3734 13.6005 10.88C13.7871 10.38 13.7338 9.83337 13.4605 9.37337ZM8.50046 6.6667C8.50046 6.9467 8.27379 7.17337 7.99379 7.17337C7.71379 7.17337 7.48713 6.9467 7.48713 6.6667V4.60003C7.48713 4.32003 7.71379 4.09337 7.99379 4.09337C8.27379 4.09337 8.50046 4.32003 8.50046 4.60003V6.6667Z"
+                    fill="#DA291C" />
+                <path
+                    d="M9.88678 13.3402C9.60678 14.1135 8.86678 14.6668 8.00012 14.6668C7.47345 14.6668 6.95345 14.4535 6.58678 14.0735C6.37345 13.8735 6.21345 13.6068 6.12012 13.3335C6.20678 13.3468 6.29345 13.3535 6.38678 13.3668C6.54012 13.3868 6.70012 13.4068 6.86012 13.4202C7.24012 13.4535 7.62678 13.4735 8.01345 13.4735C8.39345 13.4735 8.77345 13.4535 9.14678 13.4202C9.28678 13.4068 9.42678 13.4002 9.56012 13.3802C9.66678 13.3668 9.77345 13.3535 9.88678 13.3402Z"
+                    fill="#DA291C" />
+            </svg>
         </div>
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Setting</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-        </ul>
+        <div class="dropdown">
+            <div class="d-flex align-items-center gap-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../../../../assets/images/user.jpg" class="user" alt="logo">
+                <p class="mb-0">Kane Williamson</p>
+                <app-icon icon="formkit:caretdown" [width]="14" [height]="14" class="text-light ms-3"></app-icon>
+            </div>
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Setting</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="/login">Logout</a></li>
+            </ul>
+        </div>
     </div>
 </div>

@@ -19,8 +19,8 @@ export class SupplierComponent implements OnInit {
   @ViewChild('modalRef') modalComponent!: ModalComponent;
   fields: filterObj[] = [
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
-    { type: 'text', key: 'company_name', placeholder: 'Enter name here', value: '' },
-    { type: 'text', key: 'email', placeholder: 'Select Email here', value: '' }
+    { type: 'text', key: 'company_name', placeholder: 'Name', value: '' },
+    { type: 'text', key: 'email', placeholder: 'Email', value: '' }
   ];
 
   supplierFilter: any = {};
@@ -97,7 +97,7 @@ export class SupplierComponent implements OnInit {
       if (field.value) this.supplierFilter[field.key] = field.value;
     });
 
-    if (this.supplierFilter.booking_id) payload['booking_id'] = [Number(this.supplierFilter.booking_id)];
+    if (this.supplierFilter.id) payload['id'] = [Number(this.supplierFilter.id)];
     if (this.supplierFilter.company_name) payload['company_name'] = this.supplierFilter.company_name;
     if (this.supplierFilter.email) payload['email'] = this.supplierFilter.email;
 
@@ -172,7 +172,7 @@ export class SupplierComponent implements OnInit {
     this.fields.forEach(f => {
       f.value = '';
     });
-
+    this.supplierFilter.id = '';
     this.supplierFilter.first_name = '';
     this.supplierFilter.last_name = '';
     this.supplierFilter.email = '';

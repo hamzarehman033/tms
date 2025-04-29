@@ -21,8 +21,8 @@ export class DriversComponent implements OnInit {
 
   fields: filterObj[] = [
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
-    { type: 'text', key: 'name', placeholder: 'Enter Name here', value: '' },
-    { type: 'text', key: 'age', placeholder: 'Enter Age here', value: '' },
+    { type: 'text', key: 'name', placeholder: 'Name', value: '' },
+    { type: 'text', key: 'age', placeholder: 'Age', value: '' },
     { type: 'text', key: 'license_status', placeholder: 'Status', value: '' }
   ];
 

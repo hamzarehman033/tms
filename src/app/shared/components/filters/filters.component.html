@@ -6,13 +6,13 @@
             </label>
 
             <!-- Text Input -->
-            <input *ngIf="field.type === 'text'" class="form-control" [id]="field.key" [name]="field.key"
+            <input *ngIf="field.type === 'text'" class="form-control custom-placeholder" [id]="field.key" [name]="field.key"
                 [placeholder]="field.placeholder" type="text" [(ngModel)]="field.value" />
 
             <!-- Dropdown -->
             <select *ngIf="field.type === 'dropdown'" class="form-select" [id]="field.key" [name]="field.key"
                 [(ngModel)]="field.value">
-                <option value="" disabled selected>Choose...</option>
+                <option value="" disabled selected>Select {{field.placeholder}}</option>
                 <option *ngFor="let option of field.options" [value]="option.value">
                     {{ option.label }}
                 </option>

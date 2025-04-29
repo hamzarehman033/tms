@@ -20,7 +20,7 @@ export class ZoneComponent implements OnInit {
   zoneFilter: any = {};
 
   fields: filterObj[] = [
-    { type: 'text', key: 'name', placeholder: 'Enter name here', value: '' },
+    { type: 'text', key: 'name', placeholder: 'Name', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' }
   ];
 

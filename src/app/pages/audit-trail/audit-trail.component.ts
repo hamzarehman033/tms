@@ -22,7 +22,7 @@ export class AuditTrailComponent implements OnInit {
     { type: 'text', key: 'id', placeholder: 'Enter ID', value: '' },
     { type: 'text', key: 'module_name', placeholder: 'Name', value: '' },
     {
-      type: 'dropdown', key: 'type', placeholder: 'Enter Audit Type', value: '', options: [
+      type: 'dropdown', key: 'type', placeholder: 'Audit Type', value: '', options: [
         { label: 'Logout', value: 'logout' },
         { label: 'Login', value: 'login' },
         { label: 'User', value: 'user' },
@@ -83,8 +83,8 @@ export class AuditTrailComponent implements OnInit {
     if (this.auditFilter.type) payload["type"] = this.auditFilter.type;
     if (this.auditFilter.activity) payload["activity"] = this.auditFilter.activity;
     if (this.auditFilter.user_email) payload["user_email"] = this.auditFilter.user_email;
-    if (this.auditFilter.user_ip) payload["user_ip"] = this.auditFilter.user_ip;
     if (this.auditFilter.action) payload["action"] = this.auditFilter.action;
+    if (this.auditFilter.user_ip) payload["user_ip"] = this.auditFilter.user_ip;
     if (this.auditFilter.start_date) payload["start_date"] = this.auditFilter.start_date;
     if (this.auditFilter.end_date) payload["end_date"] = this.auditFilter.end_date;
 
@@ -104,7 +104,7 @@ export class AuditTrailComponent implements OnInit {
     });
 
     this.auditFilter.id = '';
-    this.auditFilter.name = '';
+    this.auditFilter.module_name = '';
     this.auditFilter.type = '';
     this.auditFilter.user_email = '';
     this.auditFilter.user_ip = '';
