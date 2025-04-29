@@ -16,6 +16,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
 import { IconComponent } from './shared/components/icon/icon.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AppInterceptor } from './core/interceptor/interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,12 @@ import { AppInterceptor } from './core/interceptor/interceptor';
     MatButtonModule,
     MatTableModule,
     IconComponent,
-    MatDrawerContainer
+    MatDrawerContainer,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      timeOut: 5000
+    }),
   ],
   providers: [
     provideClientHydration(),

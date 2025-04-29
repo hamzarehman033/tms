@@ -10,10 +10,10 @@ export class HeaderComponent {
   dashboard_heading: boolean = false;
 
   @Output() toggleDrawer = new EventEmitter<void>();
+  @Input() user_name = 'Kane';
 
   constructor( private router: Router){}
 
-  @Input() user_name = 'Kane';
   onToggle() {
     this.toggleDrawer.emit();
   }

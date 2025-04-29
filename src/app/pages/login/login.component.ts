@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -21,9 +22,7 @@ export class LoginComponent {
   ResetMessage = "Password has expired. Reset your password.";
   resetLink = 'https://adfsazure.freshdelmonte.com/adfs/portal/updatepassword/';
 
-  constructor(
-    private router: Router,
-  ) {
+  constructor(private router: Router, private toastr: ToastrService ) {
     const storedRememberMe = localStorage.getItem('rememberMe');
     if (storedRememberMe) {
       this.rememberMe = true;
@@ -37,7 +36,7 @@ export class LoginComponent {
 
   login() {
     if (!this.email || !this.password) {
-      alert("Please enter correct details!")
+      this.toastr.error("Please enter correct details!")
     } else {
       this.router.navigateByUrl("/dashboard")
     }
