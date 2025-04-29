@@ -24,7 +24,7 @@ export class FarmComponent implements OnInit {
 
   editMode: any;
   fields: filterObj[] = [
-    { type: 'text', key: 'name', placeholder: 'Enter Name here', value: '' },
+    { type: 'text', key: 'name', placeholder: 'Name', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
     {
       type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '',
@@ -37,14 +37,13 @@ export class FarmComponent implements OnInit {
   ];
 
   add_fields: modalObj[] = [
-    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '' },
-    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '' },
-    { type: 'text', key: 'email', placeholder: 'Email', value: '' },
-    { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }] },
-    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }] },
-    { type: 'text', key: 'farm_address', placeholder: 'Farm Address', value: '' },
-    { type: 'text', key: 'latitude', placeholder: 'Latitude', value: '' },
-    { type: 'text', key: 'longitude', placeholder: 'Longitude', value: '' }
+    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
+    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }], validators: [Validators.required] },
+    { type: 'text', key: 'farm_address', placeholder: 'Farm Address', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'latitude', placeholder: 'Latitude', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'longitude', placeholder: 'Longitude', value: '', validators: [Validators.required] }
   ];
 
   update_fields: modalObj[] = [
@@ -88,11 +87,12 @@ export class FarmComponent implements OnInit {
   }
 
   addFarm(data: any) {
-    const payload: any = {}
+    const payload: any = {
+      role_id: 4
+    }
     if (data.first_name) payload['first_name'] = data.first_name;
     if (data.last_name) payload['last_name'] = data.last_name;
     if (data.email) payload['email'] = data.email;
-    if (data.role_id) payload['role_id'] = Number(data.role_id);
     if (data.zone_id) payload['zone_id'] = Number(data.zone_id);
     if (data.status) payload['status'] = Number(data.status);
     if (data.farm_address) payload['farm_address'] = data.farm_address;
@@ -177,7 +177,6 @@ export class FarmComponent implements OnInit {
     this.farmFilters.first_name = '';
     this.farmFilters.last_name = '';
     this.farmFilters.email = '';
-    this.farmFilters.role_id = '';
     this.farmFilters.zone_id = '';
     this.farmFilters.status = '';
     this.farmFilters.farm_address = '';

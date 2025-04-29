@@ -37,7 +37,7 @@
               </div>
 
               <!-- Date Field -->
-              <div class="col-md-6" *ngIf="field.type === 'date'">
+              <div class="col-md-6" *ngIf="field.type === 'date' && !field.hidden">
                 <label class="form-label" [attr.for]="field.key">{{ field.placeholder }}</label>
                 <input type="date" class="form-control" [id]="field.key" [placeholder]="'Enter ' + field.placeholder"
                   [formControlName]="field.key" [value]="form.get(field.key)?.value | date:'yyyy-MM-dd'" />
@@ -48,7 +48,7 @@
               </div>
 
               <!-- Dropdown -->
-              <div class="col-md-6" *ngIf="field.type === 'dropdown'">
+              <div class="col-md-6" *ngIf="field.type === 'dropdown' && !field.hidden">
                 <label class="form-label" [attr.for]="field.key">{{ field.placeholder }}</label>
                 <select class="form-select" [id]="field.key" [formControlName]="field.key"
                   (change)="onFieldChange($event)">

@@ -30,15 +30,15 @@ export class SupplierComponent implements OnInit {
   editMode: any;
 
   add_fields: modalObj[] = [
-    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '' },
-    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '' },
-    { type: 'text', key: 'email', placeholder: 'Email', value: '' },
-    { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }] },
-    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }] },
-    { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 0 }, { label: 'Inactive', value: 1 }] },
-    { type: 'text', key: 'company_name', placeholder: 'Company Name', value: '' },
-    { type: 'text', key: 'company_address', placeholder: 'Location', value: '' },
-    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '' }
+    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
+    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }], validators: [Validators.required] },
+    { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 0 }, { label: 'Inactive', value: 1 }], validators: [Validators.required] },
+    { type: 'text', key: 'company_name', placeholder: 'Company Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'company_address', placeholder: 'Location', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
+    { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true }
   ];
 
   update_fields: modalObj[] = [
@@ -123,11 +123,12 @@ export class SupplierComponent implements OnInit {
 
   addSupplier(data: any) {
 
-    const payload: any = {}
+    const payload: any = {
+      role_id: 3
+    }
     if (data.first_name) payload['first_name'] = data.first_name;
     if (data.last_name) payload['last_name'] = data.last_name;
     if (data.email) payload['email'] = data.email;
-    if (data.role_id) payload['role_id'] = Number(data.role_id);
     if (data.zone_id) payload['zone_id'] = Number(data.zone_id);
     if (data.status) payload['status'] = Number(data.status);
     if (data.company_name) payload['company_name'] = data.company_name;
@@ -189,7 +190,6 @@ export class SupplierComponent implements OnInit {
     this.supplierFilter.first_name = '';
     this.supplierFilter.last_name = '';
     this.supplierFilter.email = '';
-    this.supplierFilter.role_id = '';
     this.supplierFilter.zone_id = '';
     this.supplierFilter.status = '';
     this.supplierFilter.company_name = '';

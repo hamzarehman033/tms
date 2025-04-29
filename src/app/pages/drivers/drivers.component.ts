@@ -9,7 +9,6 @@ import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { ToastrService } from 'ngx-toastr';
-import { title } from 'process';
 
 @Component({
   selector: 'app-drivers',
@@ -35,15 +34,14 @@ export class DriversComponent implements OnInit {
   ];
 
   add_fields: modalObj[] = [
-    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '' },
-    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '' },
-    { type: 'text', key: 'email', placeholder: 'Email', value: '' },
-    { type: 'dropdown', key: 'role_id', placeholder: 'Role', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }], hidden: true },
-    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }] },
-    { type: 'text', key: 'license_number', placeholder: 'License Number', value: '' },
-    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '' },
-    { type: 'text', key: 'age', placeholder: 'Age', value: '' },
-    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '' }
+    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required] },
+    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }], validators: [Validators.required] },
+    { type: 'text', key: 'license_number', placeholder: 'License Number', value: '', validators: [Validators.required] },
+    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'age', placeholder: 'Age', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] }
   ];
 
   update_fields: modalObj[] = [
@@ -54,7 +52,7 @@ export class DriversComponent implements OnInit {
     { type: 'text', key: 'license_number', placeholder: 'License Number', value: '', validators: [Validators.required] },
     { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '', validators: [Validators.required] },
     { type: 'text', key: 'age', placeholder: 'Age', value: '' },
-    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required,Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
+    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
     { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 1 }, { label: 'In Active', value: 0 }] },
     { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true },
   ];
@@ -126,12 +124,13 @@ export class DriversComponent implements OnInit {
   }
 
   addDriver(data: any) {
-    const payload: any = {};
+    const payload: any = {
+      role_id: 5
+    };
 
     if (data.first_name) payload['first_name'] = data.first_name;
     if (data.last_name) payload['last_name'] = data.last_name;
     if (data.email) payload['email'] = data.email;
-    if (data.role_id) payload['role_id'] = data.role_id;
     if (data.zone_id) payload['zone_id'] = data.zone_id;
     if (data.license_number) payload['license_number'] = data.license_number;
     if (data.license_expiry) payload['license_expiry'] = data.license_expiry;
@@ -191,7 +190,6 @@ export class DriversComponent implements OnInit {
     this.driverFilter.first_name = '';
     this.driverFilter.last_name = '';
     this.driverFilter.email = '';
-    this.driverFilter.role_id = '';
     this.driverFilter.zone_id = '';
     this.driverFilter.license_number = '';
     this.driverFilter.license_expiry = '';

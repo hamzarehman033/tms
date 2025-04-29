@@ -35,6 +35,7 @@ export class FiltersComponent {
     createdAt: 'Created At',
     start_date: 'Start Date',
     end_date: 'End Date',
-    module_name: 'Module Name'
+    module_name: 'Module Name',
+    email: 'Email Address'
   }
 }

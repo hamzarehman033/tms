@@ -2,17 +2,19 @@
     <div class="row align-items-end g-3 mb-3">
 
         <div class="col-md" *ngFor="let field of fields">
-            <label class="form-label" [attr.for]="field.key"> {{ filterMapper[field.key] || (field.key | titlecase) }}
-            </label>
-
+            
             <!-- Text Input -->
+            <label *ngIf="field.type === 'text'" class="form-label" [attr.for]="field.key"> {{ filterMapper[field.key] || (field.key | titlecase) }}
+            </label>
             <input *ngIf="field.type === 'text'" class="form-control custom-placeholder" [id]="field.key" [name]="field.key"
                 [placeholder]="field.placeholder" type="text" [(ngModel)]="field.value" />
 
             <!-- Dropdown -->
+            <label *ngIf="field.type === 'dropdown'" class="form-label" [attr.for]="field.key">Select {{ filterMapper[field.key] || (field.key | titlecase) }}
+            </label>
             <select *ngIf="field.type === 'dropdown'" class="form-select" [id]="field.key" [name]="field.key"
                 [(ngModel)]="field.value">
-                <option value="" disabled selected>Select {{field.placeholder}}</option>
+                <option value="" disabled selected hidden>Select {{field.placeholder}}</option>
                 <option *ngFor="let option of field.options" [value]="option.value">
                     {{ option.label }}
                 </option>
