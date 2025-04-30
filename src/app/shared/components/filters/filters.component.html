@@ -7,13 +7,13 @@
             <label *ngIf="field.type === 'text'" class="form-label" [attr.for]="field.key"> {{ filterMapper[field.key] || (field.key | titlecase) }}
             </label>
             <input *ngIf="field.type === 'text'" class="form-control custom-placeholder" [id]="field.key" [name]="field.key"
-                [placeholder]="field.placeholder" type="text" [(ngModel)]="field.value" />
+                [placeholder]="field.placeholder" type="text" [(ngModel)]="field.value" (ngModelChange)="field.value = $event.toLowerCase()"/>
 
             <!-- Dropdown -->
             <label *ngIf="field.type === 'dropdown'" class="form-label" [attr.for]="field.key">Select {{ filterMapper[field.key] || (field.key | titlecase) }}
             </label>
             <select *ngIf="field.type === 'dropdown'" class="form-select" [id]="field.key" [name]="field.key"
-                [(ngModel)]="field.value">
+                [(ngModel)]="field.value" (ngModelChange)="field.value = $event.toLowerCase()">
                 <option value="" disabled selected hidden>Select {{field.placeholder}}</option>
                 <option *ngFor="let option of field.options" [value]="option.value">
                     {{ option.label }}

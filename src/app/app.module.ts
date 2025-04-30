@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CardsComponent } from './shared/components/cards/cards.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { ButtonComponent } from './shared/components/button/button.component';
-import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 import { DonutGraphComponent } from './shared/components/donut-graph/donut-graph.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawerContainer, MatSidenavModule } from '@angular/material/sidenav';
@@ -24,8 +22,6 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     CardsComponent,
     HeaderComponent,
-    ButtonComponent,
-    DropdownComponent,
     DonutGraphComponent,
     SidebarComponent
   ],
