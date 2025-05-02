@@ -12,8 +12,8 @@ select{
     gap: 1rem;
   
     .col-md {
-      flex: 1 0 12%;
-      min-width: 200px; 
+      flex: 1 0 12%; // ~4 in a row with some gap
+      min-width: 200px; // responsive fallback
     }
   }
   
