@@ -137,7 +137,7 @@ export class SupplierComponent implements OnInit {
     if (data.phone_number) payload['phone_number'] = data.phone_number;
 
     this.appService.addSupplier(payload).subscribe((data: any) => {
-      console.log(data?.data?.rows);
+      // console.log(data?.data?.rows);
       this.modalComponent.close();
       this.toastr.success("Record Added Successfully!");
       this.reset();
@@ -174,7 +174,7 @@ export class SupplierComponent implements OnInit {
       id: id
     }
     this.appService.deleteSupplier(payload).subscribe((data: any) => {
-      console.log(data?.data?.suppliers);
+      // console.log(data?.data?.suppliers);
       this.supplierList();
       this.toastr.success("Record Deleted Successfully!");
     },

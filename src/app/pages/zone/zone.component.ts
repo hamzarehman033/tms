@@ -139,7 +139,7 @@ export class ZoneComponent implements OnInit {
       id: id
     }
     this.appService.deleteZone(payload).subscribe((data: any) => {
-      console.log("Delete zone api called: ", data?.zone);
+      // console.log("Delete zone api called: ", data?.zone);
       this.zoneList();
       this.toastr.success("Zone deleted!");
     })

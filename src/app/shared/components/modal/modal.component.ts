@@ -194,7 +194,7 @@ export class ModalComponent implements OnInit, OnChanges {
         }
       }
 
-      console.log(this.farm_obj);
+      // console.log(this.farm_obj);
     });
   }
 
