@@ -44,11 +44,12 @@ export class TableComponent {
 
     if (!list?.suppliers || !Array.isArray(list.suppliers)) return '';
     const names: string[] = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 2; i++) {
       names.push(list.suppliers[i]?.full_name);
     }
-    const preview = names.join(', ');
-    return list.suppliers.length > 3 ? `${preview}, ...` : preview;
+    let preview: any;
+    if (list.suppliers.length > 1) preview = names.join(', ');
+    return list.suppliers.length > 1 ? `${preview}, ...` : names[0];
   }
 
   // Returns the full list (used in tooltip)

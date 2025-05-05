@@ -24,24 +24,18 @@ export class FarmComponent implements OnInit {
   columnsToDisplay = ['Farm_ID', 'Farm_Name', 'createdAt', 'Farm_Zone', 'Farm_Location', 'Farm_Suppliers', 'Action'];
 
   editMode: any;
+  zone_data: any = [];
   fields: filterObj[] = [
     { type: 'text', key: 'name', placeholder: 'Name', value: '' },
     { type: 'text', key: 'id', placeholder: 'Enter Id here', value: '' },
-    {
-      type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '',
-      options: [
-        { label: 'Option 1', value: 1 },
-        { label: 'Option 2', value: 2 },
-        { label: 'Option 3', value: 3 }
-      ]
-    }
+    { type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '', options: [] }
   ];
 
   add_fields: modalObj[] = [
     { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
-    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }], validators: [Validators.required] },
+    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [], validators: [Validators.required] },
     { type: 'text', key: 'farm_address', placeholder: 'Farm Address', value: '', validators: [Validators.required] },
     { type: 'text', key: 'latitude', placeholder: 'Latitude', value: '', validators: [Validators.required] },
     { type: 'text', key: 'longitude', placeholder: 'Longitude', value: '', validators: [Validators.required] }
@@ -80,6 +74,7 @@ export class FarmComponent implements OnInit {
 
   ngOnInit(): void {
     this.farmList();
+    this.zoneList();
   }
 
   openModal() {
@@ -130,6 +125,35 @@ export class FarmComponent implements OnInit {
       let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
       this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
+  }
+
+  zoneList() {
+    const payload: any = {
+      limit: this.pagination.per_page,
+      page: this.pagination.current_page
+    };
+  
+    this.appService.zoneList(payload).subscribe((data: any) => {
+      let row = data.data.rows;
+      this.zone_data = row.map((r: any) => ({
+        name: r.name,
+        id: r.id
+      }));
+  
+      console.log("this.zone_data", this.zone_data);
+  
+      // Now update the dropdown options in add_fields
+      const zoneOptions = this.zone_data.map((zone: any) => ({
+        label: zone.name,
+        value: zone.id
+      }));
+      
+      ['zone_id', 'zone'].forEach(key => {
+        const field = this.add_fields.find(f => f.key === key) || this.fields.find(f => f.key === key);
+        if (field) field.options = zoneOptions;
+      });
+      
+    });
   }
 
   updateFarm(data: any) {

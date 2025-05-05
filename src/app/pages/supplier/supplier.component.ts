@@ -29,12 +29,13 @@ export class SupplierComponent implements OnInit {
   columnsToDisplay: string[] = ['Booking_Id', 'Company_Name', 'Supplier_Contact_Person', 'Supplier_Email', 'Action'];
   dataSource: any = [];
   editMode: any;
+  zone_data: any = [];
 
   add_fields: modalObj[] = [
     { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
-    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [{ label: 1, value: 1 }, { label: 2, value: 2 }, { label: 3, value: 3 }, { label: 4, value: 4 }, { label: 5, value: 5 }], validators: [Validators.required] },
+    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [], validators: [Validators.required] },
     { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 0 }, { label: 'Inactive', value: 1 }], validators: [Validators.required] },
     { type: 'text', key: 'company_name', placeholder: 'Company Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'company_address', placeholder: 'Location', value: '', validators: [Validators.required] },
@@ -82,6 +83,7 @@ export class SupplierComponent implements OnInit {
   constructor(private appService: AppService, private toastr: ToastrService) { }
   ngOnInit(): void {
     this.supplierList();
+    this.zoneList();
   }
 
   openModal() {
@@ -110,6 +112,32 @@ export class SupplierComponent implements OnInit {
       let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
       this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
+  }
+
+  zoneList() {
+    const payload: any = {
+      limit: this.pagination.per_page,
+      page: this.pagination.current_page
+    };
+  
+    this.appService.zoneList(payload).subscribe((data: any) => {
+      let row = data.data.rows;
+      this.zone_data = row.map((r: any) => ({
+        name: r.name,
+        id: r.id
+      }));
+  
+      console.log("this.zone_data", this.zone_data);
+  
+      // Now update the dropdown options in add_fields
+      const zoneField = this.add_fields.find(f => f.key === 'zone_id');
+      if (zoneField) {
+        zoneField.options = this.zone_data.map((zone: any) => ({
+          label: zone.name,
+          value: zone.id
+        }));
+      }
+    });
   }
 
   getSupplier(id: any) {
