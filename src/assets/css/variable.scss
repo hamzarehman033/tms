@@ -1,106 +1,106 @@
-$color_black: #2f3439;
-$color_gray: #94999f;
-$bg_lightgray: #94999f1a;
-$active: #43b02a4d;
-$color_lightgreen: #43B02A;
-$color_primary: #da291c;
-$color_orange: #ff8200;
-$bg_gray: #f6f7f9;
-$bg_white: #ffffff;
-$border_yellow: #ffd100;
-$border_blue: #00aca0;
-$border_orange: #ff8200;
-$color_secondary: #00843D;
-$color_border: #dee2e6;
-$card-header: white;
-$bg-signature: #F0F2F4;
-$color_dark: #212529;
-$color-input: #F7F7FF;
-$font-sm: 10px;
-$font-md: 12px;
-$font-13: 13px;
-$font-lg: 14px;
-$font-xl: 16px;
-$font-xxl: 18px;
+// $color_black: #2f3439;
+// $color_gray: #94999f;
+// $bg_lightgray: #94999f1a;
+// $active: #43b02a4d;
+// $color_lightgreen: #43B02A;
+// $color_primary: #da291c;
+// $color_orange: #ff8200;
+// $bg_gray: #f6f7f9;
+// $bg_white: #ffffff;
+// $border_yellow: #ffd100;
+// $border_blue: #00aca0;
+// $border_orange: #ff8200;
+// $color_secondary: #00843D;
+// $color_border: #dee2e6;
+// $card-header: white;
+// $bg-signature: #F0F2F4;
+// $color_dark: #212529;
+// $color-input: #F7F7FF;
+// $font-sm: 10px;
+// $font-md: 12px;
+// $font-13: 13px;
+// $font-lg: 14px;
+// $font-xl: 16px;
+// $font-xxl: 18px;
 
-$font-bold: 600;
-$font-medium: 500;
-$font-regular: 400;
+// $font-bold: 600;
+// $font-medium: 500;
+// $font-regular: 400;
 
-$marked: #f5faff;
-$select-border: #ccc;
-// $primary: #da291c;
-// $secondary: #00843D;
-// $dark: #2f3439;
-// $light: #94999f;
-// $success: #43B02A;
-// $warning: #ff8200;
+// $marked: #f5faff;
+// $select-border: #ccc;
+// // $primary: #da291c;
+// // $secondary: #00843D;
+// // $dark: #2f3439;
+// // $light: #94999f;
+// // $success: #43B02A;
+// // $warning: #ff8200;
 
-// @import "/node_modules/bootstrap/scss/bootstrap";
+// // @import "/node_modules/bootstrap/scss/bootstrap";
 
 
 
-// fonts
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+// // fonts
+// @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-.lato-thin {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
+// .lato-thin {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 100;
+//   font-style: normal;
+// }
 
-.lato-light {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
+// .lato-light {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 300;
+//   font-style: normal;
+// }
 
-.lato-regular {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+// .lato-regular {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 400;
+//   font-style: normal;
+// }
 
-.lato-bold {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
+// .lato-bold {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 700;
+//   font-style: normal;
+// }
 
-.lato-black {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
+// .lato-black {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 900;
+//   font-style: normal;
+// }
 
-.lato-thin-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
+// .lato-thin-italic {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 100;
+//   font-style: italic;
+// }
 
-.lato-light-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
+// .lato-light-italic {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 300;
+//   font-style: italic;
+// }
 
-.lato-regular-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
+// .lato-regular-italic {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 400;
+//   font-style: italic;
+// }
 
-.lato-bold-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
+// .lato-bold-italic {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 700;
+//   font-style: italic;
+// }
 
-.lato-black-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
+// .lato-black-italic {
+//   font-family: "Lato", sans-serif;
+//   font-weight: 900;
+//   font-style: italic;
+// }
 
-$lato_font: "Lato", sans-serif;
+// $lato_font: "Lato", sans-serif;

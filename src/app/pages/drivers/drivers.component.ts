@@ -9,11 +9,12 @@ import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { ToastrService } from 'ngx-toastr';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-drivers',
   standalone: true,
-  imports: [TableComponent, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent, ModalComponent, PaginatorComponent],
+  imports: [TableComponent, CommonModule, MatButtonModule, ReactiveFormsModule, FiltersComponent, ModalComponent, PaginatorComponent, IconComponent],
   templateUrl: './drivers.component.html',
   styleUrl: './drivers.component.scss'
 })

@@ -1,22 +1,22 @@
 <div class="row">
     <div class="col-12">
+        <div class="card mb-4">
+            <app-modal #modalRef (addModalDetails)="addFarm($event)" (updateModalDetails)="updateFarm($event)"
+                [modal_fields]="editMode ? update_fields : add_fields" [modal_info]="dataObject"></app-modal>
+            <app-filters [fields]="fields" (applyFilter)="farmList()" (resetFilter)="reset()"></app-filters>
+        </div>
         <div class="card">
-            <!-- Filter Header -->
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0"><b>Add Farm</b></h5>
-                <button type="button" class="btn btn-secondary" (click)="openModal()">Add Farm</button>
+                <button type="button" class="btn btn-secondary" (click)="openModal()">
+                    <app-icon icon="material-symbols:add-rounded" [width]="20" [height]="20" class="me-2"></app-icon>
+                    Add Farm</button>
             </div>
-            
-            <app-modal #modalRef (addModalDetails)="addFarm($event)" (updateModalDetails)="updateFarm($event)"
-            [modal_fields]="editMode ? update_fields : add_fields" [modal_info]="dataObject"></app-modal>
-
-            <app-filters [fields]="fields" (applyFilter)="farmList()" (resetFilter)="reset()"></app-filters>
-
-            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource" 
-            (deleteModalDetails)="deleteFarm($event)" (get_button)="getFarm($event)"></app-table>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"
+                (deleteModalDetails)="deleteFarm($event)" (get_button)="getFarm($event)"></app-table>
             <div class="card-footer">
-                <app-paginator [pagination]="pagination" (pageChange)="goToPage($event)" (page_selected)="selectedPage($event)" 
-                [(pageNo)]="pageCount"></app-paginator>
+                <app-paginator [pagination]="pagination" (pageChange)="goToPage($event)"
+                    (page_selected)="selectedPage($event)" [(pageNo)]="pageCount"></app-paginator>
             </div>
         </div>
     </div>

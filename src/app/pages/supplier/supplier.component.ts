@@ -7,12 +7,13 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { Validators } from '@angular/forms';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { ToastrService } from 'ngx-toastr';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-supplier',
   templateUrl: './supplier.component.html',
   standalone: true,
-  imports: [TableComponent, FiltersComponent, ModalComponent, PaginatorComponent],
+  imports: [TableComponent, FiltersComponent, ModalComponent, PaginatorComponent, IconComponent],
   styleUrl: './supplier.component.scss'
 })
 
