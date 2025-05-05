@@ -273,8 +273,18 @@
 
   <!-- Farm Suppliers Column -->
   <ng-container matColumnDef="Farm_Suppliers">
-    <th mat-header-cell *matHeaderCellDef> <b>Trucking Company</b> </th>
-    <td mat-cell *matCellDef="let element"> {{element.supplier?.full_name}} </td>
+    <th mat-header-cell *matHeaderCellDef><b>Trucking Company</b></th>
+    <td mat-cell *matCellDef="let element">
+      <div [attr.title]="getFullSupplierText(element)">
+        <span>
+          {{ getSupplierText(element) }}
+        </span>
+      </div>
+  
+      <button class="btn btn-link p-0 text-primary" (click)="openSharedModal()">
+        <i class="bi bi-eye" title="Open Suppliers Modal"></i>
+      </button>
+    </td>
   </ng-container>
 
   <!-- Zone: -->
@@ -462,3 +472,5 @@
 </table>
 
 <app-modal #deleteModal (yesClicked)="confirmDelete()"></app-modal>
+
+<app-modal #sharedModal></app-modal>

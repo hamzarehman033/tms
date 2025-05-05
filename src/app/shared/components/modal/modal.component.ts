@@ -1,7 +1,11 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { modalObj } from '../../../core/types';
+import { filterObj, modalObj } from '../../../core/types';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AppService } from '../../../core/service/app.service';
+import { IconComponent } from '../icon/icon.component';
+import { FiltersComponent } from '../filters/filters.component';
+
 declare var bootstrap: any;
 
 @Component({
@@ -9,11 +13,26 @@ declare var bootstrap: any;
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, IconComponent, FiltersComponent]
 })
 export class ModalComponent implements OnInit, OnChanges {
   selectedId: any;
   modal_type: any;
+  parameter: any;
+  form!: FormGroup;
+  farm_obj: any[] = [];
+  modalFilters: any = {};
+  fields: filterObj[] = [
+    {
+      type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '',
+      options: [
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2 },
+        { label: 'Option 3', value: 3 }
+      ]
+    },
+    { type: 'text', key: 'name', placeholder: 'Company Name', value: '' }
+  ];
 
   @Input() modal_fields: modalObj[] = [];
   @Input() modal_info: any;
@@ -24,14 +43,16 @@ export class ModalComponent implements OnInit, OnChanges {
 
   @ViewChild('exampleModal', { static: true }) modalElement!: ElementRef;
   @ViewChild('deleteModal', { static: true }) deleteModalElement!: ElementRef;
+  @ViewChild('sharedModal', { static: true }) sharedModalElement!: ElementRef;
+
 
   private modal: any;
   private deleteModal: any;
-  parameter: any;
-  form!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  private sharedModal: any;
+  constructor(private fb: FormBuilder, private appService: AppService) { }
 
   ngOnInit() {
+    this.farmList();
     this.form = this.fb.group({});
 
     for (let field of this.modal_fields) {
@@ -140,7 +161,56 @@ export class ModalComponent implements OnInit, OnChanges {
     }
   }
 
+  openSharedModal() {
+    this.sharedModal = new bootstrap.Modal(this.sharedModalElement?.nativeElement);
+    this.sharedModal.show();
+  }
+
+  closeSharedModal(){
+    if (this.sharedModal) {
+      this.sharedModal.hide();
+    }
+  }
+
+  deleteCompany(id: any) {
+    console.log("Delete company works");
+  }
+
+  farmList() {
+    const payload: any = {};
+  
+    this.appService.farmList(payload).subscribe((data: any) => {
+      let row = data.data.rows;
+
+      this.farm_obj = []; // reset to avoid duplicates
+
+      for (let i = 0; i < row.length; i++) {
+        for (let j = 0; j < row[i].suppliers.length; j++) {
+          const supplier = row[i].suppliers[j];
+          this.farm_obj.push({
+            name: supplier?.full_name,
+            id: supplier?.id
+          });
+        }
+      }
+
+      console.log(this.farm_obj);
+    });
+  }
+
+  farmFilter(){    
+    this.fields.forEach(field => {
+      if (field.value) this.modalFilters[field.key] = field.value;
+    });
+  }
+
   reset() {
+    this.modalFilters.zone = '';
+    this.modalFilters.name = '';
+    this.fields.forEach(f => {
+      f.value = '';
+    });
+
     for (let field of this.modal_fields) {
       field.value = ''; // Reset the field object
 

@@ -9,7 +9,7 @@ import { ModalComponent } from '../modal/modal.component';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
   standalone: true,
-  imports: [CommonModule, MatTableModule,MatHeaderCell, MatCell, MatRow, MatHeaderRow, IconComponent, ModalComponent]
+  imports: [CommonModule, MatTableModule, MatHeaderCell, MatCell, MatRow, MatHeaderRow, IconComponent, ModalComponent]
 })
 
 
@@ -20,22 +20,50 @@ export class TableComponent {
 
   @Output() get_button = new EventEmitter<any>();
   @Output() deleteModalDetails = new EventEmitter<any>();
- 
+
   @ViewChild('deleteModal') modalComponent !: ModalComponent;
+  @ViewChild('sharedModal') sharedModalComponent !: ModalComponent;
 
   selectedId: any;
 
-  deleteButton(id: any, param: any){
+  deleteButton(id: any, param: any) {
     this.selectedId = id;
     this.modalComponent.openDelete(this.selectedId, param);
   }
 
-  getButton(id: any){
+  getButton(id: any) {
     this.get_button.emit(id);
   }
 
-  confirmDelete(){
+  confirmDelete() {
     this.deleteModalDetails.emit(this.selectedId);
     this.modalComponent.closeDelete();
+  }
+
+  getSupplierText(list: any): string {
+
+    if (!list?.suppliers || !Array.isArray(list.suppliers)) return '';
+    const names: string[] = [];
+    for (let i = 0; i < 3; i++) {
+      names.push(list.suppliers[i]?.full_name);
+    }
+    const preview = names.join(', ');
+    return list.suppliers.length > 3 ? `${preview}, ...` : preview;
+  }
+
+  // Returns the full list (used in tooltip)
+  getFullSupplierText(list: any): string {
+    if (!list?.suppliers || !Array.isArray(list.suppliers)) return '';
+
+    const names: string[] = [];
+    for (let i = 0; i < list.suppliers.length; i++) {
+      names.push(list.suppliers[i]?.full_name);
+    }
+    const preview = names.join(', ');
+    return preview;
+  }
+
+  openSharedModal() { 
+    this.sharedModalComponent.openSharedModal();
   }
 }
