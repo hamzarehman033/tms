@@ -8,12 +8,13 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { ToastrService } from 'ngx-toastr';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-farm',
   templateUrl: './farm.component.html',
   standalone: true,
-  imports: [TableComponent, FiltersComponent, ModalComponent, CommonModule, PaginatorComponent],
+  imports: [TableComponent, FiltersComponent, ModalComponent, CommonModule, PaginatorComponent, IconComponent],
   styleUrl: './farm.component.scss'
 })
 export class FarmComponent implements OnInit {

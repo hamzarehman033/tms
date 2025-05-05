@@ -9,7 +9,8 @@
                         <h5>Total Companies</h5>
                     </div>
                     <div class="icon-wrapper">
-                        <app-icon icon="pixel:tech-companies" [width]="32" [height]="32" class="text-primary-emphasis"></app-icon>
+                        <app-icon icon="pixel:tech-companies" [width]="32" [height]="32"
+                            class="text-primary-emphasis"></app-icon>
                     </div>
                 </div>
             </div>
@@ -110,8 +111,7 @@
                         <h5>Completed Requests</h5>
                     </div>
                     <div class="icon-wrapper">
-                        <app-icon icon="charm:tick" [width]="32" [height]="32"
-                            class="text-success-emphasis"></app-icon>
+                        <app-icon icon="charm:tick" [width]="32" [height]="32" class="text-success-emphasis"></app-icon>
                     </div>
                 </div>
             </div>
@@ -120,11 +120,19 @@
 </div>
 <div class="row mb-3">
     <div class="col-md-6">
-        <app-line-graph></app-line-graph>
+        <div class="card">
+            <div class="card-body">
+                <app-line-graph></app-line-graph>
+            </div>
+        </div>
     </div>
 
     <div class="col-md-6">
-        <app-pie-chart></app-pie-chart>
+        <div class="card">
+            <div class="card-body">
+                <app-pie-chart></app-pie-chart>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row mb-3">

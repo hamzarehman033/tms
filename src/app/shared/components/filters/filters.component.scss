@@ -1,19 +1,4 @@
-select{
-    color: #9A99AC;
+.reset-filter {
+  top: 12px;
+  right: 1rem;
 }
-
-.custom-placeholder::placeholder {
-    color: #9A99AC;
-}
-
-.card-body {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  
-    .col-md {
-      flex: 1 0 12%; // ~4 in a row with some gap
-      min-width: 200px; // responsive fallback
-    }
-  }
-  

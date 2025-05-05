@@ -7,12 +7,13 @@ import { filterObj, modalObj, Pagination } from '../../core/types';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { ToastrService } from 'ngx-toastr';
+import { IconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
   standalone: true,
-  imports: [TableComponent, FormsModule, FiltersComponent, ModalComponent, PaginatorComponent],
+  imports: [TableComponent, FormsModule, FiltersComponent, ModalComponent, PaginatorComponent, IconComponent],
   styleUrl: './zone.component.scss'
 })
 export class ZoneComponent implements OnInit {

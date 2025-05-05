@@ -47,11 +47,16 @@ $warning-bg-subtle: #fff9f2;
 $success-bg-subtle: #f2f9f5;
 // emphasis
 $primary-text-emphasis: #EC948D;
-$warning-text-emphasis: #FFC080 ;
+$warning-text-emphasis: #FFC080;
 $success-text-emphasis: #80C19E;
 
+// form control 
+$input-placeholder-color: #9A99AC;
+
+// pagination
+$pagination-bg: $white;
 
 $font-family-base: 'Lato', sans-serif;
-
+$body-font-family: 'Lato', sans-serif;
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";

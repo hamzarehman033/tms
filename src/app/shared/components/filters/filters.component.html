@@ -1,32 +1,37 @@
 <div class="card-body" *ngIf="showFilter">
-    <div class="row align-items-end g-3 mb-3">
+    <div class="position-absolute reset-filter">
+        <app-icon icon="eva:sync-fill" [width]="20" [height]="20" class="text-primary"></app-icon>
+    </div>
+    <div class="row g-3">
+        <div class="col-md">
+            <div class="row g-3">
+                <div class="col-md-3" *ngFor="let field of fields">
+                    <!-- Text Input -->
+                    <label *ngIf="field.type === 'text'" class="form-label" [attr.for]="field.key"> {{
+                        filterMapper[field.key] || (field.key | titlecase) }}
+                    </label>
+                    <input *ngIf="field.type === 'text'" class="form-control custom-placeholder" [id]="field.key"
+                        [name]="field.key" [placeholder]="field.placeholder" type="text" [(ngModel)]="field.value" />
 
-        <div class="col-md" *ngFor="let field of fields">
-            
-            <!-- Text Input -->
-            <label *ngIf="field.type === 'text'" class="form-label" [attr.for]="field.key"> {{ filterMapper[field.key] || (field.key | titlecase) }}
-            </label>
-            <input *ngIf="field.type === 'text'" class="form-control custom-placeholder" [id]="field.key" [name]="field.key"
-                [placeholder]="field.placeholder" type="text" [(ngModel)]="field.value"/>
+                    <!-- Dropdown -->
+                    <label *ngIf="field.type === 'dropdown'" class="form-label" [attr.for]="field.key">
+                        Select {{ filterMapper[field.key] || (field.key | titlecase) }}
+                    </label>
 
-            <!-- Dropdown -->
-            <label *ngIf="field.type === 'dropdown'" class="form-label" [attr.for]="field.key">
-                Select {{ filterMapper[field.key] || (field.key | titlecase) }}
-            </label>
-              
-            <select *ngIf="field.type === 'dropdown'" class="form-select" [ngClass]="{ 'text-muted': !field.value, 'text-dark': field.value }"
-                [id]="field.key" [name]="field.key" [(ngModel)]="field.value">
-                <option value="" disabled hidden>Select {{ field.placeholder }}</option>
-                <option style="color: black;" *ngFor="let option of field.options" [value]="option.value">
-                  {{ option.label }}
-                </option>
-            </select>
-              
+                    <select *ngIf="field.type === 'dropdown'" class="form-select"
+                        [ngClass]="{ 'text-muted': !field.value, 'text-dark': field.value }" [id]="field.key"
+                        [name]="field.key" [(ngModel)]="field.value">
+                        <option value="" disabled hidden>Select {{ field.placeholder }}</option>
+                        <option style="color: black;" *ngFor="let option of field.options" [value]="option.value">
+                            {{ option.label }}
+                        </option>
+                    </select>
+                </div>
+            </div>
         </div>
-
-        <div class="col-md text-end">
+        <div class="col-md-auto text-end mt-5">
             <button type="button" class="btn btn-primary px-2" (click)="clickResetButton()">
-                <app-icon icon="ion:sync-outline" [width]="24" [height]="24"></app-icon>
+                <app-icon icon="material-symbols:add-rounded" [width]="20" [height]="20"></app-icon>
             </button>
             <button type="button" class="btn btn-outline-primary ms-3" (click)="clickFilterButton()">Apply</button>
         </div>

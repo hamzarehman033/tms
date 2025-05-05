@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, IconComponent]
 })
 export class PaginatorComponent {
   @Input() pagination: any;
