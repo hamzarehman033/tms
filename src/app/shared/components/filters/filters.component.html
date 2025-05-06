@@ -2,7 +2,7 @@
     <div class="row g-3">
         <div class="col-md">
             <div class="row g-3">
-                <div class="col-md-3" *ngFor="let field of fields">
+                <div class="col-md-3" *ngFor="let field of newFields">
                     <!-- Text Input -->
                     <label *ngIf="field.type === 'text'" class="form-label" [attr.for]="field.key"> {{
                         filterMapper[field.key] || (field.key | titlecase) }}
@@ -30,7 +30,7 @@
             <div class="position-absolute reset-filter">
                 <app-icon (click)="clickResetButton()" icon="eva:sync-fill" [width]="20" [height]="20" class="text-primary"></app-icon>
             </div>
-            <button title="Toggle Filters" type="button" class="btn btn-primary px-2" (click)="collapse = !collapse" >
+            <button title="Toggle Filters" type="button" class="btn btn-primary px-2" (click)="toggleFilter()" >
                 <!-- <app-icon [icon]="collapse ? 'material-symbols:add-rounded' : 'bi-dash'"  [width]="20" [height]="20"></app-icon> -->
                 <i class="bi" [ngClass]="collapse? 'bi-plus-lg': 'bi-dash'"></i>
             </button>
