@@ -30,8 +30,9 @@
             <div class="position-absolute reset-filter">
                 <app-icon (click)="clickResetButton()" icon="eva:sync-fill" [width]="20" [height]="20" class="text-primary"></app-icon>
             </div>
-            <button type="button" class="btn btn-primary px-2">
-                <app-icon icon="material-symbols:add-rounded" [width]="20" [height]="20"></app-icon>
+            <button title="Toggle Filters" type="button" class="btn btn-primary px-2" (click)="collapse = !collapse" >
+                <!-- <app-icon [icon]="collapse ? 'material-symbols:add-rounded' : 'bi-dash'"  [width]="20" [height]="20"></app-icon> -->
+                <i class="bi" [ngClass]="collapse? 'bi-plus-lg': 'bi-dash'"></i>
             </button>
             <button type="button" class="btn btn-outline-primary ms-3" (click)="clickFilterButton()">Apply</button>
         </div>

@@ -41,30 +41,32 @@ export class TableComponent {
   }
 
   getSupplierText(list: any): string {
-
-    if (!list?.suppliers || !Array.isArray(list.suppliers)) return '';
+    if (!list || !Array.isArray(list)) return '';
     const names: string[] = [];
-    for (let i = 0; i < 2; i++) {
-      names.push(list.suppliers[i]?.full_name);
+    for (let i = 0; i < list.length; i++) {
+      for (let j = 0; j < list[i].suppliers.length; j++) {
+        names.push(list[i].suppliers[j]?.company_name);
+      }
     }
     let preview: any;
-    if (list.suppliers.length > 1) preview = names.join(', ');
-    return list.suppliers.length > 1 ? `${preview}, ...` : names[0];
+    if (names.length > 1) preview = names.join(', ');
+    return names.length > 1 ? `${preview}, ...` : names[0];
   }
 
   // Returns the full list (used in tooltip)
-  getFullSupplierText(list: any): string {   
-    if (!list?.suppliers || !Array.isArray(list.suppliers)) return '';
-
+  getFullSupplierText(list: any): string {
+    if (!list || !Array.isArray(list)) return '';
     const names: string[] = [];
-    for (let i = 0; i < list.suppliers.length; i++) {
-      names.push(list.suppliers[i]?.full_name);
+    for (let i = 0; i < list.length; i++) {
+      for (let j = 0; j < list[i].suppliers.length; j++) {
+        names.push(list[i].suppliers[j]?.company_name);
+      }
     }
     const preview = names.join(', ');
     return preview;
   }
 
-  openSharedModal(id: any) { 
+  openSharedModal(id: any) {
     this.sharedModalComponent.openSharedModal(id);
   }
 }

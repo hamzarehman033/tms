@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angul
 import { AppService } from '../../../core/service/app.service';
 import { IconComponent } from '../icon/icon.component';
 import { FiltersComponent } from '../filters/filters.component';
+import { debug } from 'console';
 
 declare var bootstrap: any;
 
@@ -25,9 +26,12 @@ export class ModalComponent implements OnInit, OnChanges {
   zone_data: any = [];
   shared_modal_id: any;
 
+  dataTable: any;
+  supplierFilter: any = {};
+
   fields: filterObj[] = [
     { type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '', options: [] },
-    { type: 'text', key: 'name', placeholder: 'Company Name', value: '' }
+    { type: 'text', key: 'company_name', placeholder: 'Company Name', value: '' }
   ];
 
   @Input() modal_fields: modalObj[] = [];
@@ -178,16 +182,18 @@ export class ModalComponent implements OnInit, OnChanges {
     const payload: any = {};
 
     this.appService.farmList(payload).subscribe((data: any) => {
-      // console.log("modalllllllllll trucksss:", data.data);
       let row = data.data.rows.find((f: any) => f.id === this.shared_modal_id);
 
       this.farm_obj = []; // reset to avoid duplicates
-      for (let j = 0; j < row.suppliers.length; j++) {
-        const supplier = row.suppliers[j];
-        this.farm_obj.push({
-          name: supplier?.full_name,
-          id: supplier?.id
-        });
+      for (let i = 0; i < row.suppliers.length; i++) {
+        for (let j = 0; j < row.suppliers[i].suppliers.length; j++) {
+          const supplier = row.suppliers[i].suppliers[j];
+          this.farm_obj.push({
+            name: supplier?.company_name,
+            id: supplier?.id,
+            address: supplier?.company_address
+          });
+        }
       }
     });
   }
@@ -217,12 +223,24 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   farmFilter() {
+    const payload: any = {};
     this.fields.forEach(field => {
-      if (field.value) this.modalFilters[field.key] = field.value;
+      if (field.value) this.supplierFilter[field.key] = field.value;
     });
+
+    if (this.supplierFilter.zone) payload['zone_id'] = this.supplierFilter.zone;
+    if (this.supplierFilter.company_name) payload['company_name'] = this.supplierFilter.company_name;
+
+    this.appService.supplierList(payload).subscribe((data: any) => {
+      console.log("Supplier data:", data?.data?.rows);
+      this.dataTable = data.data.rows;
+    })
+
   }
 
   reset() {
+    this.supplierFilter.zone = '';
+    this.supplierFilter.company_name = '';
     this.modalFilters.zone = '';
     this.modalFilters.name = '';
     this.fields.forEach(f => {

@@ -11,17 +11,17 @@ import { IconComponent } from '../icon/icon.component';
   imports: [CommonModule, FormsModule, IconComponent]
 })
 export class FiltersComponent {
-
+  collapse: boolean = true;
   @Input() fields: filterObj[] = [];
   @Input() showFilter: boolean = true;
 
   @Output() applyFilter = new EventEmitter<any>();
   @Output() resetFilter = new EventEmitter<any>();
-  
-  clickFilterButton(){
+
+  clickFilterButton() {
     this.applyFilter.emit();
   }
-  clickResetButton(){
+  clickResetButton() {
     this.resetFilter.emit();
   }
 

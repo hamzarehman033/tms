@@ -140,6 +140,33 @@
 
         <app-filters [fields]="fields" (applyFilter)="farmFilter()" (resetFilter)="reset()"></app-filters>
 
+        <table class="table table-bordered table-striped">
+          <thead  style="background-color: rgb(67, 176, 42); color: rgb(255, 255, 255);">
+            <tr>
+              <th>Zone ID</th>
+              <th>Company Name</th>
+              <th>Company Address</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="dataTable && dataTable.length > 0; else noData">
+            <tr *ngFor="let data of dataTable">
+              <td>{{ data.id }}</td>
+              <td>{{ data.company_name }}</td>
+              <td>{{ data.company_address }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <ng-template #noData>
+          <tbody>
+            <tr>
+              <td colspan="3" class="text-center">Nothing to display</td>
+            </tr>
+          </tbody>
+        </ng-template>
+        
+        
+
 
       </div>
       <div class="modal-footer">
