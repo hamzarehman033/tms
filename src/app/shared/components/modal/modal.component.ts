@@ -52,15 +52,8 @@ export class ModalComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder, private appService: AppService) { }
 
   ngOnInit() {
+    this.buildFormFromModalFields();
     this.zoneList();
-    this.form = this.fb.group({});
-
-    for (let field of this.modal_fields) {
-      this.form.addControl(
-        field.key,
-        this.fb.control(field.value)
-      );
-    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -186,14 +179,13 @@ export class ModalComponent implements OnInit, OnChanges {
 
       this.farm_obj = []; // reset to avoid duplicates
       for (let i = 0; i < row.suppliers.length; i++) {
-        for (let j = 0; j < row.suppliers[i].suppliers.length; j++) {
-          const supplier = row.suppliers[i].suppliers[j];
+          const supplier = row.suppliers[i];
           this.farm_obj.push({
             name: supplier?.company_name,
             id: supplier?.id,
             address: supplier?.company_address
           });
-        }
+        
       }
     });
   }
@@ -256,5 +248,6 @@ export class ModalComponent implements OnInit, OnChanges {
         this.form.get(field.key)?.markAsUntouched();
       }
     }
+    this.dataTable = [];
   }
 }

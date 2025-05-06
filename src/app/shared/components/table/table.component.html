@@ -308,9 +308,9 @@
   <ng-container matColumnDef="Farm_Suppliers">
     <th mat-header-cell *matHeaderCellDef><b>Trucking Company</b></th>
     <td mat-cell *matCellDef="let element">
-      <div [attr.title]="getFullSupplierText(element.suppliers)">
+      <div [attr.title]="getFullSupplierText(element)">
         <span>
-          {{ getSupplierText(element.suppliers) }}
+          {{ getSupplierText(element) }}
         </span>
       </div>
   

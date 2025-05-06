@@ -21,7 +21,7 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="form">
-          <div class="row align-items-end g-3 mb-3">
+          <div class="row align-items-start g-3 mb-3">
             <ng-container *ngFor="let field of modal_fields">
               <!-- Input field -->
               <div class="col-md-6" *ngIf="field.type === 'text' && !field.hidden">
@@ -52,7 +52,7 @@
                 <label class="form-label" [attr.for]="field.key">{{ field.placeholder }}</label>
                 <select class="form-select" [id]="field.key" [formControlName]="field.key"
                   (change)="onFieldChange($event)">
-                  <option value="" disabled selected hidden>
+                  <option value="" disabled hidden>
                     Select {{ field.placeholder }}
                   </option>
                   <option *ngFor="let option of field.options" [value]="option.value">
@@ -113,15 +113,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div style="margin: 20px;">
-        <div class="row fw-bold border-bottom pb-2 mb-2">
-          <div class="col">Trucking Company</div>
-          <div class="col">Action</div>
-        </div>
-
-        <div class="tc_list">
-          <div *ngFor="let item of farm_obj" class="row mb-2">
-            <div class="col">{{ item.name }}</div>
-            <div class="col">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Trucking Company</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of farm_obj">
+              <td>{{ item.name }}</td>
+              <td>
                 <button class="btn action-icon-wrapper">
                   <span (click)="deleteCompany(item.id)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,18 +136,20 @@
                     </svg>
                   </span>
                 </button>
-            </div>
-          </div>
-        </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <app-filters [fields]="fields" (applyFilter)="farmFilter()" (resetFilter)="reset()"></app-filters>
 
-        <table class="table table-bordered table-striped">
-          <thead  style="background-color: rgb(67, 176, 42); color: rgb(255, 255, 255);">
+        <table class="table table-responsive">
+          <thead>
             <tr>
               <th>Zone ID</th>
               <th>Company Name</th>
               <th>Company Address</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody *ngIf="dataTable && dataTable.length > 0; else noData">
@@ -153,6 +157,7 @@
               <td>{{ data.id }}</td>
               <td>{{ data.company_name }}</td>
               <td>{{ data.company_address }}</td>
+              <td> <app-icon icon="icon-park-outline:add"></app-icon> </td>
             </tr>
           </tbody>
         </table>

@@ -41,12 +41,10 @@ export class TableComponent {
   }
 
   getSupplierText(list: any): string {
-    if (!list || !Array.isArray(list)) return '';
+    if (!list.suppliers || !Array.isArray(list.suppliers)) return '';
     const names: string[] = [];
-    for (let i = 0; i < list.length; i++) {
-      for (let j = 0; j < list[i].suppliers.length; j++) {
-        names.push(list[i].suppliers[j]?.company_name);
-      }
+    for (let j = 0; j < list.suppliers?.length; j++) {
+      names.push(list.suppliers[j]?.company_name);
     }
     let preview: any;
     if (names.length > 1) preview = names.join(', ');
@@ -55,12 +53,10 @@ export class TableComponent {
 
   // Returns the full list (used in tooltip)
   getFullSupplierText(list: any): string {
-    if (!list || !Array.isArray(list)) return '';
+    if (!list.suppliers || !Array.isArray(list.suppliers)) return '';
     const names: string[] = [];
-    for (let i = 0; i < list.length; i++) {
-      for (let j = 0; j < list[i].suppliers.length; j++) {
-        names.push(list[i].suppliers[j]?.company_name);
-      }
+    for (let j = 0; j < list.suppliers?.length; j++) {
+      names.push(list.suppliers[j]?.company_name);
     }
     const preview = names.join(', ');
     return preview;
