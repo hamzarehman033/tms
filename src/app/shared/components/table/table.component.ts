@@ -53,7 +53,7 @@ export class TableComponent {
   }
 
   // Returns the full list (used in tooltip)
-  getFullSupplierText(list: any): string {
+  getFullSupplierText(list: any): string {   
     if (!list?.suppliers || !Array.isArray(list.suppliers)) return '';
 
     const names: string[] = [];
@@ -64,7 +64,7 @@ export class TableComponent {
     return preview;
   }
 
-  openSharedModal() { 
-    this.sharedModalComponent.openSharedModal();
+  openSharedModal(id: any) { 
+    this.sharedModalComponent.openSharedModal(id);
   }
 }

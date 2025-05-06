@@ -22,15 +22,11 @@ export class ModalComponent implements OnInit, OnChanges {
   form!: FormGroup;
   farm_obj: any[] = [];
   modalFilters: any = {};
+  zone_data: any = [];
+  shared_modal_id: any;
+
   fields: filterObj[] = [
-    {
-      type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '',
-      options: [
-        { label: 'Option 1', value: 1 },
-        { label: 'Option 2', value: 2 },
-        { label: 'Option 3', value: 3 }
-      ]
-    },
+    { type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '', options: [] },
     { type: 'text', key: 'name', placeholder: 'Company Name', value: '' }
   ];
 
@@ -52,7 +48,7 @@ export class ModalComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder, private appService: AppService) { }
 
   ngOnInit() {
-    this.farmList();
+    this.zoneList();
     this.form = this.fb.group({});
 
     for (let field of this.modal_fields) {
@@ -161,12 +157,14 @@ export class ModalComponent implements OnInit, OnChanges {
     }
   }
 
-  openSharedModal() {
+  openSharedModal(id: any) {
+    this.shared_modal_id = id;
+    this.farmList();
     this.sharedModal = new bootstrap.Modal(this.sharedModalElement?.nativeElement);
     this.sharedModal.show();
   }
 
-  closeSharedModal(){
+  closeSharedModal() {
     if (this.sharedModal) {
       this.sharedModal.hide();
     }
@@ -178,27 +176,47 @@ export class ModalComponent implements OnInit, OnChanges {
 
   farmList() {
     const payload: any = {};
-  
+
     this.appService.farmList(payload).subscribe((data: any) => {
-      let row = data.data.rows;
+      // console.log("modalllllllllll trucksss:", data.data);
+      let row = data.data.rows.find((f: any) => f.id === this.shared_modal_id);
 
       this.farm_obj = []; // reset to avoid duplicates
-
-      for (let i = 0; i < row.length; i++) {
-        for (let j = 0; j < row[i].suppliers.length; j++) {
-          const supplier = row[i].suppliers[j];
-          this.farm_obj.push({
-            name: supplier?.full_name,
-            id: supplier?.id
-          });
-        }
+      for (let j = 0; j < row.suppliers.length; j++) {
+        const supplier = row.suppliers[j];
+        this.farm_obj.push({
+          name: supplier?.full_name,
+          id: supplier?.id
+        });
       }
-
-      // console.log(this.farm_obj);
     });
   }
 
-  farmFilter(){    
+  zoneList() {
+    const payload: any = {};
+
+    this.appService.zoneList(payload).subscribe((data: any) => {
+      let row = data.data.rows;
+      this.zone_data = row.map((r: any) => ({
+        name: r.name,
+        id: r.id
+      }));
+
+      // Now update the dropdown options in add_fields
+      const zoneOptions = this.zone_data.map((zone: any) => ({
+        label: zone.name,
+        value: zone.id
+      }));
+
+      ['zone'].forEach(key => {
+        const field = this.fields.find(f => f.key === key);
+        if (field) field.options = zoneOptions;
+      });
+
+    });
+  }
+
+  farmFilter() {
     this.fields.forEach(field => {
       if (field.value) this.modalFilters[field.key] = field.value;
     });
