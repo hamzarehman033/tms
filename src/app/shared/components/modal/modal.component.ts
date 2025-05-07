@@ -24,7 +24,7 @@ export class ModalComponent implements OnInit, OnChanges {
   farm_obj: any[] = [];
   modalFilters: any = {};
   zone_data: any = [];
-  shared_modal_id: any;
+  farm_id: any;
 
   dataTable: any;
   supplierFilter: any = {};
@@ -155,7 +155,7 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   openSharedModal(id: any) {
-    this.shared_modal_id = id;
+    this.farm_id = id;
     this.farmList();
     this.sharedModal = new bootstrap.Modal(this.sharedModalElement?.nativeElement);
     this.sharedModal.show();
@@ -164,18 +164,38 @@ export class ModalComponent implements OnInit, OnChanges {
   closeSharedModal() {
     if (this.sharedModal) {
       this.sharedModal.hide();
+      this.farmList();
     }
   }
 
-  deleteCompany(id: any) {
-    console.log("Delete company works");
+  addFarmSupplier(supplier_id: any) {
+    debugger
+    const payload: any = {};
+    if (supplier_id) payload['supplier_id'] = supplier_id;
+    if (this.farm_id) payload['farm_id'] = this.farm_id; 
+
+    this.appService.addFarmSupplier(payload).subscribe((data: any)=>{
+      console.log("data: ", data);
+      this.farmList();
+    });
+  }
+
+  deleteFarmSupplier(supplier_id: any) {
+    const payload: any = {};
+    if (supplier_id) payload['supplier_id'] = supplier_id;
+    if (this.farm_id) payload['farm_id'] = this.farm_id; 
+
+    this.appService.deleteFarmSupplier(payload).subscribe((data: any)=>{
+      console.log("data: ", data);
+      this.farmList();
+    });
   }
 
   farmList() {
     const payload: any = {};
 
     this.appService.farmList(payload).subscribe((data: any) => {
-      let row = data.data.rows.find((f: any) => f.id === this.shared_modal_id);
+      let row = data.data.rows.find((f: any) => f.id === this.farm_id);
 
       this.farm_obj = []; // reset to avoid duplicates
       for (let i = 0; i < row.suppliers.length; i++) {
@@ -185,7 +205,6 @@ export class ModalComponent implements OnInit, OnChanges {
             id: supplier?.id,
             address: supplier?.company_address
           });
-        
       }
     });
   }

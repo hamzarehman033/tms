@@ -39,5 +39,7 @@ export enum urlEnums {
     addTruckRestriction = '/addTruckRestriction',
     removeTruckRestriction = '/removeTruckRestriction',
     getAuditTrail = '/getAuditTrail',
-    getAllAuditTrails = '/getAllAuditTrails'
+    getAllAuditTrails = '/getAllAuditTrails',
+    addFarmSupplier = '/addFarmSupplier',
+    deleteFarmSupplier = '/deleteFarmSupplier'
 }

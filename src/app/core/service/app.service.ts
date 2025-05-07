@@ -170,4 +170,13 @@ export class AppService {
   getAllAuditTrail(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.getAllAuditTrails}`, formData)
   }
+
+  // Add/Delete farm suppliers
+  addFarmSupplier(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.addFarmSupplier}`, formData)
+  }
+
+  deleteFarmSupplier(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.deleteFarmSupplier}`, formData)
+  }
 }
