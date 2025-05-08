@@ -168,6 +168,7 @@ export class ModalComponent implements OnInit, OnChanges {
 
   closeSharedModal() {
     if (this.sharedModal) {
+      this.reset();
       this.sharedModal.hide();
       this.result.next('update');
     }
