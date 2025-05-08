@@ -95,7 +95,7 @@ export class ZoneComponent implements OnInit {
       this.dataSource = data?.data?.rows;
       console.log("zone data", this.dataSource);
       this.pagination.total_records = data.data.count;
-      let pagesCount = Math.ceil(this.pagination.total_records / this.pagination.per_page);
+      let pagesCount = Math.ceil(this.pagination?.total_records / this.pagination.per_page);
       this.pagination.total_pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
     })
   }

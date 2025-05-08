@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,42 +9,59 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   dashboard_heading: boolean = false;
-
+  pageHeadingText: string = '';
+  
   @Output() toggleDrawer = new EventEmitter<void>();
   @Input() user_name = 'Kane';
 
-  constructor( private router: Router){}
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    // Set initial values based on current route
+    this.updatePageHeading(this.router.url);
+    
+    // Listen for route changes
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.updatePageHeading(event.url);
+      });
+  }
 
   onToggle() {
     this.toggleDrawer.emit();
   }
 
-  get pageHeading(): string {
-    const currentRoute = this.router.url;
-
+  // This method updates both properties at once
+  private updatePageHeading(currentRoute: string): void {
     if (currentRoute.includes("dashboard")) {
       this.dashboard_heading = true;
-      return '';
+      this.pageHeadingText = '';
     } else if (currentRoute.includes("farm")) {
       this.dashboard_heading = false;
-      return "Farms";
+      this.pageHeadingText = "Farms";
     } else if (currentRoute.includes("supplier")) {
       this.dashboard_heading = false;
-      return "Trucking Company";
+      this.pageHeadingText = "Trucking Company";
     } else if (currentRoute.includes("driver")) {
       this.dashboard_heading = false;
-      return "Drivers";
+      this.pageHeadingText = "Drivers";
     } else if (currentRoute.includes("zone")) {
       this.dashboard_heading = false;
-      return "Zones";
+      this.pageHeadingText = "Zones";
     } else if (currentRoute.includes("restriction")) {
       this.dashboard_heading = false;
-      return "Restrictions";
+      this.pageHeadingText = "Restrictions";
     } else if (currentRoute.includes("audit-trail")) {
       this.dashboard_heading = false;
-      return "Audit Trails";
+      this.pageHeadingText = "Audit Trails";
     } else {
-      return ''; 
+      this.dashboard_heading = false;
+      this.pageHeadingText = '';
     }
   }
+    // Getter that doesn't change any state
+    get pageHeading(): string {
+      return this.pageHeadingText;
+    }
 }

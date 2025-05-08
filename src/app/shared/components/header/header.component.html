@@ -5,7 +5,7 @@
                 <app-icon icon="material-symbols:chevron-left-rounded" [width]="24" [height]="24"
                     class="collapse-icon"></app-icon>
             </div>
-            <ul class="custom-breadcrumbs d-none d-lg-flex">
+            <ul *ngIf="!dashboard_heading" class="custom-breadcrumbs d-none d-lg-flex">
                 <li>
                     <a>
                         <img src="../../../../assets/images/home-2.svg" alt="collapse menu icon" type="button" />

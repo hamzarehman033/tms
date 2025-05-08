@@ -20,11 +20,11 @@
                 </div>
             </div>
             <div *ngIf="showPaginator">
-                <label class="fs-14 fw-semibold">Total Records: {{ pagination.total_records || 0 }}</label>
+                <label class="fs-14 fw-semibold">Total Records: {{ pagination?.total_records || 0 }}</label>
             </div>
         </div>
         <!-- Right Side: Pagination -->
-        <ul *ngIf="pagination.total_records > 0" class="pagination gap-3 me-3">
+        <ul *ngIf="pagination?.total_records > 0" class="pagination gap-3 me-3">
             <li title="Previous" class="page-item">
                 <button [disabled]="pagination.current_page < 2" class="page-link"
                     (click)="goToPage(pagination.current_page - 1)">
