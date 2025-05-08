@@ -3,11 +3,12 @@ import { LineGraphComponent } from '../../shared/components/line-graph/line-grap
 import { PieChartComponent } from '../../shared/components/pie-chart/pie-chart.component';
 import { TableComponent } from '../../shared/components/table/table.component';
 import { IconComponent } from '../../shared/components/icon/icon.component';
+import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [LineGraphComponent, PieChartComponent, TableComponent, IconComponent],
+  imports: [LineGraphComponent, PieChartComponent, TableComponent, IconComponent, PaginatorComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

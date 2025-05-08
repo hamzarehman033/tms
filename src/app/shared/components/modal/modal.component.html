@@ -112,7 +112,8 @@
         <h5 class="modal-title"><b>Add/Remove Trucking Companies</b></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-      <div style="margin: 20px;">
+      <div class="modal-body">
+        <h6 class="modal-title"><b>List of Trucking Companies</b></h6>
         <table class="table table-responsive">
           <thead>
             <tr>
@@ -161,7 +162,7 @@
             </tr>
           </tbody>
         </table>
-        
+
         <ng-template #noData>
           <tbody>
             <tr>
@@ -169,8 +170,8 @@
             </tr>
           </tbody>
         </ng-template>
-        
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-primary custom_btn" (click)="closeSharedModal()">Close</button>
       </div>
