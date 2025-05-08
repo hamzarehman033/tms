@@ -1,9 +1,9 @@
 <div class="bg-header">
     <div>
         <div class="d-flex gap-2 align-items-center">
-            <div class="collapse-icon-wrapper">
-                <app-icon icon="material-symbols:chevron-left-rounded" [width]="24" [height]="24" (click)="onToggle()"
-                    class="cursor collapse-icon"></app-icon>
+            <div class="collapse-icon-wrapper cursor" (click)="onToggle()">
+                <app-icon icon="material-symbols:chevron-left-rounded" [width]="24" [height]="24"
+                    class="collapse-icon"></app-icon>
             </div>
             <ul class="custom-breadcrumbs d-none d-lg-flex">
                 <li>
@@ -15,7 +15,7 @@
                     <a>Dashboard</a>
                 </li>
                 <li>
-                    <a>{{ pageHeading }}</a>
+                    <a class="text-primary">{{ pageHeading }}</a>
                 </li>
             </ul>
             <!-- <h4 class="mb-0 fw-bold">{{ pageHeading }}</h4> -->

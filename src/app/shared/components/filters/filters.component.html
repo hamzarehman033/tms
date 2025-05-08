@@ -1,4 +1,4 @@
-<div class="card-body" *ngIf="showFilter">
+<div class="card-body position-relative" *ngIf="showFilter">
     <div class="row g-3">
         <div class="col-md">
             <div class="row g-3">
@@ -16,8 +16,8 @@
                     </label>
 
                     <select *ngIf="field.type === 'dropdown'" class="form-select"
-                        [ngClass]="{ 'custom-muted': !field.value }" [id]="field.key"
-                        [name]="field.key" [(ngModel)]="field.value">
+                        [ngClass]="{ 'custom-muted': !field.value }" [id]="field.key" [name]="field.key"
+                        [(ngModel)]="field.value">
                         <option value="" disabled hidden>Select {{ field.placeholder }}</option>
                         <option style="color: black;" *ngFor="let option of field.options" [value]="option.value">
                             {{ option.label }}
@@ -26,11 +26,11 @@
                 </div>
             </div>
         </div>
-        <div class="position-relative col-md-auto text-end mt-5">
+        <div class="col-md-auto text-end mt-5">
             <div title="Reset Filter" class="position-absolute reset-filter">
                 <app-icon (click)="clickResetButton()" icon="eva:sync-fill" [width]="20" [height]="20" class="text-primary"></app-icon>
             </div>
-            <button title="Toggle Filters" type="button" class="btn btn-primary px-2" (click)="toggleFilter()" >
+            <button title="Toggle Filters" type="button" class="btn btn-primary px-2" (click)="toggleFilter()">
                 <!-- <app-icon [icon]="collapse ? 'material-symbols:add-rounded' : 'bi-dash'"  [width]="20" [height]="20"></app-icon> -->
                 <i class="bi" [ngClass]="collapse? 'bi-plus-lg': 'bi-dash'"></i>
             </button>
