@@ -44,12 +44,14 @@ export class TableComponent {
   getSupplierText(list: any): string {
     if (!list.suppliers || !Array.isArray(list.suppliers)) return '';
     const names: string[] = [];
-    for (let j = 0; j < list.suppliers?.length; j++) {
+    for (let j = 0; j < 2; j++) {
       names.push(list.suppliers[j]?.company_name);
     }
     let preview: any;
-    if (names.length > 1) preview = names.join(', ');
-    return names.length > 1 ? `${preview}, ...` : names[0];
+    const names_array = names.filter(item => item !== undefined && item !== null && item !== '');
+
+    if (names_array.length > 1) preview = names_array.join(', ');
+    return names_array.length > 1 ? `${preview}, ...` : names_array[0];
   }
 
   // Returns the full list (used in tooltip)

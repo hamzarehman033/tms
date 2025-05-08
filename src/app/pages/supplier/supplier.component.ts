@@ -167,7 +167,7 @@ export class SupplierComponent implements OnInit {
     this.appService.addSupplier(payload).subscribe((data: any) => {
       // console.log(data?.data?.rows);
       this.modalComponent.close();
-      this.toastr.success("Record Added Successfully!");
+      this.toastr.success("Record Added Successfully!", 'Success');
       this.reset();
     },
     (err) => {
@@ -190,7 +190,7 @@ export class SupplierComponent implements OnInit {
 
     this.appService.updateSupplier(payload).subscribe((data: any) => {
       this.supplierList();
-      this.toastr.success("Record Updated!");
+      this.toastr.success("Record Updated!", 'Success');
     },
     (err) => {
       this.toastr.error(err.error.message, 'Error')
@@ -204,10 +204,10 @@ export class SupplierComponent implements OnInit {
     this.appService.deleteSupplier(payload).subscribe((data: any) => {
       // console.log(data?.data?.suppliers);
       this.supplierList();
-      this.toastr.success("Record Deleted Successfully!");
+      this.toastr.success("Record Deleted Successfully!", 'Success');
     },
     (err) => {
-      this.toastr.success(err.error.message)
+      this.toastr.error(err.error.message, 'Error')
     });
   }
 

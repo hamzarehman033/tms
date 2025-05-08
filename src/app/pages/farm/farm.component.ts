@@ -99,7 +99,7 @@ export class FarmComponent implements OnInit {
       console.log("Farm Data", data);
       this.modalComponent.close();
       this.farmList();
-      this.toastr.success("Record added successfully!");
+      this.toastr.success("Record added successfully!", 'Success');
     },(err)=>{
       this.toastr.error(err.error.message, 'Error');
     })
@@ -167,7 +167,7 @@ export class FarmComponent implements OnInit {
 
     this.appService.updateFarm(payload).subscribe((data: any) => {
       this.farmList();
-      this.toastr.success("Record updated");
+      this.toastr.success("Record updated", 'Success');
     },(err)=>{
       this.toastr.error(err.error.message, 'Error');
     })
@@ -180,8 +180,10 @@ export class FarmComponent implements OnInit {
     this.appService.deleteFarm(payload).subscribe((data: any) => {
       console.log(data.data);
       this.farmList();
-      this.toastr.success("Farm deleted successfully!");
-    })
+      this.toastr.success("Farm deleted successfully!", 'Success');
+    },(err)=>{
+      this.toastr.error(err.error.message, 'Error');
+    });
   }
 
   getFarm(id: any) {
@@ -194,14 +196,13 @@ export class FarmComponent implements OnInit {
     })
   }
 
-
   getDetails(id: any) {
     this.editMode = true;
     this.modalComponent.openSharedModal(id);
-    let subsciption = this.modalComponent.result$.subscribe(data => {
+    let subscription = this.modalComponent.result$.subscribe(data => {
         if(data == 'update'){
           this.farmList();
-          subsciption.unsubscribe();
+          subscription.unsubscribe();
         }}
     );
 

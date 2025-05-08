@@ -6,6 +6,7 @@ import { AppService } from '../../../core/service/app.service';
 import { IconComponent } from '../icon/icon.component';
 import { FiltersComponent } from '../filters/filters.component';
 import { Subject, Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 declare var bootstrap: any;
 
@@ -53,7 +54,7 @@ export class ModalComponent implements OnInit, OnChanges {
   private result = new Subject<any>();
   public result$: Observable<any> = this.result.asObservable();
   
-  constructor(private fb: FormBuilder, private appService: AppService) { }
+  constructor(private fb: FormBuilder, private appService: AppService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.buildFormFromModalFields();
@@ -173,14 +174,15 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   addFarmSupplier(supplier_id: any) {
-    debugger
     const payload: any = {};
     if (supplier_id) payload['supplier_id'] = supplier_id;
     if (this.farm_id) payload['farm_id'] = this.farm_id; 
 
     this.appService.addFarmSupplier(payload).subscribe((data: any)=>{
-      console.log("data: ", data);
+      this.toastr.success("Record added successfully!", 'Success');
       this.farmList();
+    }, (err)=>{
+      this.toastr.error(err.error.message, 'Error');
     });
   }
 

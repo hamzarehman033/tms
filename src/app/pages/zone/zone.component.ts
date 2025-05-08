@@ -114,7 +114,7 @@ export class ZoneComponent implements OnInit {
       console.log("zone added", data?.data?.rows);
       this.modalComponent.close();
       this.zoneList();
-      this.toastr.success("Zone added successfully!");
+      this.toastr.success("Zone added successfully!", 'Success');
     }, (err)=>{
       this.toastr.error(err.error.message, 'Error');
     })
@@ -130,7 +130,7 @@ export class ZoneComponent implements OnInit {
 
     this.appService.updateZone(payload).subscribe((data: any) => {
       this.zoneList();
-      this.toastr.success("Zone updated!");
+      this.toastr.success("Zone updated!", 'Success');
     })
   }
 
@@ -141,7 +141,7 @@ export class ZoneComponent implements OnInit {
     this.appService.deleteZone(payload).subscribe((data: any) => {
       // console.log("Delete zone api called: ", data?.zone);
       this.zoneList();
-      this.toastr.success("Zone deleted!");
+      this.toastr.success("Zone deleted!", 'Success');
     })
   }
 
