@@ -191,7 +191,7 @@ export class DriversComponent implements OnInit {
     
     this.appService.updateDriver(payload).subscribe((data: any) => {
       this.driverList();
-      this.toastr.success("Record updated!");
+      this.toastr.success("Record updated!", 'Success');
     })
   }
 
@@ -202,7 +202,7 @@ export class DriversComponent implements OnInit {
     this.appService.deleteDriver(payload).subscribe((data: any) => {
       console.log("Delete driver API", data?.data);
       this.driverList();
-      this.toastr.success("Recoed deleted!");
+      this.toastr.success("Recoed deleted!", 'Success');
     })
   }
 

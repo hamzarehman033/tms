@@ -101,7 +101,7 @@ export class RestrictionComponent implements OnInit {
     this.appService.removeRestriction(payload).subscribe((data: any) => {
       console.log("Restrictionnnnnn typeeeeeeee from supplier and driver", this.type);
       this.getRestriction(this.type);
-      this.toastr.success("Restriction Removed!");
+      this.toastr.success("Restriction Removed!", 'Success');
     })
   }
 
@@ -124,7 +124,9 @@ export class RestrictionComponent implements OnInit {
     this.appService.removeTruckRestriction(payload).subscribe((data: any) => {
       console.log("Restrictionnnnnn typeeeeeeee from tuckkkkk", this.type);
       this.getRestriction(this.type);
-      this.toastr.success("Restriction Removed!");
+      this.toastr.success("Restriction Removed!", 'Success');
+    }, (err)=>{
+      this.toastr.error(err.error.message, 'Error');
     })
   }
 

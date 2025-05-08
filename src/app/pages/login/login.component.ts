@@ -39,7 +39,7 @@ export class LoginComponent {
       this.toastr.error("Please enter correct details!", 'Error')
     } else {
       this.router.navigateByUrl("/dashboard");
-      this.toastr.success("Login Successful!");
+      this.toastr.success("Login Successful!", 'Success');
     }
   }
 
