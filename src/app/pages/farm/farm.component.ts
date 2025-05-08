@@ -194,6 +194,19 @@ export class FarmComponent implements OnInit {
     })
   }
 
+
+  getDetails(id: any) {
+    this.editMode = true;
+    this.modalComponent.openSharedModal(id);
+    let subsciption = this.modalComponent.result$.subscribe(data => {
+        if(data == 'update'){
+          this.farmList();
+          subsciption.unsubscribe();
+        }}
+    );
+
+  }
+
   reset() {
     this.fields.forEach(f => {
       f.value = '';
