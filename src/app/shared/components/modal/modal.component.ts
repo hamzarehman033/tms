@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angul
 import { AppService } from '../../../core/service/app.service';
 import { IconComponent } from '../icon/icon.component';
 import { FiltersComponent } from '../filters/filters.component';
-import { debug } from 'console';
+import { Subject, Observable } from 'rxjs';
 
 declare var bootstrap: any;
 
@@ -49,6 +49,10 @@ export class ModalComponent implements OnInit, OnChanges {
   private modal: any;
   private deleteModal: any;
   private sharedModal: any;
+
+  private result = new Subject<any>();
+  public result$: Observable<any> = this.result.asObservable();
+  
   constructor(private fb: FormBuilder, private appService: AppService) { }
 
   ngOnInit() {
@@ -164,7 +168,7 @@ export class ModalComponent implements OnInit, OnChanges {
   closeSharedModal() {
     if (this.sharedModal) {
       this.sharedModal.hide();
-      this.farmList();
+      this.result.next('update');
     }
   }
 

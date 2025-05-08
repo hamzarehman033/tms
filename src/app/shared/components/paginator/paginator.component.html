@@ -25,7 +25,7 @@
         </div>
         <!-- Right Side: Pagination -->
         <ul *ngIf="pagination.total_records > 0" class="pagination gap-3 me-3">
-            <li class="page-item">
+            <li title="Previous" class="page-item">
                 <button [disabled]="pagination.current_page < 2" class="page-link"
                     (click)="goToPage(pagination.current_page - 1)">
                     <app-icon icon="ooui:previous-ltr" [width]="14" [height]="14"></app-icon>
@@ -37,7 +37,7 @@
                 <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
             </li>
 
-            <li class="page-item">
+            <li title="Next" class="page-item">
                 <button [disabled]="pagination.current_page == pagination.total_pages.length" class="page-link"
                     (click)="goToPage(pagination.current_page + 1)">
                     <app-icon icon="ooui:next-ltr" [width]="14" [height]="14"></app-icon>

@@ -20,6 +20,7 @@ export class TableComponent {
 
   @Output() get_button = new EventEmitter<any>();
   @Output() deleteModalDetails = new EventEmitter<any>();
+  @Output() getDetails = new EventEmitter<any>();
 
   @ViewChild('deleteModal') modalComponent !: ModalComponent;
   @ViewChild('sharedModal') sharedModalComponent !: ModalComponent;
@@ -63,6 +64,6 @@ export class TableComponent {
   }
 
   openSharedModal(id: any) {
-    this.sharedModalComponent.openSharedModal(id);
+    this.getDetails.emit(id);
   }
 }
