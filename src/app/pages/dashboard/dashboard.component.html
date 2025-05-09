@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">127</h3>
+                        <h3 class="fw-bold">{{ stats_obj?.suppliers }}</h3>
                         <h5>Total Companies</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -22,7 +22,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">127</h3>
+                        <h3 class="fw-bold">{{ stats_obj?.trucks }}</h3>
                         <h5>Total Trucks</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -39,7 +39,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">127</h3>
+                        <h3 class="fw-bold">{{ stats_obj?.available_trucks }}</h3>
                         <h5>Available Trucks</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -56,7 +56,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">127</h3>
+                        <h3 class="fw-bold">{{ stats_obj?.requests }}</h3>
                         <h5>Total Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -73,7 +73,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">127</h3>
+                        <h3 class="fw-bold">{{ stats_obj?.pending_requests }}</h3>
                         <h5>Pending Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -90,7 +90,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">127</h3>
+                        <h3 class="fw-bold">{{ stats_obj?.assigned_requests }}</h3>
                         <h5>Assigned Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -107,7 +107,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">127</h3>
+                        <h3 class="fw-bold">{{ stats_obj?.completed_requests }}</h3>
                         <h5>Completed Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -142,50 +142,6 @@
                 <h5 class="fw-bold mb-0">Recent Requests</h5>
             </div>
             <div class="card-body p-0">
-                <!-- <div class="table-responsive">
-                    <table class="table align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Created at</th>
-                                <th scope="col">Farm Zone</th>
-                                <th scope="col">Location</th>
-                                <th scope="col">Suppliers</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#54895</td>
-                                <td>Ellis Ingram</td>
-                                <td>Created at</td>
-                                <td>20-02-2025</td>
-                                <td>Boston</td>
-                                <td>NWS</td>
-                                <td>Edit</td>
-                            </tr>
-                            <tr>
-                                <td>#54895</td>
-                                <td>Ellis Ingram</td>
-                                <td>Created at</td>
-                                <td>20-02-2025</td>
-                                <td>Boston</td>
-                                <td>NWS</td>
-                                <td>Edit</td>
-                            </tr>
-                            <tr>
-                                <td>#54895</td>
-                                <td>Ellis Ingram</td>
-                                <td>Created at</td>
-                                <td>20-02-2025</td>
-                                <td>Boston</td>
-                                <td>NWS</td>
-                                <td>Edit</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
                 <app-table [displayedColumns]="columnsToDisplay"></app-table>
             </div>
             <div class="card-footer">

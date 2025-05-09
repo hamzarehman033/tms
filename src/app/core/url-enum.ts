@@ -41,5 +41,9 @@ export enum urlEnums {
     getAuditTrail = '/getAuditTrail',
     getAllAuditTrails = '/getAllAuditTrails',
     addFarmSupplier = '/addFarmSupplier',
-    deleteFarmSupplier = '/deleteFarmSupplier'
+    deleteFarmSupplier = '/deleteFarmSupplier',
+    getStats = '/getStats',
+    getAverageTravelTime = '/getAverageTravelTime',
+    getAverageWaitingTime = '/getAverageWaitingTime',
+    getWeeklyAverageTrips = '/getWeeklyAverageTrips'
 }
