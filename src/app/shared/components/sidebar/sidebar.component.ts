@@ -7,9 +7,6 @@ import { filter } from 'rxjs';
   styleUrl: './sidebar.component.scss'
 })
 
-
-
-
 export class SidebarComponent {
   dashboard_heading: boolean = false;
   pageHeadingText: string = '';

@@ -11,7 +11,6 @@ export class HeaderComponent {
   dashboard_heading: boolean = false;
   pageHeadingText: string = '';
   
-  @Output() toggleDrawer = new EventEmitter<void>();
   @Input() user_name = 'Kane';
 
   constructor(private router: Router) {}
@@ -28,9 +27,6 @@ export class HeaderComponent {
       });
   }
 
-  onToggle() {
-    this.toggleDrawer.emit();
-  }
 
   // This method updates both properties at once
   private updatePageHeading(currentRoute: string): void {
