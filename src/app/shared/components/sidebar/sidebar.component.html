@@ -1,6 +1,9 @@
 <div class="d-flex justify-content-center mt-3 mb-4">
   <img src="../../../../assets/images/logo-delmonte.svg" class="logo img-fluid" alt="logo">
 </div>
+<div class="collapse-icon-wrapper cursor" (click)="onToggle()">
+  <app-icon icon="material-symbols:chevron-left-rounded" [width]="24" [height]="24" class="collapse-icon"></app-icon>
+</div>
 <div class="nav flex-column">
   <!-- System Admin menus start  -->
   <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
@@ -29,7 +32,7 @@
   </a>
   <!-- System Admin menus end  -->
   <a class="nav-link" routerLink="/audit-trail" routerLinkActive="active">
-    <app-icon icon="material-symbols-light:dataset-outline" [width]="24" [height]="24" class="nav-icon"></app-icon>
+    <app-icon icon="icon-park-outline:sales-report" [width]="24" [height]="24" class="nav-icon"></app-icon>
     <span class="nav-label">Audit Trails</span>
   </a>
 </div>
