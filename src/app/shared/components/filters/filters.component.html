@@ -7,7 +7,7 @@
                     <label *ngIf="field.type === 'text'" class="form-label" [attr.for]="field.key"> {{
                         filterMapper[field.key] || (field.key | titlecase) }}
                     </label>
-                    <input *ngIf="field.type === 'text'" class="form-control custom-placeholder" [id]="field.key"
+                    <input *ngIf="field.type === 'text'" class="form-control form-control-sm custom-placeholder" [id]="field.key"
                         [name]="field.key" [placeholder]="field.placeholder" type="text" [(ngModel)]="field.value" />
 
                     <!-- Dropdown -->
@@ -15,7 +15,7 @@
                         Select {{ filterMapper[field.key] || (field.key | titlecase) }}
                     </label>
 
-                    <select *ngIf="field.type === 'dropdown'" class="form-select"
+                    <select *ngIf="field.type === 'dropdown'" class="form-select form-select-sm"
                         [ngClass]="{ 'custom-muted': !field.value }" [id]="field.key" [name]="field.key"
                         [(ngModel)]="field.value">
                         <option value="" disabled hidden>Select {{ field.placeholder }}</option>
@@ -30,11 +30,11 @@
             <div title="Reset Filter" class="position-absolute reset-filter">
                 <app-icon (click)="clickResetButton()" icon="eva:sync-fill" [width]="20" [height]="20" class="text-primary"></app-icon>
             </div>
-            <button title="Toggle Filters" type="button" class="btn btn-primary px-2" (click)="toggleFilter()">
+            <button title="Toggle Filters" type="button" class="btn btn-primary px-2 btn-sm" (click)="toggleFilter()">
                 <!-- <app-icon [icon]="collapse ? 'material-symbols:add-rounded' : 'bi-dash'"  [width]="20" [height]="20"></app-icon> -->
                 <i class="bi" [ngClass]="collapse? 'bi-plus-lg': 'bi-dash'"></i>
             </button>
-            <button type="button" class="btn btn-outline-primary ms-3" (click)="clickFilterButton()">Apply</button>
+            <button type="button" class="btn btn-outline-primary ms-3 btn-sm" (click)="clickFilterButton()">Apply</button>
         </div>
     </div>
 </div>

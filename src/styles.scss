@@ -36,10 +36,11 @@ body {
     }
 
     .user {
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         border-radius: 12px;
         object-fit: cover;
+        padding: 6px;
     }
 
     .modal-backdrop {
