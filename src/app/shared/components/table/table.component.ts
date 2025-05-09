@@ -22,8 +22,7 @@ export class TableComponent {
   @Output() deleteModalDetails = new EventEmitter<any>();
   @Output() getDetails = new EventEmitter<any>();
 
-  @ViewChild('deleteModal') modalComponent !: ModalComponent;
-  @ViewChild('sharedModal') sharedModalComponent !: ModalComponent;
+  @ViewChild('modal') modalComponent !: ModalComponent;
 
   selectedId: any;
 

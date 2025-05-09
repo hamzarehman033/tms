@@ -505,6 +505,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <app-modal #deleteModal (yesClicked)="confirmDelete()"></app-modal>
-
-  <app-modal #sharedModal></app-modal>
+  <app-modal #modal (yesClicked)="confirmDelete()"></app-modal>
