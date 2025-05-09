@@ -99,6 +99,7 @@ body {
             box-shadow: $box-shadow !important;
             border: 0;
             border-radius: 0;
+            overflow: visible;
 
             .logo {
                 height: 30px;
@@ -135,7 +136,9 @@ body {
 
             &~.mat-drawer-content {
                 margin-left: 260px !important;
+            }
 
+            .collapse-icon-wrapper {
                 .collapse-icon {
                     transform: rotate(0);
                 }
@@ -152,7 +155,8 @@ body {
             box-shadow: $box-shadow;
             border-radius: 50%;
             position: absolute;
-            left: -22px;
+            right: -1.5rem;
+            top: 1rem;
             z-index: 10;
 
             .collapse-icon {
