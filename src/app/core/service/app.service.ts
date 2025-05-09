@@ -179,4 +179,21 @@ export class AppService {
   deleteFarmSupplier(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.deleteFarmSupplier}`, formData)
   }
+
+  // Dashboard Stats
+  getStats(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getStats}`, formData)
+  }
+
+  getAverageTravelTime(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getAverageTravelTime}`, formData)
+  }
+
+  getAverageWaitingTime(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getAverageWaitingTime}`, formData)
+  }
+
+  getWeeklyAverageTrips(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getWeeklyAverageTrips}`, formData)
+  }
 }
