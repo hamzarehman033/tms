@@ -122,35 +122,26 @@
 
 <!-- Dashboard Graphs -->
 <div class="row mb-3">
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="card">
             <div class="card-body">
-                <app-line-graph></app-line-graph>
+                <app-line-graph graphSource="averageTravelTime"></app-line-graph>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-2">
         <div class="card">
             <div class="card-body">
-                <app-pie-chart></app-pie-chart>
+                <app-line-graph graphSource="getAverageWaitingTime"></app-line-graph>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Dashboard Tables -->
-<div class="row mb-3">
-    <div class="col-12">
+    <div class="col-md-6 mb-2">
         <div class="card">
-            <div class="card-header">
-                <h5 class="fw-bold mb-0">Recent Requests</h5>
-            </div>
-            <div class="card-body p-0">
-                <app-table [displayedColumns]="columnsToDisplay"></app-table>
-            </div>
-            <div class="card-footer">
-                <app-paginator></app-paginator>
+            <div class="card-body">
+                <app-line-graph graphSource="getWeeklyAverageTrips"></app-line-graph>
             </div>
         </div>
     </div>

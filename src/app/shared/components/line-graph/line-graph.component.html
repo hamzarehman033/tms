@@ -1,3 +1,43 @@
-<div class="graph h-100">
-    <canvas id="line_graph"></canvas>
+<div *ngIf="graph_type === 'averageTravelTime'">
+  <div class="graph-heading d-flex justify-content-between align-items-center">
+    <strong class="me-3">Average Travel Time</strong>
+
+    <div class="d-flex align-items-center gap-2">
+      <!-- Farm Filter -->
+      <select class="form-select form-select-sm w-auto" id="farm_filter" name="farm_filter" [(ngModel)]="farm_filter">
+        <option value="" disabled hidden>Farm</option>
+        <option style="color: black;" *ngFor="let farm of farms" [value]="farm">
+          {{ farm }}
+        </option>
+      </select>
+
+      <!-- Date Picker -->
+      <input type="date" name="date" id="date" class="form-control form-control-sm w-auto" [(ngModel)]="farm_date"/>
+    </div>
+  </div>
+  <canvas id="line_graph" *ngIf="graphSource === 'averageTravelTime'" width="600" height="300"></canvas>
+</div>
+
+<div *ngIf="graph_type === 'getAverageWaitingTime'">
+  <div class="graph-heading d-flex justify-content-between align-items-center">
+    <strong>{{ 'Average Waiting Time' }}</strong>
+    
+    <div class="d-flex align-items-center gap-2">
+      <!-- Farm Filter -->
+      <select class="form-select form-select-sm w-auto" id="farm_filter" name="farm_filter" [(ngModel)]="farm_filter">
+        <option value="" disabled hidden>Farm</option>
+        <option style="color: black;" *ngFor="let farm of farms" [value]="farm">
+          {{ farm }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <canvas id="waiting_graph_1" *ngIf="graphSource !== 'averageTravelTime'" width="600" height="300"></canvas>
+</div>
+
+<div *ngIf="graph_type === 'getWeeklyAverageTrips'">
+  <div class="graph-heading">
+    <strong>{{ 'Weekly Average Trips per Truck' }}</strong>
+  </div>
+  <canvas id="waiting_graph_2" *ngIf="graphSource !== 'averageTravelTime'" width="600" height="300"></canvas>
 </div>
