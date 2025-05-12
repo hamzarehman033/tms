@@ -2,6 +2,7 @@
 
 
 body {
+    font-size: 14px;
 
     // form control 
     .form-control,
@@ -17,7 +18,7 @@ body {
         display: flex;
         align-items: center;
         padding: 1rem;
-        font-size: 18px;
+        font-size: 1rem;
         justify-content: center;
         margin: auto;
         font-weight: 500;
@@ -178,8 +179,8 @@ body {
             .mat-mdc-header-row {
                 font-family: $body-font-family;
                 color: $white;
-                height: 50px;
-                font-size: 18px;
+                height: 40px;
+                font-size: 14px;
                 font-weight: bold;
 
                 .mat-mdc-header-cell {
@@ -194,7 +195,7 @@ body {
             .mat-mdc-row {
                 height: 50px;
                 font-family: $body-font-family;
-                font-size: 1rem;
+                font-size: 14px;
                 color: $dark;
 
                 .mat-mdc-cell {
