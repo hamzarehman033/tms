@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">{{ stats_obj?.suppliers }}</h3>
+                        <h4 class="fw-bold">{{ stats_obj?.suppliers }}</h4>
                         <h5>Total Companies</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -23,7 +23,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">{{ stats_obj?.trucks }}</h3>
+                        <h4 class="fw-bold">{{ stats_obj?.trucks }}</h4>
                         <h5>Total Trucks</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -40,7 +40,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">{{ stats_obj?.available_trucks }}</h3>
+                        <h4 class="fw-bold">{{ stats_obj?.available_trucks }}</h4>
                         <h5>Available Trucks</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -57,7 +57,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">{{ stats_obj?.requests }}</h3>
+                        <h4 class="fw-bold">{{ stats_obj?.requests }}</h4>
                         <h5>Total Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -74,7 +74,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">{{ stats_obj?.pending_requests }}</h3>
+                        <h4 class="fw-bold">{{ stats_obj?.pending_requests }}</h4>
                         <h5>Pending Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -91,7 +91,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">{{ stats_obj?.assigned_requests }}</h3>
+                        <h4 class="fw-bold">{{ stats_obj?.assigned_requests }}</h4>
                         <h5>Assigned Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -108,7 +108,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between gap-2">
                     <div>
-                        <h3 class="fw-bold">{{ stats_obj?.completed_requests }}</h3>
+                        <h4 class="fw-bold">{{ stats_obj?.completed_requests }}</h4>
                         <h5>Completed Requests</h5>
                     </div>
                     <div class="icon-wrapper">
@@ -121,8 +121,8 @@
 </div>
 
 <!-- Dashboard Graphs -->
-<div class="row mb-3">
-    <div class="col-md-6 mb-2">
+<div class="row mb-3 g-3">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-body">
                 <app-line-graph graphSource="averageTravelTime"></app-line-graph>
@@ -130,7 +130,7 @@
         </div>
     </div>
 
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-body">
                 <app-line-graph graphSource="getAverageWaitingTime"></app-line-graph>
@@ -138,7 +138,7 @@
         </div>
     </div>
 
-    <div class="col-md-6 mb-2">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-body">
                 <app-line-graph graphSource="getWeeklyAverageTrips"></app-line-graph>

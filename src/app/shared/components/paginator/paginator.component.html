@@ -1,5 +1,5 @@
 <nav aria-label="Page navigation example">
-    <div id="navPagination" class="d-flex justify-content-between align-items-center">
+    <div id="navPagination" class="d-flex justify-content-between align-items-center navigation">
         <!-- Left Side: Records & Total Records -->
         <div class="d-flex align-items-center gap-3">
             <div *ngIf="showPaginator" class="d-flex gap-2 align-items-center">
@@ -28,7 +28,8 @@
             <li title="Previous" class="page-item">
                 <button [disabled]="pagination.current_page < 2" class="page-link"
                     (click)="goToPage(pagination.current_page - 1)">
-                    <app-icon icon="ooui:previous-ltr" [width]="14" [height]="14"></app-icon>
+                    <!-- <app-icon icon="ooui:previous-ltr" [width]="14" [height]="14"></app-icon> -->
+                    <span>Previous</span>
                 </button>
             </li>
 
@@ -40,7 +41,8 @@
             <li title="Next" class="page-item">
                 <button [disabled]="pagination.current_page == pagination.total_pages.length" class="page-link"
                     (click)="goToPage(pagination.current_page + 1)">
-                    <app-icon icon="ooui:next-ltr" [width]="14" [height]="14"></app-icon>
+                    <!-- <app-icon icon="ooui:next-ltr" [width]="14" [height]="14"></app-icon> -->
+                    <span>Next</span>
                 </button>
             </li>
         </ul>

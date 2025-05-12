@@ -1,6 +1,6 @@
 <div *ngIf="graph_type === 'averageTravelTime'">
   <div class="graph-heading d-flex justify-content-between align-items-center">
-    <strong class="me-3">Average Travel Time</strong>
+    <h5 class="me-3">Average Travel Time</h5>
 
     <div class="d-flex align-items-center gap-2">
       <!-- Farm Filter -->
@@ -12,7 +12,7 @@
       </select>
 
       <!-- Date Picker -->
-      <input type="date" name="date" id="date" class="form-control form-control-sm w-auto" [(ngModel)]="farm_date"/>
+      <input type="date" name="date" id="date" class="form-control form-control-sm w-auto" [(ngModel)]="farm_date" />
     </div>
   </div>
   <canvas id="line_graph" *ngIf="graphSource === 'averageTravelTime'" width="600" height="300"></canvas>
@@ -20,8 +20,9 @@
 
 <div *ngIf="graph_type === 'getAverageWaitingTime'">
   <div class="graph-heading d-flex justify-content-between align-items-center">
-    <strong>{{ 'Average Waiting Time' }}</strong>
-    
+    <h5 class="me-3">{{ 'Average Waiting Time' }}</h5>
+
+
     <div class="d-flex align-items-center gap-2">
       <!-- Farm Filter -->
       <select class="form-select form-select-sm w-auto" id="farm_filter" name="farm_filter" [(ngModel)]="farm_filter">
@@ -37,7 +38,7 @@
 
 <div *ngIf="graph_type === 'getWeeklyAverageTrips'">
   <div class="graph-heading">
-    <strong>{{ 'Weekly Average Trips per Truck' }}</strong>
+    <h5 class="me-3">{{ 'Weekly Average Trips per Truck' }}</h5>
   </div>
   <canvas id="waiting_graph_2" *ngIf="graphSource !== 'averageTravelTime'" width="600" height="300"></canvas>
 </div>
