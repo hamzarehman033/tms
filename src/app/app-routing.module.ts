@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path:'',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -46,6 +46,11 @@ const routes: Routes = [
     path: 'farm',
     loadComponent: () =>
       import('./pages/farm/farm.component').then(m => m.FarmComponent),
+  },
+  {
+    path: 'farm-users',
+    loadComponent: () =>
+      import('./pages/farm-users/farm-users.component').then(m => m.FarmUsersComponent),
   },
   {
     path: 'supplier',

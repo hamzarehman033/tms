@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { filter } from 'rxjs';
 
 @Component({
@@ -10,10 +11,10 @@ import { filter } from 'rxjs';
 export class HeaderComponent {
   dashboard_heading: boolean = false;
   pageHeadingText: string = '';
-  
+
   @Input() user_name = 'Kane';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastr: ToastrService) {}
 
   ngOnInit() {
     // Set initial values based on current route
@@ -33,6 +34,9 @@ export class HeaderComponent {
     if (currentRoute.includes("dashboard")) {
       this.dashboard_heading = true;
       this.pageHeadingText = '';
+    } else if (currentRoute.includes("farm-users")) {
+      this.dashboard_heading = false;
+      this.pageHeadingText = "Farm Users";
     } else if (currentRoute.includes("farm")) {
       this.dashboard_heading = false;
       this.pageHeadingText = "Farms";
@@ -56,8 +60,14 @@ export class HeaderComponent {
       this.pageHeadingText = '';
     }
   }
-    // Getter that doesn't change any state
-    get pageHeading(): string {
-      return this.pageHeadingText;
-    }
+  // Getter that doesn't change any state
+  get pageHeading(): string {
+    return this.pageHeadingText;
+  }
+
+  logout() {
+    this.router.navigateByUrl("/login");
+    localStorage.removeItem('user');
+    this.toastr.success("Logged out successfully!", 'Success');
+  }
 }

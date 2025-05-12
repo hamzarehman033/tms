@@ -205,7 +205,6 @@ export class FarmComponent implements OnInit {
           subscription.unsubscribe();
         }}
     );
-
   }
 
   reset() {

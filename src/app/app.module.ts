@@ -42,7 +42,7 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([AppInterceptor])),
+    provideHttpClient(withInterceptors([AppInterceptor]))
   ],
   bootstrap: [AppComponent]
 })
