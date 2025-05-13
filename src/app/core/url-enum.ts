@@ -2,6 +2,7 @@ export enum urlEnums {
     createUser = '/user/create',
     updateUser = '/user/update',
     loginURL = '/user/login',
+    logoutUser = '/user/logout',
     deleteUser = '/user/delete',
     userList = '/user/list',
     getUser = '/user/get',

@@ -22,6 +22,10 @@ export class AppService {
     return this.http.post(`${this.baseURL}${urlEnums.loginURL}`, formData);
   }
 
+  logoutUser(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.logoutUser}`, formData);
+  }
+
   deleteUser(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.deleteUser}`, formData);
   }
