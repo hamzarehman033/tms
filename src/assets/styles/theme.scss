@@ -18,6 +18,11 @@ body {
         border-radius: 5px;
         border-color: $input;
         background-color: $white;
+        padding: 0.25rem 0.75rem;
+    }
+
+    .form-label {
+        font-size: 14px;
     }
 
     // navs 
