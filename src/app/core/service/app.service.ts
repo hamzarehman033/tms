@@ -22,6 +22,10 @@ export class AppService {
     return this.http.post(`${this.baseURL}${urlEnums.loginURL}`, formData);
   }
 
+  logoutUser(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.logoutUser}`, formData);
+  }
+
   deleteUser(formData: any){
     return this.http.post(`${this.baseURL}${urlEnums.deleteUser}`, formData);
   }
@@ -87,7 +91,27 @@ export class AppService {
   }
 
   getFarm(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getFarm}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getFarm}`, formData);
+  }
+
+  addFarmUser(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.addFarmUser}`, formData);
+  }
+
+  deleteFarmUser(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.deleteFarmUser}`, formData);
+  }
+
+  updateFarmUser(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.updateFarmUser}`, formData);
+  }
+
+  getFarmUser(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.getFarmUser}`, formData);
+  }
+
+  farmUserList(formData: any){
+    return this.http.post(`${this.baseURL}${urlEnums.farmUserList}`, formData);
   }
 
   getPermission(formData: any){
@@ -143,57 +167,57 @@ export class AppService {
   }
 
   addRestriction(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.addRestriction}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.addRestriction}`, formData);
   }
 
   getRestriction(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getRestriction}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getRestriction}`, formData);
   }
 
   removeRestriction(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.removeRestriction}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.removeRestriction}`, formData);
   }
 
   addTruckRestriction(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.addTruckRestriction}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.addTruckRestriction}`, formData);
   }
 
   removeTruckRestriction(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.removeTruckRestriction}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.removeTruckRestriction}`, formData);
   }
   
   // Audit Trail
   getAuditTrail(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getAuditTrail}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getAuditTrail}`, formData);
   }
 
   getAllAuditTrail(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getAllAuditTrails}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getAllAuditTrails}`, formData);
   }
 
   // Add/Delete farm suppliers
   addFarmSupplier(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.addFarmSupplier}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.addFarmSupplier}`, formData);
   }
 
   deleteFarmSupplier(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.deleteFarmSupplier}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.deleteFarmSupplier}`, formData);
   }
 
   // Dashboard Stats
   getStats(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getStats}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getStats}`, formData);
   }
 
   getAverageTravelTime(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getAverageTravelTime}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getAverageTravelTime}`, formData);
   }
 
   getAverageWaitingTime(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getAverageWaitingTime}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getAverageWaitingTime}`, formData);
   }
 
   getWeeklyAverageTrips(formData: any){
-    return this.http.post(`${this.baseURL}${urlEnums.getWeeklyAverageTrips}`, formData)
+    return this.http.post(`${this.baseURL}${urlEnums.getWeeklyAverageTrips}`, formData);
   }
 }

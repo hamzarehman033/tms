@@ -30,20 +30,39 @@
                 </label>
                 <input class="form-control" [id]="field.key" [placeholder]="'Enter ' + field.placeholder" type="text"
                   [formControlName]="field.key" />
+                <!-- Required error -->
                 <div class="text-danger"
                   *ngIf="form.get(field.key)?.touched && form.get(field.key)?.hasError('required')">
                   {{ field.placeholder }} is required
                 </div>
+                <!-- Min length error -->
+                <div class="text-danger"
+                  *ngIf="form.get(field.key)?.touched && form.get(field.key)?.hasError('minlength')">
+                  {{ field.placeholder }} must be at least 11 digits
+                </div>
+                <!-- Pattern error -->
+                <div class="text-danger"
+                  *ngIf="form.get(field.key)?.touched && form.get(field.key)?.hasError('pattern')">
+                  {{ field.placeholder }} must contain only numbers
+                </div>
+
               </div>
 
               <!-- Date Field -->
               <div class="col-md-6" *ngIf="field.type === 'date' && !field.hidden">
                 <label class="form-label" [attr.for]="field.key">{{ field.placeholder }}</label>
                 <input type="date" class="form-control" [id]="field.key" [placeholder]="'Enter ' + field.placeholder"
-                  [formControlName]="field.key" [value]="form.get(field.key)?.value | date:'yyyy-MM-dd'" />
+                  [formControlName]="field.key" [value]="form.get(field.key)?.value | date:'yyyy-MM-dd'"
+                  [min]="minDate" />
+                <!-- Required error -->
                 <div class="text-danger"
                   *ngIf="form.get(field.key)?.touched && form.get(field.key)?.hasError('required')">
                   {{ field.placeholder }} is required
+                </div>
+                <!-- Past date error -->
+                <div class="text-danger"
+                  *ngIf="form.get(field.key)?.touched && form.get(field.key)?.hasError('pastDate')">
+                  {{ field.placeholder }} cannot be in the past
                 </div>
               </div>
 
@@ -177,9 +196,9 @@
           </tbody>
         </ng-template>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary custom_btn" (click)="closeSharedModal()">Close</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary custom_btn" (click)="closeSharedModal()">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>

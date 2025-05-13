@@ -45,7 +45,7 @@ export class RestrictionComponent implements OnInit {
 
   list_type(type: any) {
     if (type === 'supplier') {
-      this.columnsToDisplay = ['ID', 'restriction_name', 'restriction_ph_no', 'Supplier_Documents', 'Reason', 'Action'];
+      this.columnsToDisplay = ['ID', 'supplier_restriction_name', 'restriction_ph_no', 'Supplier_Documents', 'Reason', 'Action'];
     }
     else if (type === 'truck') {
       this.columnsToDisplay = ['ID', 'truck_number', 'truck_documents', 'Reason', 'Action'];;
@@ -62,16 +62,6 @@ export class RestrictionComponent implements OnInit {
     this.getRestriction(btn);
   }
 
-  // addRestriction() {
-  //   const payload: any = {}
-  //   if (this.rest_id) payload["id"] = this.rest_id;
-  //   if (this.rest_status) payload["status"] = this.rest_status;
-  //   if (this.rest_reason) payload["restriction_reason"] = this.rest_reason;
-
-  //   this.appService.addRestriction(payload).subscribe((data: any) => {
-  //     console.log("Add restriction API: ", data);
-  //   })
-  // }
 
   getRestriction(list: any) {
     this.type = list;
@@ -104,17 +94,6 @@ export class RestrictionComponent implements OnInit {
       this.toastr.success("Restriction Removed!", 'Success');
     })
   }
-
-  // addTruckRestriction() {
-  //   const payload: any = {}
-  //   if (this.rest_id) payload["id"] = this.rest_id;
-  //   if (this.rest_status) payload["status"] = this.rest_status;
-  //   if (this.rest_reason) payload["restriction_reason"] = this.rest_reason;
-
-  //   this.appService.addTruckRestriction(payload).subscribe((data: any) => {
-  //     console.log("Add restriction API: ", data);
-  //   })
-  // }
 
   // remove truck restriction
   removeTruckRestriction(del_id: any) {

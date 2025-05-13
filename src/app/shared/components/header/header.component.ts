@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { filter } from 'rxjs';
+import { AppService } from '../../../core/service/app.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent {
 
   @Input() user_name = 'Kane';
 
-  constructor(private router: Router, private toastr: ToastrService) {}
+  constructor(private router: Router, private toastr: ToastrService, private appService: AppService) {}
 
   ngOnInit() {
     // Set initial values based on current route
@@ -66,8 +67,11 @@ export class HeaderComponent {
   }
 
   logout() {
-    this.router.navigateByUrl("/login");
-    localStorage.removeItem('user');
-    this.toastr.success("Logged out successfully!", 'Success');
+    const payload: any = {};
+    this.appService.logoutUser(payload).subscribe((data: any)=>{
+      this.router.navigateByUrl("/login");
+      localStorage.removeItem('user');
+      this.toastr.success("Logged out successfully!", 'Success');
+    })
   }
 }

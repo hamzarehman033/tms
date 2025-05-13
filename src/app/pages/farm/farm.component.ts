@@ -32,8 +32,7 @@ export class FarmComponent implements OnInit {
   ];
 
   add_fields: modalObj[] = [
-    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
-    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'name', placeholder: 'Farm Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
     { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [], validators: [Validators.required] },
     { type: 'text', key: 'farm_address', placeholder: 'Farm Address', value: '', validators: [Validators.required] },
@@ -43,8 +42,7 @@ export class FarmComponent implements OnInit {
 
   update_fields: modalObj[] = [
     { type: 'text', key: 'id', placeholder: 'ID', value: '', hidden: true },
-    { type: 'text', key: 'first_name', placeholder: 'First Name', value: '', validators: [Validators.required] },
-    { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'name', placeholder: 'Farm Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required] },
     { type: 'text', key: 'address', placeholder: 'Address', value: '', validators: [Validators.required] },
   ];
@@ -86,8 +84,7 @@ export class FarmComponent implements OnInit {
     const payload: any = {
       role_id: 4
     }
-    if (data.first_name) payload['first_name'] = data.first_name;
-    if (data.last_name) payload['last_name'] = data.last_name;
+    if (data.name) payload['farm_name'] = data.name;
     if (data.email) payload['email'] = data.email;
     if (data.zone_id) payload['zone_id'] = Number(data.zone_id);
     if (data.status) payload['status'] = Number(data.status);
@@ -116,7 +113,7 @@ export class FarmComponent implements OnInit {
 
     if (this.farmFilters.id) payload['id'] = [Number(this.farmFilters.id)];
     if (this.farmFilters.name) payload['name'] = this.farmFilters.name;
-    if (this.farmFilters.zone) payload['zone'] = Number(this.farmFilters.zone);
+    if (this.farmFilters.zone) payload['zone_id'] = Number(this.farmFilters.zone);
 
     this.appService.farmList(payload).subscribe((data: any) => {
       this.dataSource = data?.data?.rows;
@@ -128,10 +125,7 @@ export class FarmComponent implements OnInit {
   }
 
   zoneList() {
-    const payload: any = {
-      limit: this.pagination.per_page,
-      page: this.pagination.current_page
-    };
+    const payload: any = {};
   
     this.appService.zoneList(payload).subscribe((data: any) => {
       let row = data.data.rows;
@@ -149,8 +143,10 @@ export class FarmComponent implements OnInit {
       }));
       
       ['zone_id', 'zone'].forEach(key => {
-        const field = this.add_fields.find(f => f.key === key) || this.fields.find(f => f.key === key);
-        if (field) field.options = zoneOptions;
+        [this.add_fields, this.update_fields, this.fields].forEach(fieldArray => {
+          const field = fieldArray.find(f => f.key === key);
+          if (field) field.options = zoneOptions;
+        });
       });
       
     });
@@ -159,9 +155,8 @@ export class FarmComponent implements OnInit {
   updateFarm(data: any) {
     const payload: any = {};
 
-    if (data.first_name) payload['id'] = Number(data.id);
-    if (data.first_name) payload['first_name'] = data.first_name;
-    if (data.last_name) payload['last_name'] = data.last_name;
+    if (data.id) payload['id'] = Number(data.id);
+    if (data.name) payload['farm_name'] = data.name;
     if (data.email) payload['email'] = data.email;
     if (data.address) payload['address'] = data.address;
 
@@ -212,8 +207,7 @@ export class FarmComponent implements OnInit {
       f.value = '';
     });
 
-    this.farmFilters.first_name = '';
-    this.farmFilters.last_name = '';
+    this.farmFilters.name = '';
     this.farmFilters.email = '';
     this.farmFilters.zone_id = '';
     this.farmFilters.status = '';
@@ -221,7 +215,6 @@ export class FarmComponent implements OnInit {
     this.farmFilters.latitude = '';
     this.farmFilters.longitude = '';
     this.farmFilters.id = '';
-    this.farmFilters.name = '';
     this.farmFilters.zone = '';
 
     this.pagination.current_page = 1;
