@@ -23,13 +23,13 @@ export class AuditTrailComponent implements OnInit {
     { type: 'text', key: 'module_name', placeholder: 'Name', value: '' },
     {
       type: 'dropdown', key: 'type', placeholder: 'Audit Type', value: '', options: [
-        { label: 'Logout', value: 'logout' },
-        { label: 'Login', value: 'login' },
-        { label: 'User', value: 'user' },
-        { label: 'Create User', value: 'create_users' },
-        { label: 'Update User', value: 'update_user' },
-        { label: 'Delete User', value: 'delete_user' },
-        { label: 'Add Driver', value: 'add_driver' }
+        { label: 'Supplier farm', value: 'supplier_farm' },
+        { label: 'Update Supplier', value: 'update_supplier' },
+        { label: 'Add Supplier', value: 'add_supplier' },
+        { label: 'Add Farm', value: 'add_farm' },
+        { label: 'Update Farm', value: 'update_farm' },
+        { label: 'Delete Farm', value: 'delete_farm' },
+        { label: 'Delete Supplier', value: 'delete_supplier' }
       ]
     },
     {
