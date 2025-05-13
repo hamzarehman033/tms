@@ -33,8 +33,8 @@ export class FarmComponent implements OnInit {
 
   add_fields: modalObj[] = [
     { type: 'text', key: 'name', placeholder: 'Farm Name', value: '', validators: [Validators.required] },
-    { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
-    { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [], validators: [Validators.required] },
+    // { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
+    // { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [], validators: [Validators.required] },
     { type: 'text', key: 'farm_address', placeholder: 'Farm Address', value: '', validators: [Validators.required] },
     { type: 'text', key: 'latitude', placeholder: 'Latitude', value: '', validators: [Validators.required] },
     { type: 'text', key: 'longitude', placeholder: 'Longitude', value: '', validators: [Validators.required] }
@@ -43,8 +43,10 @@ export class FarmComponent implements OnInit {
   update_fields: modalObj[] = [
     { type: 'text', key: 'id', placeholder: 'ID', value: '', hidden: true },
     { type: 'text', key: 'name', placeholder: 'Farm Name', value: '', validators: [Validators.required] },
-    { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required] },
+    // { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required] },
     { type: 'text', key: 'address', placeholder: 'Address', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'latitude', placeholder: 'Latitude', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'longitude', placeholder: 'Longitude', value: '', validators: [Validators.required] }
   ];
 
   dataObject: any = {
@@ -81,13 +83,11 @@ export class FarmComponent implements OnInit {
   }
 
   addFarm(data: any) {
-    const payload: any = {
-      role_id: 4
-    }
+    const payload: any = {}
     if (data.name) payload['farm_name'] = data.name;
-    if (data.email) payload['email'] = data.email;
-    if (data.zone_id) payload['zone_id'] = Number(data.zone_id);
-    if (data.status) payload['status'] = Number(data.status);
+    // if (data.email) payload['email'] = data.email;
+    // if (data.zone_id) payload['zone_id'] = Number(data.zone_id);
+    // if (data.status) payload['status'] = Number(data.status);
     if (data.farm_address) payload['farm_address'] = data.farm_address;
     if (data.latitude) payload['latitude'] = data.latitude;
     if (data.longitude) payload['longitude'] = data.longitude;
@@ -157,8 +157,10 @@ export class FarmComponent implements OnInit {
 
     if (data.id) payload['id'] = Number(data.id);
     if (data.name) payload['farm_name'] = data.name;
-    if (data.email) payload['email'] = data.email;
+    // if (data.email) payload['email'] = data.email;
     if (data.address) payload['address'] = data.address;
+    if (data.latitude) payload['latitude'] = data.latitude;
+    if (data.longitude) payload['longitude'] = data.longitude;
 
     this.appService.updateFarm(payload).subscribe((data: any) => {
       this.farmList();

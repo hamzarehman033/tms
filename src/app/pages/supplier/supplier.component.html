@@ -11,7 +11,7 @@
                 <h5 class="mb-0"><b>Trucking Company</b></h5>
                 <button type="button" class="btn btn-primary" (click)="openModal()">
                     <app-icon icon="material-symbols:add-rounded" [width]="20" [height]="20" class="me-2"></app-icon>
-                    Add Trucking Company</button>
+                    Add</button>
             </div>
             <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"
                 (deleteModalDetails)="deleteSupplier($event)" (get_button)="getSupplier($event)"></app-table>

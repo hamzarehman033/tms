@@ -60,12 +60,12 @@ export class SupplierComponent implements OnInit {
 
   dataObject: any = {
     add_modal: {
-      button_name: 'Add Trucking Company',
+      button_name: 'Add',
       heading: 'Add New Trucking Company',
       description: 'Kindly fill the below details to add the Trucking Company.'
     },
     update_modal: {
-      button_name: 'Update Trucking Company',
+      button_name: 'Update',
       heading: 'Update Trucking Company',
       description: 'Kindly fill the below details to update the Trucking Company.'
     }

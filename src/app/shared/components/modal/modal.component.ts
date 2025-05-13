@@ -101,7 +101,7 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   onFieldChange(event: any) {
-    const isRestricted = event.target.value == 1;
+    const isRestricted = event.target.value == 0;
 
     const restrictionField = this.modal_fields.find(field => field.key === 'restriction_reason');
     if (restrictionField) {
