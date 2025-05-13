@@ -396,7 +396,8 @@
     <!-- Driving License Expiry -->
     <ng-container matColumnDef="Driver_Status">
       <th mat-header-cell *matHeaderCellDef> <b>Status</b> </th>
-      <td mat-cell *matCellDef="let element"> {{element.user?.status}} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.user.status === 1 ? 'Active' : 'Inactive' }}
+ </td>
     </ng-container>
 
     <!-- Supplier -->
@@ -433,8 +434,8 @@
     <!-- Restrictions Name -->
     <ng-container matColumnDef="supplier_restriction_name">
       <th mat-header-cell *matHeaderCellDef> <b>Name</b> </th>
-      <td mat-cell *matCellDef="let element"> 
-         <ng-container *ngIf="element.suppliers?.length > 0"> {{element.suppliers[0]?.company_name}}</ng-container>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.suppliers?.length > 0"> {{element.suppliers[0]?.company_name}}</ng-container>
       </td>
     </ng-container>
 
@@ -514,8 +515,11 @@
     </ng-container>
     <ng-container matColumnDef="farm_user_status">
       <th mat-header-cell *matHeaderCellDef> <b>Status</b> </th>
-      <td mat-cell *matCellDef="let element"> {{element.user.status}} </td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.user.status === 1 ? 'Active' : 'Inactive' }}
+      </td>
     </ng-container>
+
     <ng-container matColumnDef="farm_user_email">
       <th mat-header-cell *matHeaderCellDef> <b>Email</b> </th>
       <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>

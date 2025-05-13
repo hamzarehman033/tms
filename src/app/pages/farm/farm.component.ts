@@ -21,7 +21,7 @@ export class FarmComponent implements OnInit {
   @ViewChild('modalRef') modalComponent!: ModalComponent;
   farmFilters: any = {};
   dataSource: any = [];
-  columnsToDisplay = ['Farm_ID', 'Farm_Name', 'createdAt', 'Farm_Zone', 'Farm_Location', 'Farm_Suppliers', 'Action'];
+  columnsToDisplay = ['Farm_ID', 'Farm_Name', 'createdAt', 'Farm_Location', 'Farm_Suppliers', 'Action'];
 
   editMode: any;
   zone_data: any = [];
