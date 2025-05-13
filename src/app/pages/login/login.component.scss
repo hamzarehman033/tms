@@ -9,6 +9,8 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    font-family: 'Poppins', sans-serif;
+                                                
 
     .logo-login {
         position: absolute;
@@ -24,6 +26,7 @@
         padding-left: 1rem;
         padding-right: 1rem;
         border-radius: 0.75rem;
+        font-size: 14px;
         // font-size: $font-lg !important;
     }
 
