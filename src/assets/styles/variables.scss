@@ -29,6 +29,9 @@ $card-inner-border-radius: $border-radius;
 $btn-border-radius: 10px;
 $border-radius-sm: 10px;
 
+// dropdown
+$dropdown-border-radius: 10px;
+
 // inputs 
 $input: #D9D9D9;
 
@@ -39,7 +42,9 @@ $table-bg: $white;
 $modal-bg: $white;
 
 // box shadows 
-$box-shadow: 0 2px 4px 0 #00000024;
+// $box-shadow: 0 2px 4px 0 #00000024;
+$box-shadow: #00000029 0 1px 4px;
+
 
 // subtle 
 $primary-bg-subtle: #fdf4f4;

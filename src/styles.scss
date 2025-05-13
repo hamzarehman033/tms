@@ -3,6 +3,7 @@
 @import url(../src/assets/styles/variables.scss);
 @import url(../src/assets/styles/theme.scss);
 @import url(../src/assets/styles/fonts.scss);
+@import url(../src/assets/styles/global.scss);
 
 html,
 body {
@@ -33,6 +34,9 @@ body {
     // right side panel content wrapper 
     .base-content {
         padding: 1.5rem;
+        padding-top: 0;
+        height: calc(100vh - 80px);
+        overflow-y: auto;
     }
 
     .user {

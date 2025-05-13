@@ -1,0 +1,61 @@
+@import '../styles/variables.scss';
+
+/* The whole scrollbar */
+::-webkit-scrollbar {
+    width: 4px !important;
+    height: 4px !important;
+    /* width of the entire scrollbar */
+}
+
+/* The scrollbar track (background) */
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* color of the track */
+    border-radius: 8px;
+}
+
+/* The draggable part of the scrollbar */
+::-webkit-scrollbar-thumb {
+    background: $secondary;
+    /* color of the thumb */
+    border-radius: 10px;
+}
+
+/* The thumb when it's being hovered over */
+::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+    /* color of the thumb when hovered */
+}
+
+body {
+
+    /* The whole scrollbar */
+    &::-webkit-scrollbar {
+        width: 4px !important;
+        height: 4px !important;
+        /* width of the entire scrollbar */
+    }
+
+    /* The scrollbar track (background) */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        /* color of the track */
+        border-radius: 8px;
+    }
+
+    /* The draggable part of the scrollbar */
+    &::-webkit-scrollbar-thumb {
+        background: $secondary;
+        /* color of the thumb */
+        border-radius: 10px;
+    }
+
+    /* The thumb when it's being hovered over */
+    &::-webkit-scrollbar-thumb:hover {
+        background: $primary;
+        /* color of the thumb when hovered */
+    }
+
+
+
+}
