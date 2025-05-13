@@ -24,6 +24,7 @@ export class LoginComponent {
   resetLink = 'https://adfsazure.freshdelmonte.com/adfs/portal/updatepassword/';
 
   constructor(private router: Router, private toastr: ToastrService, private appService: AppService) {
+
     const storedRememberMe = localStorage.getItem('rememberMe');
     if (storedRememberMe) {
       this.rememberMe = true;
