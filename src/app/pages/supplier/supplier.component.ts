@@ -37,9 +37,9 @@ export class SupplierComponent implements OnInit {
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
     { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [], validators: [Validators.required] },
     { type: 'text', key: 'company_name', placeholder: 'Company Name', value: '', validators: [Validators.required] },
-    { type: 'text', key: 'company_address', placeholder: 'Location', value: '', validators: [Validators.required] },
+    { type: 'text', key: 'company_address', placeholder: 'Company Address', value: '', validators: [Validators.required] },
     { type: 'text', key: 'phone_number', placeholder: 'Contact Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
-    { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 0 }, { label: 'Inactive', value: 1 }], validators: [Validators.required] },
+    { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 1 }, { label: 'In Active', value: 0 }], validators: [Validators.required] },
     { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true }
   ];
 
