@@ -46,7 +46,7 @@ export class ZoneComponent implements OnInit {
     { type: 'text', key: 'legal_id', placeholder: 'Legal ID', value: '', validators: [Validators.required] },
     { type: 'text', key: 'name', placeholder: 'Zone Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.required] },
-    { type: 'text', key: 'contact_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
+    { type: 'text', key: 'contact_number', placeholder: 'Contact Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
     { type: 'text', key: 'location', placeholder: 'Location', value: '', validators: [Validators.required] }
   ];
 

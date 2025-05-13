@@ -61,6 +61,7 @@ export class FiltersComponent implements OnInit {
     start_date: 'Start Date',
     end_date: 'End Date',
     module_name: 'Module Name',
-    email: 'Email Address'
+    email: 'Email Address',
+    zone_id: 'Zone'
   }
 }

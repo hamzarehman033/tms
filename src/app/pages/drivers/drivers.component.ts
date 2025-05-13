@@ -10,6 +10,7 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { PaginatorComponent } from '../../shared/components/paginator/paginator.component';
 import { ToastrService } from 'ngx-toastr';
 import { IconComponent } from '../../shared/components/icon/icon.component';
+import { futureDateValidator } from '../../core/custom-validators';
 
 @Component({
   selector: 'app-drivers',
@@ -40,9 +41,9 @@ export class DriversComponent implements OnInit {
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required] },
     { type: 'dropdown', key: 'zone_id', placeholder: 'Zone', value: '', options: [], validators: [Validators.required] },
     { type: 'text', key: 'license_number', placeholder: 'License Number', value: '', validators: [Validators.required] },
-    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '', validators: [Validators.required] },
+    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '', validators: [Validators.required, futureDateValidator()] },
     { type: 'text', key: 'age', placeholder: 'Age', value: '', validators: [Validators.required] },
-    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] }
+    { type: 'text', key: 'phone_number', placeholder: 'Contact Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] }
   ];
 
   update_fields: modalObj[] = [
@@ -51,9 +52,9 @@ export class DriversComponent implements OnInit {
     { type: 'text', key: 'last_name', placeholder: 'Last Name', value: '', validators: [Validators.required] },
     { type: 'text', key: 'email', placeholder: 'Email', value: '', validators: [Validators.required, Validators.email] },
     { type: 'text', key: 'license_number', placeholder: 'License Number', value: '', validators: [Validators.required] },
-    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '', validators: [Validators.required] },
+    { type: 'date', key: 'license_expiry', placeholder: 'License Expiry Date', value: '', validators: [Validators.required, futureDateValidator()] },
     { type: 'text', key: 'age', placeholder: 'Age', value: '' },
-    { type: 'text', key: 'phone_number', placeholder: 'Phone Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
+    { type: 'text', key: 'phone_number', placeholder: 'Contact Number', value: '', validators: [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]+$/)] },
     { type: 'dropdown', key: 'status', placeholder: 'Status', value: '', options: [{ label: 'Active', value: 1 }, { label: 'In Active', value: 0 }] },
     { type: 'text', key: 'restriction_reason', placeholder: 'Restriction Reason', value: '', hidden: true },
   ];

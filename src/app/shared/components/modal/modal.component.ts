@@ -34,6 +34,7 @@ export class ModalComponent implements OnInit, OnChanges {
     { type: 'dropdown', key: 'zone', placeholder: 'Zone', value: '', options: [] },
     { type: 'text', key: 'company_name', placeholder: 'Company Name', value: '' }
   ];
+  minDate: string = new Date().toISOString().split('T')[0];
 
   @Input() modal_fields: modalObj[] = [];
   @Input() modal_info: any;
@@ -100,7 +101,7 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   onFieldChange(event: any) {
-    const isRestricted = event.target.value == 0;
+    const isRestricted = event.target.value == 1;
 
     const restrictionField = this.modal_fields.find(field => field.key === 'restriction_reason');
     if (restrictionField) {
@@ -177,12 +178,12 @@ export class ModalComponent implements OnInit, OnChanges {
   addFarmSupplier(supplier_id: any) {
     const payload: any = {};
     if (supplier_id) payload['supplier_id'] = supplier_id;
-    if (this.farm_id) payload['farm_id'] = this.farm_id; 
+    if (this.farm_id) payload['farm_id'] = this.farm_id;
 
-    this.appService.addFarmSupplier(payload).subscribe((data: any)=>{
+    this.appService.addFarmSupplier(payload).subscribe((data: any) => {
       this.toastr.success("Record added successfully!", 'Success');
       this.farmList();
-    }, (err)=>{
+    }, (err) => {
       this.toastr.error(err.error.message, 'Error');
     });
   }
@@ -190,9 +191,9 @@ export class ModalComponent implements OnInit, OnChanges {
   deleteFarmSupplier(supplier_id: any) {
     const payload: any = {};
     if (supplier_id) payload['supplier_id'] = supplier_id;
-    if (this.farm_id) payload['farm_id'] = this.farm_id; 
+    if (this.farm_id) payload['farm_id'] = this.farm_id;
 
-    this.appService.deleteFarmSupplier(payload).subscribe((data: any)=>{
+    this.appService.deleteFarmSupplier(payload).subscribe((data: any) => {
       console.log("data: ", data);
       this.farmList();
     });
@@ -206,12 +207,12 @@ export class ModalComponent implements OnInit, OnChanges {
 
       this.farm_obj = []; // reset to avoid duplicates
       for (let i = 0; i < row.suppliers.length; i++) {
-          const supplier = row.suppliers[i];
-          this.farm_obj.push({
-            name: supplier?.company_name,
-            id: supplier?.id,
-            address: supplier?.company_address
-          });
+        const supplier = row.suppliers[i];
+        this.farm_obj.push({
+          name: supplier?.company_name,
+          id: supplier?.id,
+          address: supplier?.company_address
+        });
       }
     });
   }

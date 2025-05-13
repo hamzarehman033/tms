@@ -1,1 +1,23 @@
-<p>farm-users works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <app-modal #modalRef (addModalDetails)="addFarmUser($event)" (updateModalDetails)="updateFarmUser($event)"
+                [modal_fields]="editMode ? update_fields : add_fields" [modal_info]="dataObject"></app-modal>
+            <app-filters [fields]="fields" (applyFilter)="farmUserList()" (resetFilter)="reset()"></app-filters>
+        </div>
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><b>Add Farm User</b></h5>
+                <button type="button" class="btn btn-primary" (click)="openModal()">
+                    <app-icon icon="material-symbols:add-rounded" [width]="20" [height]="20" class="me-2"></app-icon>
+                    Add Farm User</button>
+            </div>
+            <app-table [displayedColumns]="columnsToDisplay" [dataSource]="dataSource"
+                (deleteModalDetails)="deleteFarmUser($event)" (get_button)="getFarmUser($event)" (getDetails)="getDetails($event)"></app-table>
+            <div class="card-footer">
+                <app-paginator [pagination]="pagination" (pageChange)="goToPage($event)"
+                    (page_selected)="selectedPage($event)" [(pageNo)]="pageCount"></app-paginator>
+            </div>
+        </div>
+    </div>
+</div>
