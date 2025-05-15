@@ -4,3 +4,31 @@
         font-weight: 600;
     }
 }
+
+.no-arrow {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    background-image: none;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select-wrapper select {
+    padding-right: 30px;
+}
+
+.custom-select-wrapper svg {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.select-width{
+    width: 100px;
+}

@@ -17,9 +17,11 @@ export class LineGraphComponent implements OnInit {
   chartInstance: Chart | null = null;
 
   farm_filter: string = '';
+  year_filter: number = 0;
   farm_date: any = '';
 
   farms = ['farm 1', 'farm 2', 'farm 3']
+  years = [1999,2000,2001,2002,2003,2004,2005];
 
   // Map full weekday names to short forms
   weekdayMap: { [key: string]: string } = {
@@ -128,7 +130,7 @@ export class LineGraphComponent implements OnInit {
           labels: labels,
           datasets: [
             {
-              label: 'Completed Trips',
+              label: 'Completed',
               data: completedData,
               borderColor: 'green',
               backgroundColor: 'transparent',
@@ -138,7 +140,7 @@ export class LineGraphComponent implements OnInit {
               pointBackgroundColor: completedData.map((_: any, i: number) => i === peakCompletedIndex ? 'green' : 'transparent')
             },
             {
-              label: 'In-Progress Trips',
+              label: 'In-Progress',
               data: inProgressData,
               borderColor: 'orange',
               backgroundColor: 'transparent',
